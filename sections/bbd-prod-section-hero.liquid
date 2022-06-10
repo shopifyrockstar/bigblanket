@@ -1,0 +1,79 @@
+<style>
+  @media only screen and (min-width: 375px) {
+    .bbd-prod-top{
+      background-image: url({{ section.settings.bg_img | img_url: 'master' }});
+    }
+  }
+  @media only screen and (max-width: 375px) {
+   .bbd-prod-top{
+     background-image: url({{ section.settings.bg_img_mg | img_url: 'master' }});
+   }
+ }
+</style>
+
+
+<div class="bbd-prod-top" style="color:{{ section.settings.text_color }};">
+ <div class="container">
+  <div class="bbd-prod-top__box" style="text-align:{{section.settings.text_position}}">
+    <h1> 
+      {{ section.settings.h1_text }}
+    </h1>
+    {% if section.settings.body_text != blank %}
+      <p class="bbd-prod-top__text">{{ section.settings.body_text }}</p>
+    {% endif %}
+  </div>
+</div>
+</div>
+
+<style>
+  .bbd-prod-top {
+    padding-bottom: 170px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+  {
+    "id": "bg_img",
+    "type": "image_picker",
+    "label": "Image"
+  },
+  {
+    "id": "bg_img_mg",
+    "type": "image_picker",
+    "label": "Image mobile"
+  },
+  {
+    "id": "h1_text",
+    "type": "text",
+    "label": "Heading"
+  },
+  {
+   "id": "body_text",
+   "type": "text",
+   "label": "Body text"
+ },
+ {
+   "id": "text_position",
+   "type": "radio",
+   "label": "Text position",
+   "default":   "center",
+   "options": [
+   { "value": "left", "label": "Left"},
+   { "value": "center", "label": "Center"},
+   { "value": "right", "label": "Right"}
+   ]
+ },
+ {
+  "id": "text_color",
+  "type": "color",
+  "label": "Text color",
+  "default": "#fff"
+}
+
+
+]
+}
+{% endschema %}

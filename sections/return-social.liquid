@@ -1,0 +1,61 @@
+{% assign item_width = 'd' %}
+{% assign item_count = 0 %}
+{% for block in section.blocks %}
+	{% assign item_count = item_count | plus: 1 %}
+{% endfor %}
+
+{% case item_count %}
+	{% when 1 %}
+		{% assign item_width = 'md-12' %}
+	{% when 2 %}
+		{% assign item_width = 'md-6' %}
+	{% when 3 %}
+		{% assign item_width = 'md-4' %}
+	{% when 4 %}
+		{% assign item_width = 'md-3' %}
+	{% when 5 %}
+		{% assign item_width = 'md-25' %}
+	{% when 6 %}
+		{% assign item_width = 'md-26' %}
+{% endcase %}
+<div class="section-header">
+  <h2 class="insta-block__subtitle">{{ section.settings.title }}</h2>
+  <div class="sync-sl__title">
+    {{ section.settings.sub_title }}
+  </div>
+  {{ section.settings.email }}
+  {{ section.settings.phone_text }}
+</div>
+
+{% schema %}
+  {
+    "name": "Social",
+	"class": "return-social-wrapper",
+    "settings": [ 
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Section Heading",
+          "default": "#mybigblanket"
+        },
+		{
+          "type": "text",
+          "id": "sub_title",
+          "label": "Section Sub Heading",
+          "default": "How do you get cozy?"
+        },
+		{
+          "type": "richtext",
+          "id": "email",
+          "label": "Email address",
+		  "default": "<p>Email</p>"
+        },
+		{
+          "type": "richtext",
+          "id": "phone_text",
+          "label": "Text Number",
+          "default": "<p>Text</p>"
+        }
+    ]    
+  }
+{% endschema %}

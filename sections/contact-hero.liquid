@@ -1,0 +1,31 @@
+<div class="hero-wrapper">
+  <div class="mobile-show">
+    {% if section.settings.bg_img_mg != blank %}
+    	<img class="lazy2" src="{{ section.settings.bg_img_mg | img_url: '480x' }}">
+    {% endif %}
+  </div>
+  <div class="desktop-show">
+    {% if section.settings.bg_img != blank %}
+    	<img class="lazy2" src="{{ section.settings.bg_img | img_url: '1440x' }}">	
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "Contact Banner",
+"settings": [
+    {
+      "id": "bg_img",
+      "type": "image_picker",
+      "label": "Desktop Image"
+    },
+    {
+      "id": "bg_img_mg",
+      "type": "image_picker",
+      "label": "Mobile Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+<head>
+  {% render 'elevar-head' %}
+  {% render 'elevar-head-listener' %}
+{% comment %}DLADMNEW{% endcomment %}{% render 'dla_dm_css_main' %}{% render 'dla_dm_css_hide_event_targets' %}{% render 'dla_dm_js_main' %}{% render 'dla_dm_js_currency' %}{% comment %}ENDDLADMNEW{% endcomment %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+  <meta name="referrer" content="origin"> 
+
+  <script src="https://cdn.yottaa.com/rapid.rum.min.js?key=ap2yIuAujD5tjQ"></script>
+<script>
+  Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5tjQ');
+</script>
+  <link rel="preconnect" href="//cdn.dynamicyield.com">
+  <link rel="preconnect" href="//st.dynamicyield.com">
+  <link rel="preconnect" href="//rcom.dynamicyield.com">
+  <link rel="dns-prefetch" href="//cdn.dynamicyield.com">
+  <link rel="dns-prefetch" href="//st.dynamicyield.com">
+  <link rel="dns-prefetch" href="//rcom.dynamicyield.com">
+  
+  <title>{{ page_title }}</title>
+
+  {{ content_for_header }}
+
+  {{ checkout_stylesheets }}
+  {{ checkout_scripts }}
+
+  <!-- Insert in head tag -->
+  <style type="text/css">    
+    
+    .section__content.section__content__attentive {
+      border-radius: 4px;
+      background-color: #fafafa;
+      border: solid 1px #e6e6e6;
+      padding: 12px;
+    }
+
+    .section__content.section__content__attentive .input-checkbox {
+      background: #fff;
+    }
+
+    .section__footer__attentive {
+      font-size: 9px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+      text-align: left;
+      color: #808080;
+      padding-top: 4px;
+    }
+
+    .section__footer__attentive a {
+      color: #808080;
+      font-weight: bold;
+    }
+
+    .section__footer__attentive b {
+      font-weight: bold;
+    }
+
+    .checkbox__label.checkbox__label__attentive {
+      cursor: auto;
+
+    }
+
+    .checkbox__label__attentive__header {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #333333;
+    }
+
+    .checkbox__label__attentive__subheader {
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.17;
+      letter-spacing: normal;
+      text-align: left;
+      color: #737373;
+      padding-top: 4px;
+    }
+
+    .checkbox-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      align-items: baseline;
+    }
+    
+    .breadcrumb {
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+      width: 100%;
+      counter-reset: breadcrumb;
+      position: relative;
+    }
+    
+    .breadcrumb .breadcrumb__item {
+      float: left;
+      width: 33.3333%;
+      height: 30px;
+      text-align: center;
+      position: relative;
+      background: #f7c945;
+      display: flex;
+      justify-content: center;
+      color: black;
+    }
+    
+    .breadcrumb .breadcrumb__item a {
+      color: black;
+      width: 100%;
+      padding: 6px;
+    }
+    
+    .breadcrumb .breadcrumb__item:before {
+      content: "";
+      position: absolute;
+      width: 0px;
+      height: 0;
+      background: #f7c945;
+      left: 0px;
+      border: 15px solid transparent;
+      border-left-color: white;
+    }
+    
+    .breadcrumb .breadcrumb__item:after {
+      content: "";
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      background: white;
+      right: -15px;
+      border: 15px solid transparent;
+      border-left-color: #f7c945;
+      top: 0;
+    }
+    
+    .breadcrumb .breadcrumb__item.breadcrumb__item--completed {
+      background: black;
+      color: white;
+    }
+    .breadcrumb .breadcrumb__item.breadcrumb__item--completed a {
+      color: white;
+    }
+    .breadcrumb .breadcrumb__item.breadcrumb__item--completed:before {
+      background: black;
+    }
+    .breadcrumb .breadcrumb__item.breadcrumb__item--completed:after {
+      border-left-color: black;
+    }
+    
+    @media (min-width: 1000px){
+      .content .wrap {
+        flex-direction: column!important;
+      }
+      
+      .content_wrap {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      .content_wrap {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+    
+    @media (max-width: 1000px) {
+      .breadcrumb.hide-on-mobile {
+        display: none;
+      }
+      .breadcrumb.show-on-mobile {
+        display: block;
+        width: calc(100% - 28px);
+        padding: 14px;
+      }
+      .breadcrumb .breadcrumb__item:before {
+        border: 13px solid transparent;
+        border-left-color: white;
+      }
+    }
+  </style>
+  <script src="https://cdn.attn.tv/bigblanket/checkout/checkout.js" defer>
+  </script>
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg" async></script>
+  <link rel="preconnect" href="//cdn.dynamicyield.com">
+  <link rel="preconnect" href="//st.dynamicyield.com">
+  <link rel="preconnect" href="//rcom.dynamicyield.com">
+  <link rel="dns-prefetch" href="//cdn.dynamicyield.com">
+  <link rel="dns-prefetch" href="//st.dynamicyield.com">
+  <link rel="dns-prefetch" href="//rcom.dynamicyield.com">
+
+  <script>
+    (function () {
+      window.DY = window.DY || {};
+      window.DY.pageTypes = {
+        other: 'OTHER'
+      };      
+      var pageType;
+      pageType = window.DY.pageTypes.other;
+
+      window.DY.recommendationContext = { type: pageType };
+      console.log(pageType);
+    })();
+  </script>
+
+  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
+  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script>
+  
+  <script src="https://apis.google.com/js/platform.js?onload=renderOptIn"></script>
+</head>
+<body>
+  {% render 'elevar-checkout-end' %}
+  
+  {{ skip_to_content_link }}
+  
+  <header class="banner" data-header role="banner">
+    <div class="wrap">
+      {{ content_for_logo }}
+    </div>
+    <ul class="breadcrumb breadcrumb--center show-on-mobile">
+      <li class="breadcrumb__item breadcrumb__item breadcrumb__item--completed mobile" id="contact_information_bc"><a href="?step=contact_information">1. Customer</a></li>
+      <li class="breadcrumb__item breadcrumb__item mobile" id="shipping_bc"><a href="?step=shipping_method">2. Shipping</a></li>
+      <li class="breadcrumb__item breadcrumb__item mobile" id="payment_bc"><a href="?step=payment_method">3. Payment</a></li>
+    </ul>
+  </header>
+
+  <div class="order-summary-toggle-wrapper">
+  {{ order_summary_toggle }}
+  </div>
+  <div class="content" data-content>
+    <div class="hidden thankyou-survey">
+      <div class="additional-wrapper">
+        <div class="skip-wrapper">
+          <button class="skip-button">
+            Go to Order Confirmation
+          </button>
+        </div>
+        <div class="close-wrapper">
+          <p class="close-button"></p>
+        </div>
+        <div class="customer-info-wrapper">
+          <h2>Thank you, {{ order.customer.first_name }}!</h2>
+          <p>Your order {{ order.name }} is confirmed.</p>
+        </div>
+      </div>
+      <div class="typeform-widget" data-tf-widget="KiJbpqFs" data-tf-iframe-props="title=Post-Purchase Survey | Big Blanket Co" data-tf-medium="snippet" data-tf-hidden="utm_content={{ checkout.order_number }}"></div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+      {% comment %}
+      <div class="typeform-widget" data-url="https://form.typeform.com/to/KiJbpqFs?utm_content={{ checkout.order_number }}" data-transparency="50" data-hide-headers="true" data-hide-footer="true"></div> 
+      <script> 
+        (function() {
+          var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) 
+        } })() 
+      </script>
+      {% endcomment %}
+    </div>
+    <div class="wrap">
+      <ul class="breadcrumb breadcrumb--center hide-on-mobile">
+        <li class="breadcrumb__item breadcrumb__item breadcrumb__item--completed desktop" id="contact_information_bc"><a href="?step=contact_information">1. Customer</a></li>
+        <li class="breadcrumb__item breadcrumb__item desktop" id="shipping_bc"><a href="?step=shipping_method">2. Shipping</a></li>
+        <li class="breadcrumb__item breadcrumb__item desktop" id="payment_bc"><a href="?step=payment_method">3. Payment</a></li>
+      </ul>
+      <div class="content_wrap" data-countrycode="{{ localization.country.iso_code }}" data-type="{{ Shopify.Checkout.step }}">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {% comment %}{{ breadcrumb }}{% endcomment %}
+            {% comment %} The Vaan Group - Order Bump (1/2) {% endcomment %}
+  <div id="orderbump"></div>
+  {% comment %} END OF The Vaan Group - Order Bump (1/2) {% endcomment %}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+
+            <!-- insert HTML in body main__content section -->
+
+            <div id="attentiveOptIn" class="fieldset-description" data-buyer-accepts-marketing-attentive="" aria-label="Phone Sign Up">
+
+
+              <div class="section__content section__content__attentive">
+
+
+                <div class="checkbox-wrapper">
+
+
+                  <div class="checkbox__input">
+
+
+                    <input name="attributes[buyer_accepts_marketing_attentive]" type="hidden" value="0">
+
+
+                    <input class="input-checkbox" data-backup="buyer_accepts_marketing" type="checkbox" value="1" name="attributes[buyer_accepts_marketing_attentive]" id="checkout_buyer_accepts_marketing_attentive" aria-labelledby="headers" tabindex="0" focusable="true">
+
+
+                  </div>
+
+
+                  <div class="checkbox__label checkbox__label__attentive">
+
+
+                    <span id="headers" tabindex="0" focusable="true">
+
+
+                      <div class="checkbox__label__attentive__header">Sign up for texts to access product updates, private sales and more.</div>
+
+
+                    </span>
+
+
+                    <div class="section__footer__attentive">By checking this box, you agree to receive recurring automated promotional and personalized marketing text messages <b>(e.g. cart reminders)</b> from Big Blanket Co at the cell number used when signing up. Consent is not a condition of any purchase. <b>Reply HELP for help and STOP to cancel.</b> Msg frequency varies. Msg & data rates may apply. View <a href="http://attn.tv/bigblanket/terms.html" target="_blank" rel="noopener noreferrer" aria-label="Big Blanket Terms Link" >Terms</a> &amp; <a href="https://bigblanket.com/pages/privacy-policy" target="_blank" rel="noopener noreferrer" aria-label="Big Blanket Privacy Link">Privacy</a>.</div>
+
+
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+            <div class="above-police hidden">
+              <p>
+              </p>
+            </div>
+            <div class="product-police">              
+              <div class="product-police__item product-police__item--img">
+                <img src="//cdn.shopify.com/s/files/1/0113/9323/7056/files/The-Big-Guarantee_small.png?v=1590691546" alt="img">
+              </div>
+
+              <div class="product-police__item product-police__item--info">
+                <p><strong>The Big Guarantee</strong></p>
+                <p>We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket.</p>
+              </div>
+
+            </div>
+            <div class="thankyou-desktop-widget hidden">
+              <div class="yotpo-widget-instance" data-yotpo-instance-id="21823"></div>              
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    
+  </div>
+
+  <style type="text/css">
+    .content{
+      position:relative;
+    }
+    .order-summary__sections{
+      height: auto;
+    }
+
+    .above-police{
+      margin-top: 20px;
+    }
+    .above-police p{
+      color: black;
+    }
+    .product-police{
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      margin-top: 40px;
+      color: #000;
+    }
+    .product-police__item--img{
+      font-size: 0;
+      flex-shrink: 0;
+      margin-right: 15px;
+    }
+    .product-police__item--info strong{
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+  @media only screen and (max-width: 991px){
+    .product-police{
+      margin: 20px 0
+    }
+  }
+    .thankyou-desktop-widget{
+      margin-top: 20px;
+    }
+    .thankyou-desktop-widget .yotpo-background{
+/*       max-height: 600px !important; */
+      box-sizing: border-box;
+      height:550px !important;
+      padding:20px 0 !important;
+    }
+    .thankyou-desktop-widget .yotpo-background .yotpo-tile{
+      min-height: unset;
+    }
+    .thankyou-desktop-widget .yotpo-background .yotpo-tile .yotpo-email-view .yotpo-title-text{
+      max-width: 50%;
+      margin: 0 auto;
+    }
+    .thankyou-desktop-widget .yotpo-background .yotpo-tile-box{
+    	padding-top:30px;
+    }
+    .thankyou-desktop-widget .yotpo-background .yotpo-header-text{
+    	padding:0;
+    }
+    @media (max-width:999px) and (min-width:481px){
+      .thankyou-desktop-widget .yotpo-background .yotpo-tile .yotpo-email-view .yotpo-title-text{
+        max-width: 40%;
+        margin: 0 auto;
+      }
+    }
+    .thankyou-survey{
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 9;
+      background: white;
+    }
+    .thankyou-survey .typeform-widget{
+      width: 600px;
+      height: 500px;
+/*       margin-top: 250px; */
+      position: relative;
+      left: 50%;
+      top:200px;
+      transform: translateX(-50%);
+    }
+    @media (max-width:610px){
+      .thankyou-survey .typeform-widget{
+      	width:300px;
+        top: 220px;      
+      }
+      .thankyou-survey .typeform-widget iframe{
+        height: 70% !important;
+      }
+    }
+    @media (max-width:480px){
+      .thankyou-survey .typeform-widget{
+      	width:300px;
+        top: 220px;
+      }
+      .thankyou-survey .additional-wrapper .close-wrapper{
+      	    right: 10px;
+      }
+    }
+    
+    .thankyou-survey .skip-wrapper{
+      width: 250px;
+      height: 50px;
+      z-index: 10;
+      position: absolute;
+      left: 50%;
+      top: 50px;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    .thankyou-survey .skip-wrapper button{
+      font-weight: 700;
+      cursor: pointer;
+      transition-duration: 0.1s;
+      transition-property: background-color, color, border-color, opacity, box-shadow;
+      transition-timing-function: ease-out;
+      outline: none;
+      border: 1px solid transparent;
+      margin: 0px;
+      box-shadow: rgb(0 0 0 / 10%) 0px 3px 12px 0px;
+      padding: 8px 18px;
+      min-height: 48px;
+      background-color: #F7C945;
+      color: rgb(0,0,0);
+      border-radius: 4px;
+      /* width: 160px; */
+      font-size: 16px;
+      font-family: inherit;
+      text-transform: capitalize;
+      width: 100%;
+      height: 100%;
+      width: 250px;
+    }
+    .thankyou-survey .close-wrapper{
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      right: 50px;
+      top: 50px;
+      z-index: 11;
+      transform: translate3d(0, -50%, 0);
+    }
+    .thankyou-survey .close-wrapper:hover{
+      cursor:pointer;
+    }
+    .thankyou-survey .close-wrapper .close-button:before{
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: black;
+      position: absolute;
+      top: 25px;
+      left: 10px;
+      transform: rotate(
+        45deg
+      ) translate3d(0, 0,0);
+    }
+    .thankyou-survey .close-wrapper .close-button:after{
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: black;
+      position: absolute;
+      top: 25px;
+      left: 10px;
+      transform: rotate( 
+        135deg
+      ) translate3d(0,0,0);
+    }
+    .thankyou-survey .customer-info-wrapper{
+      position: absolute;
+      width: 500px;
+      height: 150px;
+      right: 50px;
+      top: 130px;
+      z-index: 11;
+      transform: translate3d(-50%, 0, 0);
+      left: 50%;
+      text-align: center;
+    }
+    .thankyou-survey .customer-info-wrapper h2{
+      font-size: 2rem;
+    }
+    .thankyou-survey .customer-info-wrapper p{
+      font-size: 1.5rem;
+    }
+    .yotpo-widget-referral-widget.yotpo-widget-override-css{
+      display:none;
+    }
+    body .content .wrap .content_wrap .yotpo-widget-referral-widget.yotpo-widget-override-css{
+      display:block;
+    }
+    .gift-note-wrapper.field--show-floating-label label{
+      display:none;
+    }
+    .gift-note-wrapper.field--show-floating-label .field__input{
+      padding-top: .3571428571em;
+    }
+  </style>
+  
+  <script>
+    if (Shopify.Checkout.step === "contact_information") {
+      Checkout.$('[data-drawer-toggle="[data-order-summary]"]').click();
+      $(".above-police").removeClass("hidden");
+    }
+    if (Shopify.Checkout.step == 'shipping_method') {
+      $(".above-police").removeClass("hidden");
+      $(document).ready(function(){
+//         if ( localStorage.getItem("countrycode") != 'US' ){
+          var tax_target = $("[data-checkout-taxes-target]");
+//           var tax_amount_with_string = tax_target.find("span").text().replace('£', '');
+        var tax_amount_with_string = tax_target.find("span").text().substring(1, tax_target.find("span").text().length);
+          var tax_amount_without_string = parseInt(tax_amount_with_string);
+          if ( tax_amount_without_string > 0 ) {
+          	console.log("yes greater");
+            $(".order-summary-toggle__text.order-summary-toggle__text--show").trigger("click");
+          }
+//         }        
+      })      
+    }
+    if (Shopify.Checkout.step == 'payment_method') {
+      $(".above-police").removeClass("hidden");
+      $(document).ready(function(){
+        var tax_target = $("[data-checkout-taxes-target]");
+        var tax_amount = tax_target.find("span").text().replace(/ /g,'').replace(/\r?\n|\r/, "");
+        var tax_amount_with_string = tax_amount.substring(1, tax_amount.length);
+        console.log(tax_amount, tax_amount.length);
+        var tax_amount_without_string = parseInt(tax_amount_with_string);
+        console.log(tax_amount_without_string);
+        if ( tax_amount_without_string > 0 ) {
+          console.log("yes greater");
+          $(".order-summary-toggle__text.order-summary-toggle__text--show").trigger("click");
+        }
+      })
+    }
+    
+  </script>
+  
+  <script>
+    (function($) {
+      $(document).on("page:load page:change", function() {
+//         console.log(Shopify.Checkout.step, Shopify.Checkout.page, Shopify.Checkout.isOrderStatusPage);
+        if ( Shopify.Checkout.isOrderStatusPage == true ){          
+//           window.renderOptIn = function() {
+            window.gapi.load('surveyoptin', function() {
+              window.gapi.surveyoptin.render(
+                {
+                  "merchant_id": 133870966,
+                  "order_id": "{{order.order_number}}",
+                  "email": "{{order.email}}",
+                  "delivery_country": "{{order.shipping_address.country_code}}",
+                  "estimated_delivery_date": "{{order.created_at | date: "%s" | minus : -0 | date: "%F" | uri_encode | replace:"+","%20"}}",
+                  "opt_in_style": "CENTER_DIALOG"
+                }); 
+            });
+//           }
+
+          window.___gcfg = {
+            lang: "en_US"
+          };  
+        }
+      });
+    })(Checkout.$);
+  </script>
+  
+  <script>
+    $(function() {
+      var bcSelectorDevice = "";
+      if (screen.width >= 1024) {
+        bcSelectorDevice = ".desktop";
+      } else {
+        bcSelectorDevice = ".mobile";
+      }
+      if (Shopify.Checkout.step == 'contact_information') {
+        document.querySelector('#contact_information_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');        
+      }
+      if (Shopify.Checkout.step == 'shipping_method') {
+        document.querySelector('#contact_information_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');
+        document.querySelector('#shipping_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');        
+      }
+      if (Shopify.Checkout.step == 'payment_method') {
+        document.querySelector('#contact_information_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');
+        document.querySelector('#shipping_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');
+        document.querySelector('#payment_bc' + bcSelectorDevice).classList.add('breadcrumb__item--completed');        
+      }
+      if (Shopify.Checkout.step == 'thank_you') {
+        $(".thankyou-survey").removeClass("hidden");
+      }
+      if (Shopify.Checkout.OrderStatus ) {
+        $(".thankyou-desktop-widget").removeClass("hidden");
+//         var loc = window.location.href;
+//         if(loc.indexOf("/thank_you") > -1 && loc.indexOf("/checkouts/") > -1){
+//           $(".thankyou-survey").removeClass("hidden");
+//         }        
+        DY.API("event", {
+          name: "Purchase",
+          properties: {
+            uniqueTransactionId: "{{ checkout.order_number }}",
+            dyType: "purchase-v1",
+            value: {{ checkout.total_price | divided_by:100.0 }},
+            currency: "{{ checkout.currency }}",
+            cart: [
+            {% for line in checkout.line_items %}
+            	{
+                  productId: "{{ line.sku }}-{{ line.variant.id}}", 
+                  quantity: {{ line.quantity }},
+                  itemPrice: {{ line.final_price | divided_by: 100.0 }},
+                  Color: "{{ line.variant.title }}" 
+                }{% unless forloop.last %},{% endunless %}          		
+            {% endfor %}              
+            ]
+          }
+        });                
+      }
+    });
+    
+    $(document).ready(function(){        
+      
+      $(".skip-button").click(function(){        
+        $(".thankyou-survey").addClass("hidden");
+        if ( $(".banner").hasClass("hidden") ){
+          $(".banner").removeClass("hidden");
+          $(".order-summary-toggle-wrapper").removeClass("hidden");
+        }
+        location.reload();
+      });
+      $(".close-wrapper").click(function(){
+        $(".thankyou-survey").addClass("hidden");
+        if ( $(".banner").hasClass("hidden") ){
+          $(".banner").removeClass("hidden");
+          $(".order-summary-toggle-wrapper").removeClass("hidden");
+        }
+        location.reload();
+      });
+    })
+    
+  </script>
+   
+  <script type="text/template" data-template="gift-elevar-data">
+    <input type="hidden" value="" name="checkout[attributes][_elevar__fbp]" id="checkout_gift_note_elevar__fbp">
+    <input type="hidden" value="" name="checkout[attributes][_elevar__ga]" id="checkout_gift_note_elevar__ga">
+    <input type="hidden" value="" name="checkout[attributes][_elevar__ga_PKCV1WB2HB]" id="checkout_gift_note_elevar__ga_PKCV1WB2HB">
+    <input type="hidden" value="" name="checkout[attributes][_elevar__gaexp]" id="checkout_gift_note_elevar__gaexp">
+    <input type="hidden" value="" name="checkout[attributes][_elevar__gid]" id="checkout_gift_note_elevar__gid">
+    <input type="hidden" value="" name="checkout[attributes][_elevar_visitor_info]" id="checkout_gift_note_elevar_visitor_info">
+  </script>
+  
+  <script type="text/template" data-template="gift-note">
+    <div class="section__content section__content--margin-top" style="margin-top: 10px;border: 1px transparent solid;border-radius: 5px;border-color: #d9d9d9;padding: 15px;">
+      <div class="title-wrapper"  style="margin-bottom: 10px;">
+          <p style="font-weight: bold;font-size: 1.1em;">Gift Options</p>
+      </div>
+      <div class="checkbox-wrapper"  style="display: flex;align-items: center;">
+        <div class="checkbox__input">
+          <input type="hidden" value="" name="checkout[attributes][gift]" id="checkout_gift_note_enabled">
+          <input class="input-checkbox" type="checkbox" name="checkout[show-gift-note]"
+          id="checkout_show_gift_note">
+        </div>
+
+        <label class="checkbox__label" for="checkout_show_gift_note"  style="display: flex;align-items: center;">
+          <img src="{{ 'img_gift-wrap.png' | asset_img_url: '80x' }}"  style="margin: 0 10px;width: 50px;">
+          Add a gift message and conceal the branded box on this order. If selected, we will not show pricing on the receipt
+        </label>
+      </div>
+      
+      <div id="gift-note-body" style="display: none" class="fieldset">
+        <div class="field field--required gift-note-wrapper">
+          <div class="field__input-wrapper">
+            <label class="field__label field__label--visible" for="checkout_gift_note_text">Note</label>
+            <textarea placeholder="Note" aria-required="true" class="field__input"
+            maxlength="300"
+            name="checkout[attributes][gift_message]" id="checkout_gift_note_text" rows="3"
+            value=""
+            required></textarea>
+            <p class="field__message field__message--error" id="error-for-gift_note_text"></p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </script>
+  
+            <script>
+                (function () {
+                  var LS_TL_CHECKOUT_GIFT_NOTE = 'tl_checkout_gift-note';
+
+                  var TEMPLATE_SELECTOR = '[data-template="gift-note"]';
+                  var TEMPLATE_SELECTOR_elevar = '[data-template="gift-elevar-data"]';
+                  
+                  var CHECKBOX_SELECTOR = '#checkout_show_gift_note';
+                  var BODY_SELECTOR = '#gift-note-body';
+                  var HIDDEN_ENABLED_SELECTOR = '#checkout_gift_note_enabled';
+                  var FROM_SELECTOR = '#checkout_gift_note_from';
+                  var TO_SELECTOR = '#checkout_gift_note_to';
+                  var TEXT_SELECTOR = '#checkout_gift_note_text';
+                  var FROM_ERROR_SELECTOR = '#error-for-gift_note_from';
+                  var TO_ERROR_SELECTOR = '#error-for-gift_note_to';
+                  var TEXT_ERROR_SELECTOR = '#error-for-gift_note_text';
+                  var FORM_SELECTOR = 'form';
+
+                  var CHECKED_ATTRIBUTE = ':checked';
+
+                  var HIDDEN_ENABLED_VALUE = 'on';
+
+                  var FIELD_ERROR_CLASS = 'field--error';
+
+                  function appendNotes(appendTo) {
+                    var smsOptIn = $(TEMPLATE_SELECTOR).html();
+                    var elevarTemplate = $(TEMPLATE_SELECTOR_elevar).html();
+                    var $div = $(appendTo);
+                    if ($div.length) {
+                      $('[data-shipping-address]').after(smsOptIn);
+                      $('[data-shipping-address]').after(elevarTemplate);
+                      
+                      var elevar__fbp = document.getElementById('checkout_gift_note_elevar__fbp');
+                      var elevar__ga = document.getElementById('checkout_gift_note_elevar__ga');
+                      var elevar__ga_PKCV1WB2HB = document.getElementById('checkout_gift_note_elevar__ga_PKCV1WB2HB');
+                      var elevar__gaexp = document.getElementById('checkout_gift_note_elevar__gaexp');
+                      var elevar__gid = document.getElementById('checkout_gift_note_elevar__gid');
+                      var elevar_visitor_info = document.getElementById('checkout_gift_note_elevar_visitor_info');
+                      
+                      var myRequest = new Request('/cart.js');
+
+                      fetch(myRequest)
+                      .then(function(response) {
+                        if (!response.ok) {
+                          throw new Error("HTTP error, status = " + response.status);
+                        }
+                        return response.json();
+                      })
+                      .then(function(data) {
+//                         console.log(data);
+                        elevar__fbp.value = data.attributes._elevar__fbp;
+                        elevar__ga.value = data.attributes._elevar__ga;
+                        elevar__ga_PKCV1WB2HB.value = data.attributes._elevar__ga_PKCV1WB2HB;
+                        elevar__gaexp.value = data.attributes._elevar__gaexp;
+                        elevar__gid.value = data.attributes._elevar__gid;
+                        elevar_visitor_info.value = data.attributes._elevar_visitor_info;
+                      })
+                      .catch(function(error) {
+                        console.log(error);
+                      });
+                    }
+                  }
+
+                  function initShowGiftNote() {
+                    var $checkbox = $(CHECKBOX_SELECTOR);
+                    var $giftBody = $(BODY_SELECTOR);
+                    var $enabledInput = $(HIDDEN_ENABLED_SELECTOR);
+                    var previousValue = localStorage && localStorage.getItem(LS_TL_CHECKOUT_GIFT_NOTE);
+                    if (previousValue) {
+                      $checkbox.prop('checked', true);
+                      $enabledInput.val(HIDDEN_ENABLED_VALUE);
+                      $giftBody.toggle();
+                    }
+                    $checkbox.change(function () {
+                      $giftBody.toggle();
+                      var isChecked = $checkbox.is(CHECKED_ATTRIBUTE);
+                      if (isChecked) {
+                        $enabledInput.val(HIDDEN_ENABLED_VALUE);
+                        localStorage && localStorage.setItem(LS_TL_CHECKOUT_GIFT_NOTE, isChecked);
+                      } else {
+                        $enabledInput.val('');
+                        localStorage && localStorage.removeItem(LS_TL_CHECKOUT_GIFT_NOTE);
+                      }
+                    });
+                  }
+
+                  function validateField($input, length, fieldName, $errorLabel) {
+                    var textLength = $input.val().trim().length;
+                    var parent = $input.parent();
+                    var isValid = true;
+                    if (textLength > length) {
+                      parent.addClass(FIELD_ERROR_CLASS);
+                      $errorLabel.text('The ' + fieldName + ' has more than ' + length + ' characters');
+                      isValid = false;
+                    } else if (true && textLength === 0) {
+                      parent.addClass(FIELD_ERROR_CLASS);
+                      $errorLabel.text('Please enter the ' + fieldName + ' text');
+                      isValid = false;
+                    } else {
+                      parent.removeClass(FIELD_ERROR_CLASS);
+                    }
+                    return isValid;
+                  }
+
+                  function initLengthChecker(id, length, fieldName, errorId) {
+                    var $input = $(id);
+                    var $errorLabel = $(errorId);
+                    $input.blur(function () {
+                      if (localStorage) {
+                        localStorage.setItem(LS_TL_CHECKOUT_GIFT_NOTE + id, $input.val().trim());
+                      }
+                      validateField($input, length, fieldName, $errorLabel);
+                    });
+                  }
+
+                  function validateFieldsOnSubmit(event) {
+                    var isChecked = $(CHECKBOX_SELECTOR).is(CHECKED_ATTRIBUTE);
+                    var $fromInput = $(FROM_SELECTOR);
+                    var $toInput = $(TO_SELECTOR);
+                    var $textInput = $(TEXT_SELECTOR);
+                    if (isChecked) {
+                      var isValidFrom = validateField($fromInput, 50, 'From', $(FROM_ERROR_SELECTOR));
+                      var isValidTo = validateField($toInput, 50, 'To', $(TO_ERROR_SELECTOR));
+                      var isValidBody = validateField($textInput, 300, 'Note', $(TEXT_ERROR_SELECTOR));
+                      if (!isValidFrom || !isValidTo || !isValidBody) {
+                        event.preventDefault();
+                        return;
+                      }
+                    } else {
+                      $fromInput.val('');
+                      $toInput.val('');
+                      $textInput.val('');
+                    }
+                  }
+
+                  function initForm() {
+                    var $form = $(CHECKBOX_SELECTOR).closest(FORM_SELECTOR);
+                    $form.submit(validateFieldsOnSubmit);
+                  }
+
+                  function restoreValue(fieldId) {
+                    var $input = $(fieldId);
+                    $input.val(localStorage.getItem(LS_TL_CHECKOUT_GIFT_NOTE + fieldId))
+                  }
+
+                  function restorePreviousValues() {
+                    if (localStorage) {
+                      restoreValue(FROM_SELECTOR);
+                      restoreValue(TO_SELECTOR);
+                      restoreValue(TEXT_SELECTOR);
+                    }
+                  }
+
+                  function getObserverFn($form) {
+                    return function(mutationsList) {
+                      for(var mutation of mutationsList) {
+                        if (mutation.type === 'attributes'
+                          && mutation.target
+                          && mutation.target.className.indexOf('edit_checkout') >= 0) {
+                          if ($(BODY_SELECTOR).length === 0) {
+                            appendNotes('[data-section="customer-information"]');
+                            initShowGiftNote();
+                            restorePreviousValues();
+                            $form.submit(validateFieldsOnSubmit)
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  function initObserver() {
+                    var targetNode = $('.main__content')[0];
+                    var $form = $('form.edit_checkout');
+                    // Options for the observer (which mutations to observe)
+                    var config = { attributes: true, childList: false, subtree: true };
+                    var observer = new MutationObserver(getObserverFn($form));
+                    // Start observing the target node for configured mutations
+                    observer.observe(targetNode, config);
+                  }
+
+                  function init() {
+                    appendNotes('[data-section="customer-information"]');
+                    initShowGiftNote();
+                    initLengthChecker(FROM_SELECTOR, 50, 'From', FROM_ERROR_SELECTOR);
+                    initLengthChecker(TO_SELECTOR, 50, 'To', TO_ERROR_SELECTOR);
+                    initLengthChecker(TEXT_SELECTOR, 300, 'Note', TEXT_ERROR_SELECTOR);
+                    initForm();
+                    initObserver();
+                  }
+
+                  init();
+                })();
+              </script>
+  {{ tracking_code }}
+    {% comment %} The Vaan Group - Order Bump (2/2) {% endcomment %}
+  <script src="https://tvg-order-bump.herokuapp.com/storefront/assets/order-bump.js"></script>
+  {% comment %} END OF The Vaan Group - Order Bump (2/2) {% endcomment %}
+{% comment %}DLADMNEW{% endcomment %}{% render 'dla_dm_js_layout_products' %}{% render 'dla_dm_js_ready' %}{% comment %}ENDDLADMNEW{% endcomment %}</body>
+</html>

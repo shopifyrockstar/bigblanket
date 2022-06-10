@@ -1,0 +1,92 @@
+(function () {
+  $(document).ready(function () {
+    if(localStorage.getItem("swell-cart-open") == "true") {
+    	$(".header__cart").click();
+        localStorage.setItem("swell-cart-open", "");
+    }
+    $(document).on("swell:setup", function () {
+      Swell.Cart.items.forEach(function(item) {
+        if (item.properties._swell_discount_type == "cart_fixed_amount") {
+          redeemedRedemptionOption = swellAPI.findActiveRedemptionOptionById(item.properties._swell_redemption_option_id);
+          // $(".cart__products").append('<div class="cart__product"> <div class="cart__row"> <div class="o-layout o-layout--small u-flex u-flex--middle"> <div class="o-layout__item u-1/1 u-4/10@tab"> <div class="o-layout o-layout--tiny u-flex u-flex--middle"> <div class="o-layout__item u-1/3 u-2/5@tab">'+redeemedRedemptionOption.cost_text+'</div> <div class="o-layout__item u-2/3 u-3/5@tab"> </div> </div> </div> <div class="o-layout__item u-1/3 u-2/10@tab u-hidden@tab-down"> <div class="cart-item__price"><span class="money" data-currency-usd="<span class=&quot;Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price_3&quot; style=&quot;display:none !important;&quot;></span>" data-currency="USD"><span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price_3" style="display:none !important;"></span>'+redeemedRedemptionOption.name+'</span></div> </div> <div class="o-layout__item u-4/10 u-2/10@tab"> <div class="cart-item__qty"> <div class="js-qty"> <input type="text" class="js-qty__num" value="1" min="1" data-id="31701929885781:b4cc7eaa2126cdd4b6d5946c9d18eb8d" aria-label="quantity" pattern="[0-9]*" name="updates[]" id="updates_31701929885781:b4cc7eaa2126cdd4b6d5946c9d18eb8d"> </div> </div> </div> <div class="o-layout__item u-6/10 u-2/10@tab"></div> </div> <a href="javascript:void(0)" class="cart-item__remove icon-fallback swell-remove"> <i class="icon icon--close" aria-hidden="true"></i> <span class="icon-fallback__text">Remove</span> </a> </div> </div>');
+          $(".go-cart-drawer__content").append('<div class="go-cart-item__single" data-line="1"> <div class="go-cart-item__info-wrapper"> <div class="swell-img go-cart-item__image" style=""><img src="//cdn.shopify.com/s/files/1/0113/9323/7056/files/Screen_Shot_2021-02-24_at_8.42.57_AM.png?v=1614201466" alt="img"></div> <div class="go-cart-item__info"> <a href="javascript:void(0)" class="go-cart-item__title">Cozy Club Rewards</a> <div class="go-cart-item__variant">'+redeemedRedemptionOption.cost_text+'</div> <div class="go-cart-item__quantity"> <span class="go-cart-item__quantity-label">Quantity: </span> <input class="go-cart-item__quantity-number js-go-cart-quantity" type="number" value="1" readonly disabled="">  </div> </div> </div> <div class="price_wrapper">   <div class="go-cart-item__price--new">'+redeemedRedemptionOption.prettyDiscount+'</div> </div> <a class="go-cart-item__remove js-go-cart-remove-from-cart swell-remove">Remove</a> </div>');
+        }        
+      });
+      if(spapi.authenticated) {
+        var redemptions = spapi.activeRedemptionOptions;
+        $("select#swell-redemption-options").append("<option value='-1'>Choose your rewards</option>")
+        redemptions.forEach(function (redemption) {
+          if (redemption.discount_type == "cart_fixed_amount") {
+            $("select#swell-redemption-options").append('<option value=' + redemption.id + '>' + redemption.name + '(' + redemption.amount + ' Points)</option>');
+          }
+        });
+        $(".swell-checkout").css("display", "block");
+      }
+
+      // cart fixed amount functionality start
+      $('body').on('click', '#swell-redeem-btn', function() {
+        $("#swell-redeem-btn .btn__content").css("display", "none");
+        $(".swell-lds-holder").css("display","flex");
+        if($("#swell-redemption-options").val() == -1) {
+          spapi.$.confirm({
+            title: "Oops!",
+            content: "Please select a coupon to apply.",
+            type: "red",
+            typeAnimated: true,
+            useBootstrap: false,
+            boxWidth: "400px",
+            buttons: {
+              ok: {
+                text: "Ok",
+                action: function () {
+                }
+              }
+            }
+          });
+          $("#swell-redeem-btn .btn__content").css("display", "block");
+          $(".swell-lds-holder").css("display","none");
+          return;
+        }
+        if(spapi.authenticated) {
+            var redemptionOptionId = $("#swell-redemption-options").val();
+            redemptionOption = swellAPI.findActiveRedemptionOptionById(redemptionOptionId);
+            if(redemptionOption.amount <= spapi.getAdjustedPointsBalance()) {
+              swellAPI.buyMultipleWithPoints([redemptionOption], function(){
+                window.location.reload();
+                localStorage.setItem("swell-cart-open", "true");
+              });
+            }
+            else {
+              spapi.$.confirm({
+                title: "Oops!",
+                content: "Sorry, you don't have enough points for this reward.",
+                type: "red",
+                typeAnimated: true,
+                useBootstrap: false,
+                boxWidth: "400px",
+                buttons: {
+                  ok: {
+                    text: "Ok",
+                    action: function () {
+                    }
+                  }
+                }
+              });
+              $("#swell-redeem-btn .btn__content").css("display", "block");
+              $(".swell-lds-holder").css("display","none");
+            }
+          }
+          else{
+            $("#swell-redeem-btn .btn__content").css("display", "block");
+          }
+      });
+
+      $('body').on('click',".swell-remove", function() {
+        swellAPI.removeRedemptionOptionIdFromCart(redeemedRedemptionOption.id, function(){
+          window.location.reload();
+          localStorage.setItem("swell-cart-open", "true");
+        });
+      });
+    });
+  });
+}).call(this);

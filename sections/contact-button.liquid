@@ -1,0 +1,91 @@
+<div class="contact-wrapper">
+  
+  <div class="text-wrapper">
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.email_title }}</p>
+      <a href="mailto:{{ section.settings.email_content }}">{{ section.settings.email_content }}</a>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.text_title }}</p>
+      <a href="{{ section.settings.text_link }}">{{ section.settings.text_content }}</a>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.text_title_2 }}</p>
+      <a href="{{ section.settings.text_link_2 }}">{{ section.settings.text_content_2 }}</a>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.text_title_3 }}</p>
+      <a href="{{ section.settings.text_link_3 }}">{{ section.settings.text_content_3 }}</a>
+    </div>
+  </div>  
+  
+</div>
+
+
+{% schema %}
+{
+"name": "Contact Button",
+"settings": [
+    {
+      "id": "header_text",
+      "type": "text",
+      "label": "Header Text"
+    },
+	{
+      "id": "email_title",
+      "type": "text",
+      "label": "Email title"
+    },
+	{
+      "id": "email_content",
+      "type": "text",
+      "label": "Email address"
+    },
+	{
+      "id": "text_title",
+      "type": "text",
+      "label": "Text title"
+    },
+	{
+      "id": "text_content",
+      "type": "text",
+      "label": "Text content"
+    },
+	{
+      "id": "text_link",
+      "type": "url",
+      "label": "Text Link"
+    },	
+	{
+      "id": "text_title_2",
+      "type": "text",
+      "label": "Text title 2"
+    },
+	{
+      "id": "text_content_2",
+      "type": "text",
+      "label": "Text content 2"
+    },
+	{
+      "id": "text_link_2",
+      "type": "url",
+      "label": "Text Link 2"
+    },
+	{
+      "id": "text_title_3",
+      "type": "text",
+      "label": "Text title 3"
+    },
+	{
+      "id": "text_content_3",
+      "type": "text",
+      "label": "Text content 3"
+    },
+	{
+      "id": "text_link_3",
+      "type": "url",
+      "label": "Text Link 3"
+    }
+  ]
+}
+{% endschema %}

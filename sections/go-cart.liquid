@@ -1,0 +1,547 @@
+<!--go cart modal fail-->
+<div class="go-cart__modal go-cart__modal--fail js-go-cart-modal-fail">
+
+  <div class="go-cart-modal">
+
+    <!--go cart modal close-->
+    <div class="go-cart-modal__close js-go-cart-modal-fail-close">
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+        <path d="M15.89 14.696l-4.734-4.734 4.717-4.717c.4-.4.37-1.085-.03-1.485s-1.085-.43-1.485-.03L9.641 8.447 4.97 3.776c-.4-.4-1.085-.37-1.485.03s-.43 1.085-.03 1.485l4.671 4.671-4.688 4.688c-.4.4-.37 1.085.03 1.485s1.085.43 1.485.03l4.688-4.687 4.734 4.734c.4.4 1.085.37 1.485-.03s.43-1.085.03-1.485z"></path>
+      </svg>
+
+    </div>
+    <!--end go cart modal close-->
+
+    <!--go cart modal content-->
+    <div class="go-cart-modal__content js-go-cart-modal-fail-content">
+      Something went wrong, please contact us!
+    </div>
+    <!--end go cart modal content-->
+
+  </div>
+
+</div>
+<!--end go cart modal fail-->
+
+<!--go cart modal-->
+<div class="go-cart__modal js-go-cart-modal">
+
+  <div class="go-cart-modal">
+
+    <!--go cart modal close-->
+    <div class="go-cart-modal__close js-go-cart-modal-close">
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+        <path d="M15.89 14.696l-4.734-4.734 4.717-4.717c.4-.4.37-1.085-.03-1.485s-1.085-.43-1.485-.03L9.641 8.447 4.97 3.776c-.4-.4-1.085-.37-1.485.03s-.43 1.085-.03 1.485l4.671 4.671-4.688 4.688c-.4.4-.37 1.085.03 1.485s1.085.43 1.485.03l4.688-4.687 4.734 4.734c.4.4 1.085.37 1.485-.03s.43-1.085.03-1.485z"></path>
+      </svg>
+
+    </div>
+    <!--end go cart modal close-->
+
+    <!--go cart modal content-->
+    <div class="go-cart-modal__content js-go-cart-modal-content"></div>
+    <!--end go cart modal content-->
+
+    <!--go cart modal buttons-->
+    <div class="go-cart-modal__buttons">
+
+      <a class="go-cart__button js-go-cart-modal-close">
+        Continue shopping
+      </a>
+
+      <a href="/cart/" class="go-cart__button">
+        View cart
+      </a>
+
+    </div>
+    <!--end go cart modal buttons-->
+
+  </div>
+
+</div>
+<!--end go cart modal-->
+
+<!--go cart drawer-->
+<div class="go-cart__drawer js-go-cart-drawer">
+
+  <div class="go-cart-drawer" data-set="{{ settings.show_countdown }}" data-countrycode="{{ localization.country.iso_code }}">
+
+    <!--go cart drawer close-->
+    <div class="go-cart-drawer__header">
+
+      <!-- <div class="heading">{{ 'cart.general.title' | t }} {% comment %}<span>({{ cart.item_count }} item)</span>{% endcomment %}</div> -->
+      <div class="heading">Your Cart {% comment %}<span>({{ cart.item_count }} item)</span>{% endcomment %}</div>
+
+      <div class="go-cart-drawer__close js-go-cart-drawer-close">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+          <path d="M15.89 14.696l-4.734-4.734 4.717-4.717c.4-.4.37-1.085-.03-1.485s-1.085-.43-1.485-.03L9.641 8.447 4.97 3.776c-.4-.4-1.085-.37-1.485.03s-.43 1.085-.03 1.485l4.671 4.671-4.688 4.688c-.4.4-.37 1.085.03 1.485s1.085.43 1.485.03l4.688-4.687 4.734 4.734c.4.4 1.085.37 1.485-.03s.43-1.085.03-1.485z"></path>
+        </svg>
+
+      </div>
+
+    </div>
+    <!--end go cart drawer close--> 
+
+    <!-- cart upsell changes -->
+    
+    <div class="go-cart-promo" style="display: none;">
+      <p class="go-cart-promo__text" id="demo">Free USA Shipping / $10 International Shipping</p>
+    </div>
+    
+    {% if settings.show_progressbar %}
+    <div class="cart-announcement-wrapper hidden {% if customer %}customer-logged-in{% endif %}">
+      
+      <div class="top-wrapper hidden">
+        <h3>Bundle & Save</h3>
+<!--         <p class="top-wrapper-copy hidden">Spend <span class="spend-amount"></span> save <span class="save-amount"></span></p>
+        <p class="top-wrapper-congrats hidden">Congrats!</p> -->
+        
+        <p class="first-offer hidden" data-tier_value="{{ settings.first_tier_value }}" data-tier_off="{{ settings.first_tier_off }}">
+          Spend <span class="spend-amount"></span> save <span class="save-amount"></span>
+        </p>
+        
+        <p class="second-offer hidden" data-tier_value="{{ settings.second_tier_value }}" data-tier_off="{{ settings.second_tier_off }}">
+          Spend <span class="spend-amount"></span> save <span class="save-amount"></span>
+        </p>
+        
+        <p class="third-offer hidden" data-tier_value="{{ settings.third_tier_value }}" data-tier_off="{{ settings.third_tier_off }}">
+          Spend <span class="spend-amount"></span> save <span class="save-amount"></span>
+        </p>
+        
+        <p class="top-wrapper-congrats hidden">Congrats!</p>
+        
+      </div>
+      
+      
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar-component">
+          
+          {% assign first_max_value = settings.first_tier_value | append: '00'%}
+          {% assign second_max_value = settings.second_tier_value | minus: settings.first_tier_value | append: '00'%}
+          {% assign third_max_value = settings.third_tier_value | minus: settings.second_tier_value | append: '00'%}
+          
+          <progress data-index="4" max="{{ first_max_value }}" class="progress-bar progress-bar-first" value="70"></progress> 
+          <span class="tier-label first">${{ settings.first_tier_off }} off</span>
+          
+          <progress data-index="3" max="{{ second_max_value }}" class="progress-bar progress-bar-second" value="0"></progress> 
+          <span class="tier-label last second ">${{ settings.second_tier_off }} off</span>
+          
+          <progress data-index="2" max="{{ third_max_value }}" class="progress-bar progress-bar-third" value="0"></progress> 
+          <span class="tier-label last third ">${{ settings.third_tier_off }} off</span>
+          
+<!--           <progress data-index="1" max="10000" class="progress-bar progress-bar-fourth" value="0"></progress> 
+          <span class="tier-label last fourth">$60 off</span> -->
+          
+        </div>
+      </div>
+      
+      <div class="bottom-wrapper">
+      </div>
+    </div>
+    {% endif %}
+    
+    <!-- cart upsell changes -->
+    <div class="go-cart__scroll">
+      <!--go cart drawer content-->
+      <div class="go-cart-drawer__content js-go-cart-drawer-content {% if settings.show_sale_price == true %}show-saleprice{% endif %}"></div>
+      <!--end go cart drawer content-->
+    </div>
+    
+    <!--go cart drawer buttons-->
+    <div class="go-cart-drawer__footer js-go-cart-drawer-footer">
+      <!--go cart drawer subtotal-->      
+      {% if settings.show_giftmessage %}
+        <div class="gift-message-wrapper">
+          <p class="gift-message-content">{{ settings.gift_message_content }} You'll earn a <b>free <span class="gift-left"></span> e-gift card</b></p>
+        </div>
+      {% endif %}
+      <a href="/checkout/" class="btn btn--yellow go-cart__button">
+        Checkout
+      </a>
+
+      <div class="go-cart-drawer__wrapper">
+        {% if settings.show_progressbar %}
+        <div class="discount-portion hidden">
+<!--           <p class="original-total"><span class="original-total-title">Blanket Subtotal</span><span class="original-total-price"></span></p> -->
+          <p class="discounted-amount"><span>Discount <i>(Spend <span class="reached-amount"></span> save <span class="reached-saved-amount"></span>)</i></span> <span>-<span class="discounted-amount-price"></span></span></p>
+        </div>
+        <div class="discount-portion shipping-portion hidden">
+          <p class="shipping-amount"><span class="shipping-title">Shipping:</span><span class="require-amount">Free</span></p>
+        </div>
+        {% endif %}
+        <div class="go-cart-drawer__subtotal">
+          <span>Subtotal: </span>
+          <span class="go-cart-drawer__subtotal-price js-go-cart-drawer-subtotal"></span>
+        </div>
+
+        {% comment %}
+        <p class="go-cart-drawer__discount_info">
+          Discounts Applied At Checkout
+        </p>
+        {% endcomment %}
+      </div>
+      <!--end go cart drawer subtotal-->
+      
+      
+	<div class="order-summary__section order-summary__section--swell swell-checkout" style="display:none;" id="swell-cart-redemptions">
+      <div class="redeem-access-wrapper hidden">
+        <button type="button" class="swell-custom-button">
+          <span class="btn__content">CLICK HERE TO ACCESS REWARDS</span>
+        </button>
+      </div>
+      <p class="redeem-close-button">X</p>
+      <p class="redeem-title">Welcome back! You have <span class="swell-point-balance">X</span> points.</p>
+      <div class="fieldset" style="margin-top: 10px;">
+        <div class="field">
+          <div class="field__input-btn-wrapper">
+            <p class='swell-copuon-error' style='color:red; display:none;'></p>
+            <div class="field__input-wrapper field__input-wrapper--select">
+              <div class="input-select-holder">
+                <select class="field__input field__input--select form-input" id="swell-redemption-options"></select>
+              </div>
+              <button type="button" id="swell-redeem-btn" class="field__input-btn btn btn--default button swell-button">
+                <span class="btn__content">REDEEM</span>
+                <div class="swell-lds-holder">
+                  <div class="swell-lds-dual-ring"></div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    {% comment %}  <a href="/cart/" class="btn btn--yellow go-cart__button">
+        View cart
+      </a>{% endcomment %}
+
+    </div>
+    <!--end go cart drawer buttons-->
+  </div>
+
+</div>
+<!--end go cart drawer-->
+
+<!--go cart overlay-->
+<div class="go-cart__overlay js-go-cart-overlay">
+</div>
+<!--end go cart overlay-->
+
+<script>
+  $(document).ready(function(){
+    $(".redeem-close-button").click(function(){      
+      $(".redeem-access-wrapper").removeClass("hidden");
+      $(".go-cart-drawer__footer .swell-checkout .redeem-title").addClass("hidden");
+      $(".go-cart-drawer__footer .swell-checkout .fieldset").addClass("hidden");
+      $(this).addClass("hidden");
+    })
+    $(".redeem-access-wrapper button").click(function(){      
+      $(".redeem-access-wrapper").addClass("hidden");
+      $(".redeem-close-button").removeClass("hidden");
+      $(".go-cart-drawer__footer .swell-checkout .redeem-title").removeClass("hidden");
+      $(".go-cart-drawer__footer .swell-checkout .fieldset").removeClass("hidden");
+    })
+  })
+</script>
+
+<style>
+  .go-cart-promo {
+    background-color: black;
+    text-align: center;
+  }
+
+  .go-cart-promo__text {
+    font-size: 12px;
+    margin: 11px auto;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .go-cart-drawer__discount_info {
+    padding: 10px 15px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: right;
+    margin: 0;
+    line-height: 127%;
+    letter-spacing: -0.02em;
+    color: #000000;
+  }
+
+  .go-cart-drawer__wrapper {
+    padding: 20px 10px 0 10px;
+    box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.09);
+    padding-top:10px;
+  }
+
+  .go-cart-drawer__footer.js-go-cart-drawer-footer {
+    padding: 0;
+/*     overflow-y: scroll; */
+  }
+
+  .btn.btn--yellow.go-cart__button {
+    margin: 15px 10px;
+    margin-top: 0;
+  }
+</style>
+
+<style type="text/css">
+  
+  .go-cart__drawer .go-cart-promo{
+    background-color: {{ settings.color_bar }};
+  }
+  .go-cart__drawer .go-cart-promo .go-cart-promo__text{
+    color: {{ settings.color_copy }};
+  }
+
+  .swell-lds-holder {
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .swell-lds-dual-ring {
+    display: inline-block;
+  }
+  .swell-lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .field__input-wrapper
+  {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .swell-checkout {
+    margin-top: 20px;
+    background: #f6f6f6;
+    padding: 20px 5px;
+    width: 100%;
+  }
+  .swell-checkout .swell-copuon-error {
+    text-align: left;
+  }
+  .swell-checkout .redeem-title {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000;
+    margin: 0;
+  }
+  .swell-checkout .fieldset {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select .input-select-holder {
+    position: relative;
+    flex-basis: 100%;
+  }
+  .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select .input-select-holder .field__input--select:focus {
+    border: 1px solid #ccc;
+  }
+  .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select .input-select-holder .field__input--select {
+    border: 1px solid #979795;
+    font-size: 12px;
+    color: #979795;
+    outline: none;
+    background: none;
+    border-radius: 0;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    height: 40px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 8px;
+  }
+  .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select #swell-redeem-btn {
+    border: 0;
+    background: #f1ca5e;
+    max-width: 100%;
+    width: 100%;
+    font-size: 15.5px;
+    font-weight: bold;
+    letter-spacing: normal;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    height: 45px;
+    margin: 10px 0 30px;
+    margin-bottom:0;
+    padding: 0;
+    border-radius: 0;
+    transition: background 0.3s ease-in;
+    opacity: 1 !important;
+  }
+  .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select #swell-redeem-btn:not([disabled]):hover {
+    background: transparent;
+    border: 2px solid #f1ca5e;
+  }
+  @media (max-width: 767px) {
+    .swell-checkout .fieldset .field .field__input-btn-wrapper .field__input-wrapper--select #swell-redeem-btn {
+      max-width: 100%;
+    }
+  }
+  .swell-modal {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(153, 153, 153, 0.25);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .swell-modal .modal-dialog {
+    max-width: 500px;
+    margin: 0 20px;
+    width: 100%;
+    border: 1px solid #999;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+    transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  .swell-modal .modal-dialog.is-active {
+    animation: show 0.3s ease-in forwards;
+  }
+  .swell-modal .modal-dialog.is-hidden {
+    animation: hide 0.3s ease-in forwards;
+  }
+  .swell-modal .modal-dialog .modal-content {
+    margin: 0;
+    padding: 0;
+  }
+  .swell-modal .modal-dialog .modal-content .modal-header {
+    background-color: #71a141;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #fff;
+    text-align: left;
+    position: relative;
+  }
+  .swell-modal .modal-dialog .modal-content .modal-header h4 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.42;
+    text-transform: capitalize;
+    font-size: 14px;
+    letter-spacing: normal;
+    color: #fff;
+    font-weight: normal;
+  }
+  @media (min-width: 480px) {
+    .swell-modal .modal-dialog .modal-content .modal-header h4 {
+      font-size: 16px;
+    }
+  }
+  @media (min-width: 767px) {
+    .swell-modal .modal-dialog .modal-content .modal-header h4 {
+      font-size: 18px;
+    }
+  }
+  .swell-modal .modal-dialog .modal-content .modal-header .close {
+    min-height: 0;
+    height: auto;
+    font-size: 30px;
+    color: #fff;
+    opacity: 1;
+    font-weight: normal;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    line-height: 1.42;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+  .swell-modal .modal-dialog .modal-content .modal-body {
+    margin: 0;
+    padding: 15px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    opacity: 1;
+    transform: none;
+  }
+  .swell-modal .modal-dialog .modal-content .modal-body p {
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  @media (min-width: 767px) {
+    .swell-modal .modal-dialog .modal-content .modal-body p {
+      font-size: 16px;
+    }
+  }
+  .swell-modal .modal-dialog .modal-content .modal-body .bold-text {
+    font-weight: bold;
+  }
+    @keyframes show {
+    0% {
+      transform: scale(0);
+      -o-transform: scale(0);
+      -ms-transform: scale(0);
+      -moz-transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+      -o-transform: scale(1);
+      -ms-transform: scale(1);
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+  }
+  @keyframes hide {
+    0% {
+      transform: scale(1);
+      -o-transform: scale(1);
+      -ms-transform: scale(1);
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+      -o-transform: scale(0);
+      -ms-transform: scale(0);
+      -moz-transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+  }
+</style>

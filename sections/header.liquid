@@ -1,0 +1,1150 @@
+{%- comment -%}
+This is a required section for the Shopify Theme Store.
+It is available in the "Header" section in the theme editor. 
+
+Theme Store required settings
+- Show announcement
+- Text: message to announce
+- Link: link of the announcement bar 
+
+Theme Store optional settings
+- Home page only: only shows on the home page
+{%- endcomment -%}
+<header data-section-id="{{ section.id }}" data-section-type="header" class="header">
+  {%- if section.settings.announcement_bar_enabled -%}
+  <div class="header__top" id="header-top-part-wrapper" data-countrycode="{{ localization.country.iso_code }}">
+    <div class="header__top-wrapper {% if settings.show_vertical_slide == false %}not-slider{% endif %} {% if section.settings.announcement_bar_text_2 == blank %}one-line{% endif %}">
+      <div class="first-wrapper">
+        <div class="container announcement-text-desktop announcement-text-wrapper"> 
+          {%- if section.settings.announcement_bar_link != blank -%} 
+          <a href="{{ section.settings.announcement_bar_link }}">
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_1 | escape }}</p>
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_2 | escape }}</p>        
+          </a>
+          {%- else -%}
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_1 | escape }}</p>
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_2 | escape }}</p>
+          {%- endif -%}      
+        </div>
+
+        <div class="container announcement-text-mobile announcement-text-wrapper"> 
+          {%- if section.settings.announcement_bar_link_mobile != blank -%} 
+          <a href="{{ section.settings.announcement_bar_link_mobile }}">
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_1_mobile | escape }}</p>
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_2_mobile | escape }}</p>
+          </a>
+          {%- else -%}
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_1_mobile | escape }}</p>
+            <p class="announcement-text">{{ section.settings.announcement_bar_text_2_mobile | escape }}</p>
+          {%- endif -%}
+
+        </div>
+      </div>
+      {% if settings.show_vertical_slide %}
+        <div class="second-wrapper">
+          <p>Shop now. Pay later.</p>        
+          <p><img src="https://cdn.shopify.com/s/files/1/0113/9323/7056/files/Afterpay_Badge_BlackonMint_100x35_8a252345-8a8a-4a79-8379-b3f4eed77277.png?v=1635803049"></p>
+        </div>
+        {% if settings.show_countdown %}
+        <div class="go-cart-promo-header">
+          <p class="go-cart-promo__text" id="announcement-demo"></p>
+        </div>
+        {% endif %}
+      {% endif %}
+    </div>    
+    
+    {%- if section.settings.announcement_bar_countdown_enabled -%}
+    	<div id="announcement_bar_countdown"></div>
+    {%- endif -%}
+    
+  </div> 
+  {%- endif -%} 
+  <div class="header__content">
+    <div class="header__content-part header__content--left">
+      <div class="hamburger hamburger--js"><span></span></div>
+      <div class="main-menu main-menu--left" role="navigation"> 
+        {% assign menu = linklists.custom-menu-header-left %}
+        <ul>
+          {% for link in menu.links %}
+          {% if link.links != blank %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+              {% include 'icon-arrow-down' %}
+            </a>
+            <ul>
+              {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      
+      
+    </div>
+    <a href="/" class="logo">
+      {% include 'logo' %} 
+    </a> 
+    <div class="header__content-part header__content--right">
+      <div class="main-menu main-menu--right" role="navigation">
+        {% assign menu = linklists.secondary-right %}
+        <ul>
+          {% for link in menu.links %}
+          {% if link.links != blank %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+              {% include 'icon-arrow-down' %}
+            </a>
+            <ul>
+              {% for childlink in link.links %}
+              <li>
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+
+
+
+      {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+      <a href="/account" class="user-enter">
+        {% include 'icon-user' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
+      </a>
+      {% else %}
+      <a href="/account/login" class="user-enter">
+        {% include 'icon-user' %}
+        <span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
+      </a>
+      {% endif %}
+      {% endif %}
+
+      {% include "go-cart-button" %}
+
+
+    </div>
+
+    <div class="header__mmenu" style="display: none;">
+      <div class="header__mmenu-box">
+        <div class="header__menu-visual">
+
+          {% for block in section.blocks %}  
+          
+          {%- assign product = all_products[block.settings.product-id] -%}
+          
+          {% if product != blank %}
+          <div class="header-prod">
+            
+            {% if product.metafields.nav.nav_variant_id != blank %}
+            	{%- assign product_url = product.url | append: "?" | append: product.metafields.nav.nav_variant_id -%}
+            {% else %}
+            	{%- assign product_url = product.url -%}
+            {% endif %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            
+            <a href="{{ product_url }}" class="header-prod__img">
+              <div class="header-prod__img-action">
+                <span class="btn btn--white">
+                  SHOP NOW
+                </span>
+              </div>
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+
+              {% comment %}
+              {% if product.metafields.pdp_image2.pdp_image2 != blank %}
+              <img class="lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}" alt="asdf">
+              {% else %}
+              <img class="lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="asfd">
+              {% endif %}
+              {% endcomment %}
+              
+              {% if product.metafields.nav.nav_image != blank %}
+              	<img class="lazy2" data-src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
+              {% else %}
+              	<img class="lazy2" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
+              {% endif %}
+
+            </a>
+            <div class="header-prod__info">
+
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              {% comment %}
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+              {% endcomment %}
+
+              <a href="{{ product.url | default: '#' }}" class="header-prod__title">
+                {{product.title}}
+              </a>
+              <p>
+                {{ product.type}}
+              </p>
+
+
+              <div class="prod__variant-count">
+                {%comment%}Loop through all the options and find out how many unique options within the variants{% endcomment %}
+                {% assign option_index = 0 %}
+                {% for option in product.options %}
+                {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+                {% assign option_index = forloop.index0 %}
+                <!-- added begin -->
+                {% assign is_color = false %}
+                {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                {% assign is_color = true %}
+                {% endif %}
+                <!-- added end -->
+
+                {% assign how_many_options = 0 %}
+                {% assign current_options = '' %}
+                {% for variant in product.variants %}
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {% if variant.available %}
+                {% assign current_option = variant.options[option_index] %}
+                {% unless current_options contains current_option %}
+                {% if how_many_options > 0 %}
+                {% assign current_options = current_options | join: '|' | append: '|' %}
+                {% endif %}
+                {% assign current_options = current_options | append: current_option %}
+                {% assign current_options = current_options | split: '|' | sort %}
+                {% assign how_many_options = current_options | size %}
+                {% endunless %}
+                {% endif %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {%comment%}Output the amount of options for each option. Add an 's' if there is more than one available{% endcomment %}
+                {% unless option == "Title" %}
+                <!-- change begin -->{{current_options.size}} {{option}}{% if current_options.size > 1 %}s{% endif %}<!-- change end -->
+                {% endunless %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+          {% endif %}
+
+          {% endfor %}
+          
+          <div class="mobile-show mobile-secondary-menu-title">
+            <p class="btn btn--yellow" data-open="header__mmenu_second" data-close="header__mmenu" style="background:{{ section.settings.btn_back_color }};color:{{ section.settings.btn_font_color }}">              
+              {{ section.settings.winter_sale_title }}
+            </p>
+          </div>
+
+        </div>
+
+        <div class="header__mmenu-lists">
+          {% for block in section.blocks %}
+          {%- assign header_linklist = block.settings.header_menus -%}
+          {% if header_linklist != blank %}
+          <div class="menu-block">
+            <div class="menu-title">
+              {{linklists[header_linklist].title}}
+              {% include 'menu-arrow' %}
+            </div>
+            <ul class="menu-list">
+              {% for link in linklists[header_linklist].links %}
+              {% if link.links != blank %}
+              <li>
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                  {% include 'icon-arrow-down' %}
+                </a>
+                <ul>
+                  {% for childlink in link.links %}
+                  <li>
+                    <a href="{{ childlink.url }}">
+                      {{ childlink.title }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% else %}
+              <li>
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="header__mmenu_second" style="display: none;">
+      <div class="header__mmenu-box_second">
+        
+        <div class="header__menu-visual">
+
+          {%- assign product = all_products[section.settings.product_1] -%}            
+          {% if product != blank %}
+          <div class="header-prod">
+            
+            {% if product.metafields.nav.nav_variant_id != blank %}
+            	{%- assign product_url = product.url | append: "?" | append: product.metafields.nav.nav_variant_id -%}
+            {% else %}
+            	{%- assign product_url = product.url -%}
+            {% endif %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            <a href="{{ product_url }}" class="header-prod__img">
+              <div class="header-prod__img-action">
+                <span class="btn btn--white">
+                  SHOP NOW
+                </span>
+              </div>
+              
+              {% comment %}
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+              
+              {% endcomment %}
+
+              {% comment %}
+              {% if product.metafields.pdp_image2.pdp_image2 != blank %}
+              <img class="lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}" alt="asdf">
+              {% else %}
+              <img class="lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="asfd">
+              {% endif %}
+              {% endcomment %}
+              
+              {% if product.metafields.nav.nav_image != blank %}
+              	<img class="lazy2" data-src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
+              {% else %}
+              	<img class="lazy2" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
+              {% endif %}
+
+            </a>
+            <div class="header-prod__info">
+
+
+              {% comment %}
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+              {% endcomment %}
+
+              {% comment %}
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+              {% endcomment %}
+
+              <a href="{{ product.url | default: '#' }}" class="header-prod__title">
+                {{product.title}}
+              </a>
+              <p>
+                {{ product.type}}
+              </p>
+
+
+              <div class="prod__variant-count">
+                {%comment%}Loop through all the options and find out how many unique options within the variants{% endcomment %}
+                {% assign option_index = 0 %}
+                {% for option in product.options %}
+                {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+                {% assign option_index = forloop.index0 %}
+                <!-- added begin -->
+                {% assign is_color = false %}
+                {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                {% assign is_color = true %}
+                {% endif %}
+                <!-- added end -->
+
+                {% assign how_many_options = 0 %}
+                {% assign current_options = '' %}
+                {% for variant in product.variants %}
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {% if variant.available %}
+                {% assign current_option = variant.options[option_index] %}
+                {% unless current_options contains current_option %}
+                {% if how_many_options > 0 %}
+                {% assign current_options = current_options | join: '|' | append: '|' %}
+                {% endif %}
+                {% assign current_options = current_options | append: current_option %}
+                {% assign current_options = current_options | split: '|' | sort %}
+                {% assign how_many_options = current_options | size %}
+                {% endunless %}
+                {% endif %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {%comment%}Output the amount of options for each option. Add an 's' if there is more than one available{% endcomment %}
+                {% unless option == "Title" %}
+                <!-- change begin -->{{current_options.size}} {{option}}{% if current_options.size > 1 %}s{% endif %}<!-- change end -->
+                {% endunless %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+          {% endif %}
+          
+          {%- assign product = all_products[section.settings.product_2] -%}            
+          {% if product != blank %}
+          <div class="header-prod">
+            
+            {% if product.metafields.nav.nav_variant_id != blank %}
+            	{%- assign product_url = product.url | append: "?" | append: product.metafields.nav.nav_variant_id -%}
+            {% else %}
+            	{%- assign product_url = product.url -%}
+            {% endif %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            <a href="{{ product_url }}" class="header-prod__img">
+              <div class="header-prod__img-action">
+                <span class="btn btn--white">
+                  SHOP NOW
+                </span>
+              </div>
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+
+              {% comment %}
+              {% if product.metafields.pdp_image2.pdp_image2 != blank %}
+              <img class="lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}" alt="asdf">
+              {% else %}
+              <img class="lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="asfd">
+              {% endif %}
+              {% endcomment %}
+              
+              {% if product.metafields.nav.nav_image != blank %}
+              	<img class="lazy2" data-src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
+              {% else %}
+              	<img class="lazy2" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
+              {% endif %}
+
+            </a>
+            <div class="header-prod__info">
+
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              <a href="{{ product.url | default: '#' }}" class="header-prod__title">
+                {{product.title}}
+              </a>
+              <p>
+                {{ product.type}}
+              </p>
+
+              <div class="prod__variant-count">
+                {%comment%}Loop through all the options and find out how many unique options within the variants{% endcomment %}
+                {% assign option_index = 0 %}
+                {% for option in product.options %}
+                {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+                {% assign option_index = forloop.index0 %}
+                <!-- added begin -->
+                {% assign is_color = false %}
+                {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                {% assign is_color = true %}
+                {% endif %}
+                <!-- added end -->
+
+                {% assign how_many_options = 0 %}
+                {% assign current_options = '' %}
+                {% for variant in product.variants %}
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {% if variant.available %}
+                {% assign current_option = variant.options[option_index] %}
+                {% unless current_options contains current_option %}
+                {% if how_many_options > 0 %}
+                {% assign current_options = current_options | join: '|' | append: '|' %}
+                {% endif %}
+                {% assign current_options = current_options | append: current_option %}
+                {% assign current_options = current_options | split: '|' | sort %}
+                {% assign how_many_options = current_options | size %}
+                {% endunless %}
+                {% endif %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {%comment%}Output the amount of options for each option. Add an 's' if there is more than one available{% endcomment %}
+                {% unless option == "Title" %}
+                <!-- change begin -->{{current_options.size}} {{option}}{% if current_options.size > 1 %}s{% endif %}<!-- change end -->
+                {% endunless %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+          {% endif %}
+          
+          {%- assign product = all_products[section.settings.product_3] -%}            
+          {% if product != blank %}
+          <div class="header-prod">
+            
+            {% if product.metafields.nav.nav_variant_id != blank %}
+            	{%- assign product_url = product.url | append: "?" | append: product.metafields.nav.nav_variant_id -%}
+            {% else %}
+            	{%- assign product_url = product.url -%}
+            {% endif %}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            <a href="{{ product_url }}" class="header-prod__img">
+              <div class="header-prod__img-action">
+                <span class="btn btn--white">
+                  SHOP NOW
+                </span>
+              </div>
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              {% for tag in product.tags %}
+              {% if tag contains 'best_seller' or tag contains 'low_stock' or tag contains 'restocked' or tag contains 'flash_sale' or tag contains 'sale' %}
+              <span class="status-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="#000" stroke-miterlimit="10"/></svg>
+                {% if tag contains 'best_seller' %}
+                BEST SELLER
+                {% elsif tag contains 'low_stock' %}
+                LOW-STOCK
+                {% elsif tag contains 'restocked' %}
+                RESTOCKED
+                {% elsif tag contains 'flash_sale' %}
+                FLASH SALE
+                {% elsif tag contains 'sale' %}
+                SALE
+                {% endif %}
+              </span>
+              {% endif %}
+              {% endfor %}
+
+              {% comment %}
+              {% if product.metafields.pdp_image2.pdp_image2 != blank %}
+              <img class="lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}" alt="asdf">
+              {% else %}
+              <img class="lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="asfd">
+              {% endif %}
+              {% endcomment %}
+              
+              {% if product.metafields.nav.nav_image != blank %}
+              	<img class="lazy2" data-src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
+              {% else %}
+              	<img class="lazy2" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
+              {% endif %}
+
+            </a>
+            <div class="header-prod__info">
+
+
+              {% assign tag_list = '' %}
+              <div class="new-label">
+                {% for tag in product.tags %}
+                {% if tag contains 'label_' %}
+                {% assign tag_list = tag_list | append: tag | append: "," %}
+                {% endif %}
+                {% endfor %}
+                {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+                {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+                {% for tag_loop in tag_list_no_comma %} 
+                {% assign removed_underscore = tag_loop |split: '_' | last %}
+                {% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+                <p class="tag-label">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+                  {{ real_label }}
+                </p>
+                {% endfor %}
+              </div>
+
+              <a href="{{ product.url | default: '#' }}" class="header-prod__title">
+                {{product.title}}
+              </a>
+              <p>
+                {{ product.type}}
+              </p>
+
+              <div class="prod__variant-count">
+                {%comment%}Loop through all the options and find out how many unique options within the variants{% endcomment %}
+                {% assign option_index = 0 %}
+                {% for option in product.options %}
+                {% capture downcased_option %}{{ option | downcase }}{% endcapture %}
+                {% assign option_index = forloop.index0 %}
+                <!-- added begin -->
+                {% assign is_color = false %}
+                {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                {% assign is_color = true %}
+                {% endif %}
+                <!-- added end -->
+
+                {% assign how_many_options = 0 %}
+                {% assign current_options = '' %}
+                {% for variant in product.variants %}
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {% if variant.available %}
+                {% assign current_option = variant.options[option_index] %}
+                {% unless current_options contains current_option %}
+                {% if how_many_options > 0 %}
+                {% assign current_options = current_options | join: '|' | append: '|' %}
+                {% endif %}
+                {% assign current_options = current_options | append: current_option %}
+                {% assign current_options = current_options | split: '|' | sort %}
+                {% assign how_many_options = current_options | size %}
+                {% endunless %}
+                {% endif %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+
+                <!-- added begin -->{% if is_color %}<!-- added end -->
+                {%comment%}Output the amount of options for each option. Add an 's' if there is more than one available{% endcomment %}
+                {% unless option == "Title" %}
+                <!-- change begin -->{{current_options.size}} {{option}}{% if current_options.size > 1 %}s{% endif %}<!-- change end -->
+                {% endunless %}
+                <!-- added begin -->{% endif %}<!-- added end -->
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+          {% endif %}
+          
+          <div class="header-prod">
+            {%- assign collection = collections[section.settings.feature_collection] -%}
+            <a href="{{ collection.url }}" class="header-prod__img">
+              <div class="header-prod__img-action">
+                <span class="btn btn--white">
+                  SHOP All Sale
+                </span>
+              </div>
+              
+              <img class="lazy2" data-src="{{ section.settings.collection_image | img_url: 'master' }}" alt="asdf">
+
+            </a>
+            <div class="header-prod__info">
+
+              <a href="{{ collection.url }}" class="header-prod__title">
+                {{ collection.title }}
+              </a>     
+
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="mobile-show mobile-secondary-menu-title">
+          <p class="btn btn--yellow" data-open="header__mmenu" data-close="header__mmenu_second" style="background:{{ section.settings.btn_back_color }};color:{{ section.settings.btn_font_color }}">            
+            {{ section.settings.best_seller_title }}
+          </p>
+        </div>
+        
+      </div>
+
+    </div>    
+
+</div>
+</header>
+
+
+<script>
+  function startTimer(duration, display) {
+    var start = Date.now(),
+        diff,
+        hours,
+        minutes,
+        seconds;
+    
+    function timer() {
+      // get the number of seconds that have elapsed since 
+      // startTimer() was called
+      diff = duration - (((Date.now() - start) / 1000) | 0);
+
+      hours = Math.floor(diff / 3600);
+      minutes = Math.floor(diff%3600 / 60);
+      seconds = Math.floor(diff % 60);
+      
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      
+      var hrStrArr = String(hours).split('');
+      var minStrArr = String(minutes).split('');
+      var secStrArr = String(seconds).split('');
+      
+      var cdArr = [].concat(hrStrArr).concat([":"]).concat(minStrArr).concat([":"]).concat(secStrArr).map(function(s) {
+        if (s[0] == ":") {
+          return "<span class='cd-colon'>:</span>";
+        }
+        return "<span class='cd-bit'>" + s + "</span>";
+      });
+      
+      
+      display.innerHTML = cdArr.join('');
+
+//       display.textContent = hours + ":" + minutes + ":" + seconds; 
+
+      if (diff <= 0) {
+        display.remove();
+      }
+    };
+    
+    // we don't want to wait a full second before the timer starts
+    timer();
+    setInterval(timer, 1000);
+  }
+
+  let countdownElem = document.getElementById('announcement_bar_countdown');
+ 
+  if (countdownElem) {
+    document.body.className += ' header-timer-enabled';
+    let currentTime = new Date().getTime();
+    var endTimeFormat = "{{ section.settings.announcement_bar_countdown }}";
+    let endTime = new Date(endTimeFormat.replace(/-/g, "/")).getTime();
+    let duration = (endTime - currentTime) / 1000;
+    if (duration > 0) {
+      startTimer(duration, countdownElem);
+    } else {
+      countdownElem.remove();
+	// remove header-timer-enabled class if duration is less than 0
+      document.body.classList.remove('header-timer-enabled');
+    }
+  }
+
+</script>
+
+<script>
+//   var country_code = $(".go-cart-drawer").data("countrycode");
+  var elem = document.getElementById("header-top-part-wrapper");
+  var country_code = elem.dataset.countrycode;
+  if ( country_code == 'GB' ){
+    $(".header__top p").each(function(index){
+      $(this).text($(this).text().replace(/\$/g, '£'));
+    })
+  }  
+  if ( country_code == 'DE' || country_code == 'ES' || country_code == 'FR' || country_code == 'IT' ){
+    $(".header__top p").each(function(index){
+      $(this).text($(this).text().replace(/\$/g, '€'));
+    })
+  }
+</script>
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Announcement bar"
+  },
+  {
+    "type": "checkbox",
+    "id": "announcement_bar_enabled",
+    "label": "Show announcement",
+    "default": false
+  },
+
+  {
+    "type": "text",
+    "id": "announcement_bar_text_1",
+    "label": "Announcement text 1 on desktop",
+    "default": "Announce something here"
+  },
+  {
+    "type": "text",
+    "id": "announcement_bar_text_2",
+    "label": "Announcement text 2 on desktop",
+    "default": "Announce something here"
+  },  
+  {
+    "type": "url",
+    "id": "announcement_bar_link",
+    "label": "Announcement link",
+    "info": "Optional"
+  },
+  {
+    "type": "text",
+    "id": "announcement_bar_text_1_mobile",
+    "label": "Announcement text 1 on mobile",
+    "default": "Announce something here"
+  },
+  {
+    "type": "text",
+    "id": "announcement_bar_text_2_mobile",
+    "label": "Announcement text 2 on mobile",
+    "default": "Announce something here"
+  },
+  {
+    "type": "url",
+    "id": "announcement_bar_link_mobile",
+    "label": "Announcement link on mobile",
+    "info": "Optional"
+  },
+  {
+    "type": "checkbox",
+    "id": "announcement_bar_countdown_enabled",
+    "label": "Show countdown",
+    "default": false
+  },
+  {
+    "type": "text",
+    "id": "announcement_bar_countdown",
+    "label": "Announcement bar countdown",
+	"info": "Format: YYYY-MM-DD HH:MM:SS"
+  },
+  {
+    "type": "header",
+    "content": "Header Right Menu Option"
+  },
+  {
+    "type": "product",
+    "id": "product_1",
+    "label": "Nav Item 1"
+  },
+  {
+    "type": "product",
+    "id": "product_2",
+    "label": "Nav Item 2"
+  },
+  {
+    "type": "product",
+    "id": "product_3",
+    "label": "Nav Item 3"
+  },
+  {
+    "type": "collection",
+    "id": "feature_collection",
+    "label": "Collection"
+  },
+  {
+    "type": "image_picker",
+    "id": "collection_image",
+    "label": "Collection Image"
+  },
+  {
+    "type": "header",
+    "content": "Mobile Button Options"
+  },  
+  {
+    "type": "text",
+    "id": "winter_sale_title",
+    "label": "First panel button title"
+  },
+  {
+    "type": "text",
+    "id": "best_seller_title",
+    "label": "Secondary panel button title"
+  },
+  {
+    "type": "color",
+    "id": "btn_back_color",
+    "label": "Button Background Color",
+    "info": "Used for button background color",
+    "default": "#f7c945"
+  },
+  {
+    "type": "color",
+    "id": "btn_font_color",
+    "label": "Button Font Color",
+    "info": "Used for button font color",
+    "default": "#000"
+  }
+
+  ],
+  "blocks": [
+  {
+    "type": "image",
+    "name": "Item", 
+    "settings": [
+    {
+      "type":      "product",
+      "id":        "product-id",
+      "label":     "Product"
+    }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "Menus",
+    "settings": [
+    {
+      "type": "link_list",
+      "id": "header_menus",
+      "label": "Header menu"
+    }
+    ]
+
+  }
+  ]
+} 
+{% endschema %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Corporation",
+  "name": "Big Blanket Co",
+  "alternateName": "Big Blanket",
+  "url": "https://bigblanket.com/",
+  "logo": "https://cdn.shopify.com/s/files/1/0113/9323/7056/files/Big-Blanket-Brand-Marks-PNGs-2020_Mark.png?v=1613677395",
+  "sameAs": [
+    "https://www.facebook.com/bigblanket/",
+    "https://twitter.com/bigblanketco",
+    "https://www.instagram.com/bigblanketco",
+    "https://www.youtube.com/c/BigBlanketCo/",
+    "https://www.linkedin.com/company/bigblanketco",
+    "https://www.pinterest.com/bigblanketco/",
+    "https://bigblanket.com/"
+  ]
+}
+</script>
+
+{% if template.name == 'index' %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ shop.name }}",
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ shop.url }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "url": "{{ shop.url }}{{ page.url }}"
+}
+</script>
+{% endif %}

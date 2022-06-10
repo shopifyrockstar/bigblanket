@@ -1,0 +1,133 @@
+<div class="collection-list jcollist">
+
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h2 class="collection-list__title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <div class="collection-list__box">  
+      {% for block in section.blocks %}  
+      {%- assign product = all_products[block.settings.product-id] -%}
+      {%- assign current_variant = product.selected_or_first_available_variant -%}
+      <a href="{{ product.url | default: '#' }}" class="collection-list__item">
+        {% if block.settings.image != blank %}
+
+          <img class="img-product-home-page lazyimg" src="#" data-src="{{ block.settings.image | product_img_url: 'master' }}">
+
+        {% elsif product.metafields.pdp_image2.pdp_image2 != blank %}
+
+        <img class="img-product-home-page lazyimg" src="#" data-src="{{product.metafields.pdp_image2.pdp_image2}}">
+
+        {% else %}
+
+        <img class="img-product-home-page lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: 'master' }}">
+
+        {% endif %}
+        
+        {% assign tag_list = '' %}
+        <div class="new-label">
+          {% for tag in product.tags %}
+            {% if tag contains 'label_' %}
+            	{% assign tag_list = tag_list | append: tag | append: "," %}
+            {% endif %}
+          {% endfor %}
+          {% assign tag_list_no_comma = tag_list | split: ',' | join: "," %}
+          {% assign tag_list_no_comma = tag_list_no_comma | split: ',' %}
+          {% for tag_loop in tag_list_no_comma %} 
+          	{% assign removed_underscore = tag_loop |split: '_' | last %}
+          	{% assign real_label = removed_underscore | split:'-' | join: ' ' %}
+          	<p class="tag-label">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+              {{ real_label }}
+          	</p>
+          {% endfor %}
+        </div>
+        
+        <div class="collection-list__item-header" 
+        {% if block.settings.white_color %}
+          style="color: white;"
+        {% endif %}>
+          <div class="collection-list__item-info" >
+            <b>{{product.title | replace: '™ Blanket', '' }}</b>
+            <div>{{ product.type}}</div> 
+          </div>
+          {% comment %}{{collection.metafields.my_custom.best_seller}}                   
+          {% if product.metafields.check.check == 'true' %}
+          <div class="collection-list__item-status tabbed-status-item">
+            <div class="status-item"
+            {% if block.settings.white_color %}
+              style="color: white;"
+            {% endif %}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.306 1.796c.163.816 1.306 1.306 1.96.653.979-.816 2.448.49 1.795 1.633-.326.816.164 1.796 1.143 1.796 1.306 0 1.633 1.796.49 2.449-.98.326-1.143 1.306-.49 1.959.98.98 0 2.449-1.143 2.122-.816-.326-1.633.49-1.633 1.306.164 1.306-1.632 1.96-2.285.817a1.226 1.226 0 00-2.123 0c-.653 1.143-2.449.49-2.285-.817.163-.816-.817-1.632-1.633-1.306-1.143.327-2.122-1.143-1.143-2.122.653-.653.49-1.633-.326-2.123-1.306-.49-.98-2.285.326-2.285.816 0 1.47-.98.98-1.796-.49-1.143.98-2.45 1.959-1.633.653.49 1.796.163 1.96-.653C7.183.49 8.98.49 9.305 1.796z" stroke="{% if block.settings.white_color %}#fff{%else%}#000{%endif%}" stroke-miterlimit="10"/></svg>
+              BEST SELLER
+            </div>
+          </div>
+          {% endif %}
+          {% endcomment %} 
+
+        </div>
+        <div class="collection-list__item-action">
+          <span class="btn btn--white">
+            {% if block.settings.cta_text != blank %}
+              {{ block.settings.cta_text }}
+            {% else %}
+              SHOP {{ product.title | default: default_label | replace: '™ Blanket', '' }} 
+            {% endif %}
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Heading"
+  }
+  ],
+  "blocks": [
+  {
+    "type": "image",
+    "name": "Item", 
+    "settings": [
+    {
+      "type":      "product",
+      "id":        "product-id",
+      "label":     "Product"
+    },
+    {
+      "type":      "text",
+      "id":        "cta_text",
+      "label":     "CTA Text"
+    },
+    {
+      "type":      "checkbox",
+      "id":        "white_color",
+      "label":     "White text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    }
+    ]
+  }
+  ],
+  "presets": [
+  {
+    "name": "Featured Products",
+    "category": "Blocks"
+  }
+  ]
+}
+{% endschema %}

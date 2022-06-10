@@ -1,0 +1,107 @@
+<div class="contact-wrapper">
+  {% if section.settings.header_text != blank %}
+  	<p>{{ section.settings.header_text }}</p>
+  {% endif %}
+  <div class="text-wrapper">
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.email_title }}</p>
+      <a href="mailto:{{ section.settings.email_content }}">{{ section.settings.email_content }}</a>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.text_title }}</p>
+      <p>{{ section.settings.text_content }}</p>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.call_title }}</p>
+      <p>{{ section.settings.call_content }}</p>
+    </div>
+    <div class="text-item-wrapper">
+      <p>{{ section.settings.write_title }}</p>
+      {{ section.settings.write_content }}
+    </div>
+  </div>
+  
+  <div class="button-wrapper">
+    {% for block in section.blocks %}
+      <div class="button-item-wrapper">        
+        <a href="{{ block.settings.target_url }}">
+          {{ block.settings.text }}
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "Contact Info",
+"settings": [
+    {
+      "id": "header_text",
+      "type": "text",
+      "label": "Header Text"
+    },
+	{
+      "id": "email_title",
+      "type": "text",
+      "label": "Email title"
+    },
+	{
+      "id": "email_content",
+      "type": "text",
+      "label": "Email address"
+    },
+	{
+      "id": "text_title",
+      "type": "text",
+      "label": "Text title"
+    },
+	{
+      "id": "text_content",
+      "type": "text",
+      "label": "Text content"
+    },
+	{
+      "id": "call_title",
+      "type": "text",
+      "label": "Call title"
+    },
+	{
+      "id": "call_content",
+      "type": "text",
+      "label": "Call content"
+    },
+	{
+      "id": "write_title",
+      "type": "text",
+      "label": "Write title"
+    },
+	{
+      "id": "write_content",
+      "type": "textarea",
+	  "default": "<p></p>",
+      "label": "Write content"
+    }
+  ],
+  "blocks" : [
+      {
+        "type": "button",
+        "name": "CTA button",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p><strong>Make an announcement</strong> | More info</p>"
+          },
+          {
+            "id": "target_url",
+            "type": "url",
+            "label": "Targeted page"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

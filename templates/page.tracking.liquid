@@ -1,0 +1,30 @@
+<meta name="robots" content="noindex">
+<div data-narvar-feature="dynamicTrack" class="narvar-embed">
+<script src="https://js.narvar.com/bigblanketco/Test2.js"></script>
+<script>
+  try {
+    var queryParameters = window
+      .location
+      .search
+      .replace(/^\?/g, '')
+      .split('&')
+      .reduce(function(acc, param) {
+        var keyAndValue = param.split('=');
+        acc[keyAndValue[0]] = keyAndValue[1];
+        return acc;
+      }, {});
+    if (queryParameters.tracking_numbers && queryParameters.carrier) {
+      window.narvar('dynamicTrack', {
+        localeLanguage: queryParameters.locale_language || 'en',
+        localeCountry: queryParameters.locale_country || 'US',
+        trackingNumbers: queryParameters.tracking_numbers.split(','),
+        carrier: queryParameters.carrier,
+        order: queryParameters.order
+      });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+</script>
+ <p>
+    <br>

@@ -1,0 +1,133 @@
+{% for block in section.blocks %}
+<section class="image-with-text story-image-text">  
+  {% capture image_layout %}
+    <div class="image-with-text__image">
+      {% if block.settings.image != blank %}
+        {% include 'responsive-image' with
+          image: block.settings.image,
+          max_width: 545,
+          max_height: 545
+        %}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+  {% if block.settings.layout == 'left' %}
+    {{ image_layout }}
+  {% endif %}
+
+  <div class="image-with-text__text {% if block.settings.layout == 'left' %}padding-left{% endif %} {% if block.settings.layout == 'right' %}padding-right{% endif %}">
+    {% if block.settings.title != blank %}
+      <h2>{{ block.settings.title | escape }}</h2>
+    {% endif %}
+    
+    {% if block.settings.sub_title != blank %}
+      <h5 class="sub-title">{{ block.settings.sub_title | escape }}</h5>
+    {% endif %}
+    
+    {% if block.settings.text != blank %}
+      <div>{{ block.settings.text }}</div>
+    {% endif %}
+    
+    {% if block.settings.secondary_image != blank %}
+      <img class="block-image" src="{{ block.settings.secondary_image | img_url: 'master' }}">
+    {% endif %}
+    
+    {% if block.settings.secondary_text != blank %}
+      <div>{{ block.settings.secondary_text }}</div>
+    {% endif %}
+    
+    {% if block.settings.button_title != blank %}
+    <div class="cta-wrapper">
+      <a class="btn btn--yellow" href="{{ block.settings.button_link }}">
+        {{ block.settings.button_title }}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if block.settings.layout == 'right' %}
+    {{ image_layout }}
+  {% endif %}
+  
+</section>
+{% endfor %}
+{% schema %}
+  {
+    "name": "Image with text",
+	"class": "story-image-text-wrapper return-image-text-wrapper",
+    "settings": [      
+    ],
+    "blocks": [
+        {
+          "type": "Image",
+          "name": "Image with text",
+          "settings": [
+            {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Image alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Image with text"
+        },
+		{
+          "type": "text",
+          "id": "sub_title",
+          "label": "Sub Heading",
+          "default": "Image with text"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+        },
+		{
+          "type": "image_picker",
+          "id": "secondary_image",
+          "label": "Image"
+        },
+		{
+          "type": "richtext",
+          "id": "secondary_text",
+          "label": "Text",
+          "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+        },
+		{
+          "type": "text",
+          "id": "button_title",
+          "label": "Button Title",
+          "default": "Get started"
+        },
+		{
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+        ]
+      }
+    ]
+  }
+{% endschema %}

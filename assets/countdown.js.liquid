@@ -1,0 +1,191 @@
+// countdown timer
+
+var current_position = moment();
+var current_year = moment().get('year');
+
+const month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
+var current_month = month[moment().get('month')];
+var current_day = moment().get('date');
+var current_hour = moment().get('hour');
+// var current_minute = moment().get('minute');
+// var current_sec = moment().get('second');
+// var current_millisec = moment().get('millisecond');
+
+var client_timezone = moment.tz.guess();    //getting client time zone
+var time_offset = parseInt(moment.tz(client_timezone).format('Z')) - parseInt(moment.tz('America/New_York').format('Z'));    //calculating the time zone offset from ET
+
+var set_time = parseInt({{ settings.set_time }});
+set_time = set_time + time_offset;      // setting the hour by considering timezone offset
+
+var pm_set_time = 23 ;
+
+var target_time_for_am = moment().set({'year': current_year, 'month': moment().get('month'), 'date': current_day, 'hour':set_time, 'minute': 0, 'second': 0, 'millisecond': 0});
+var target_time_for_pm = moment().set({'year': current_year, 'month': moment().get('month'), 'date': current_day, 'hour':pm_set_time, 'minute': 59, 'second': 59});
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+  
+  var current_hour = moment().get('hour') ;
+  if ( current_hour < set_time ){ //if current time is smaller than set time
+
+    var current_position = moment();
+    var distance = target_time_for_am.diff(current_position);
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+    var hrStrArr = String(hours).split('');
+    var minStrArr = String(minutes).split('');
+    var secStrArr = String(seconds).split('');
+
+    var cdArr = [].concat(hrStrArr).concat([":"]).concat(minStrArr).concat([":"]).concat(secStrArr).map(function(s) {
+      if (s[0] == ":") {
+        return "<span class='cd-colon'>:</span>";
+      }
+      return "<span class='cd-bit'>" + s + "</span>";
+    });
+
+    
+    if( $(".go-cart-drawer").data("set") == true ){
+      document.getElementById('demo').innerHTML = "{{ settings.free_order_heading }}" + " " + hours + " hrs " + minutes + " mins " + seconds + " sec " + "{{ settings.free_order_ending }}";
+      var announcement_bar_timer = document.getElementById('announcement-demo');
+      if ($("#announcement-demo").length){
+        announcement_bar_timer.innerHTML = "{{ settings.free_order_heading }}" + " " +cdArr.join('') + " " + "{{ settings.free_order_ending }}";
+      }
+    }      
+    
+
+  }else{
+    
+    var current_position = moment();
+    var distance = target_time_for_pm.diff(current_position);
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.abs(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+    var minutes = Math.abs(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+    var seconds = Math.abs(Math.floor((distance % (1000 * 60)) / 1000));
+
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    var hrStrArr = String(hours).split('');
+    var minStrArr = String(minutes).split('');
+    var secStrArr = String(seconds).split('');
+
+    var cdArr = [].concat(hrStrArr).concat([":"]).concat(minStrArr).concat([":"]).concat(secStrArr).map(function(s) {
+      if (s[0] == ":") {
+        return "<span class='cd-colon'>:</span>";
+      }
+      return "<span class='cd-bit'>" + s + "</span>";
+    });
+    
+    if( $(".go-cart-drawer").data("set") == true ){
+      document.getElementById('demo').innerHTML = "{{ settings.next_order_heading }}" + " " + hours + " hrs " + minutes + " mins " + seconds + " sec " + "{{ settings.next_order_ending }}";   
+      var announcement_bar_timer = document.getElementById('announcement-demo');
+      if ($("#announcement-demo").length){
+          announcement_bar_timer.innerHTML = "{{ settings.next_order_heading }}" + " " +cdArr.join('') + " " + "{{ settings.next_order_ending }}";
+      }
+    }
+  }
+}, 1000);
+
+
+// $(window).load(function(){
+  if ( !$('.header__top-wrapper').hasClass("not-slider") ){
+    $(".header__top-wrapper").slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+      arrows:false,
+//       vertical: true,
+      fade:true,
+      adaptiveHeight: true,
+      useTransform: true,
+      verticalSwiping: true,
+//       adaptiveHeight: true,
+//       variableHeight: true,
+      autoplay: true,
+      autoplaySpeed: 2000
+    })
+  }
+
+//   var maxHeight = -1;
+//   $('.slick-slide').each(function() {
+//     if ($(this).height() > maxHeight) {
+//       maxHeight = $(this).height();
+//     }
+//   });
+//   $('.slick-slide').each(function() {
+//     if ($(this).height() < maxHeight) {
+//       $(this).css('margin', Math.ceil((maxHeight-$(this).height())/2) + 'px 0');
+//     }
+//   });
+//   $('.header__top-wrapper').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+
+//     // get the nextSlide as an Object
+//     var NextSlideDom=$(slick.$slides.get(nextSlide));
+//     // Add a transition when you're changing the min-height
+//     $(".header__top-wrapper .slick-list").css("transition","min-height 1s ease");
+
+//     // Change the height
+//     $(".header__top-wrapper .slick-list").css("min-height",NextSlideDom.height());
+
+//   });
+// });
+
+
+// if ( !$('.header__top-wrapper').hasClass("not-slider") ){
+//   $(".header__top-wrapper").slick({
+//     infinite: true,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     dots: false,
+//     arrows:false,
+//     vertical: true,
+//     useTransform: true,
+//     verticalSwiping: true,
+//     adaptiveHeight: true,
+//     variableHeight: true,
+//     autoplay: true,
+//     autoplaySpeed: 2000
+//   })
+// }
+
+
+
+
+
+// $('.header__top-wrapper').on('afterChange', function(event, slick, currentSlide, nextSlide){
+
+//   // get the nextSlide as an Object
+//   var NextSlideDom=$(slick.$slides.get(nextSlide));
+//   // Add a transition when you're changing the min-height
+//   $(".header__top-wrapper .slick-list").css("transition","min-height 1s ease");
+
+//   // Change the height
+//   $(".header__top-wrapper .slick-list").css("min-height",NextSlideDom.height());
+
+// });

@@ -1,0 +1,113 @@
+{% assign item_width = 'd' %}
+{% assign item_count = 0 %}
+{% for block in section.blocks %}
+	{% assign item_count = item_count | plus: 1 %}
+{% endfor %}
+
+{% case item_count %}
+	{% when 1 %}
+		{% assign item_width = 'md-12' %}
+	{% when 2 %}
+		{% assign item_width = 'md-6' %}
+	{% when 3 %}
+		{% assign item_width = 'md-4' %}
+	{% when 4 %}
+		{% assign item_width = 'md-3' %}
+	{% when 5 %}
+		{% assign item_width = 'md-25' %}
+	{% when 6 %}
+		{% assign item_width = 'md-26' %}
+{% endcase %}
+<div class="section-header">
+  <h2 class="insta-block__subtitle">{{ section.settings.title }}</h2>
+  <div class="sync-sl__title">
+    {{ section.settings.sub_title }}
+  </div>
+</div>
+<div
+     class="yotpo yotpo-pictures-widget"
+     data-gallery-id="5eb2c5d3e316700007009364">
+</div>
+
+{% comment %}
+{% for block in section.blocks %}
+<section class="image-with-text social-image-text {{ item_width }}"> 
+  {% if block.settings.social_link != blank %}
+  <a href="{{ block.settings.social_link }}">
+  {% endif %}
+    <div class="image-with-text__image">
+      {% if block.settings.image != blank %}
+        {% include 'responsive-image' with
+          image: block.settings.image,
+          max_width: 545,
+          max_height: 545
+        %}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+  <div class="image-with-text__text">
+    {% if block.settings.title != blank %}
+      <h2>{{ block.settings.title | escape }}</h2>
+    {% endif %}
+    {% if block.settings.text != blank %}
+      <div>{{ block.settings.text }}</div>
+    {% endif %}
+  </div>
+  {% if block.settings.social_link != blank %}
+  	</a>
+  {% endif %}
+</section>
+{% endfor %}
+{% endcomment %}
+{% schema %}
+  {
+    "name": "Social",
+	"class": "story-social-wrapper",
+    "settings": [ 
+		{
+          "type": "text",
+          "id": "title",
+          "label": "Section Heading",
+          "default": "#mybigblanket"
+        },
+		{
+          "type": "text",
+          "id": "sub_title",
+          "label": "Section Sub Heading",
+          "default": "How do you get cozy?"
+        }
+    ],
+    "blocks": [
+        {
+          "type": "Image",
+          "name": "Image with text",
+          "settings": [
+		{
+          "type": "url",
+          "id": "social_link",
+          "label": "Social Page Link"
+        },
+            {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Image with text"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+        }
+        ]
+      }
+    ]
+  }
+{% endschema %}

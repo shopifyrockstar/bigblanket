@@ -1,0 +1,381 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Starter theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/starter-theme",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/starter-theme\/issues"
+  },
+  {
+    "name": "Pre-orders",
+    "settings": [
+      {
+        "type": "color",
+        "id": "preorder_color",
+        "label": "Edit Preorder Button Color",
+        "default": "#00ff5a"
+      },
+      {
+        "type": "color",
+        "id": "preorder_text_color",
+        "label": "Edit Preorder Button Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "text",
+        "id": "preorder_button_text",
+        "label": "Edit Preorder Button Text",
+        "default": "Pre-Order (Ships January 30th)",
+        "info": "Click Edit Preorders Activator, then open a product page, scroll to variants and click open bulk editor. Start here [Edit Preorders Activator](https:\/\/bigblanket.myshopify.com\/admin\/bulk?resource_name=ProductVariant&edit=sku%2Cprice%2Ccompare_at_price%2Cmetafields.global.preorder%3Aboolean&return_to=%2Fadmin%2Fproducts%2F3497303736384&show=&metafield_titles=&metafield_options=&ids=32311972200484%2C27926196715584%2C27926196846656%2C27926196748352%2C29213358489661%2C31680333545508%2C32311972593700%2C29217320534077%2C27926196781120%2C31680332759076%2C29514912301117%2C32311972921380%2C29514910629949%2C32311974035492%2C29514910957629%2C29393184129085%2C29514911744061)"
+      }
+    ]
+  },
+  {
+    "name": "Sitewide Sale",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "toggle_widesale",
+        "label": "Toggle Sitewide Sale",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "way_off",
+        "label": "Percentage\/Fixed off",
+        "default": "percentage_off",
+        "options": [
+          {
+            "value": "percentage_off",
+            "label": "Percentage Off"
+          },
+          {
+            "value": "fixed_off",
+            "label": "Fixed off"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "off_amount",
+        "label": "Amount"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#c4cdd5",
+        "info": "Buttons and special ornaments"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text",
+        "default": "#161d25"
+      },
+      {
+        "type": "color",
+        "id": "color_main_bg",
+        "label": "Background",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Color for Tags"
+      },
+      {
+        "type": "color",
+        "id": "color_font",
+        "label": "Tag Font color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Tag background color",
+        "default": "#f7c945"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "default": "helvetica_n4",
+        "label": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "default": "helvetica_n4",
+        "label": "Body text"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Enable sharing for blog articles",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "Tiktok link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_progressbar",
+        "label": "Enable Progress Bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "first_tier_value",
+        "label": "First Tier Value($)",
+        "default": "100"
+      },
+      {
+        "type": "richtext",
+        "id": "first_tier_copy",
+        "label": "First Tier Copy",
+        "default": "<p>Spend $100.00 save $30.00<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "first_tier_off",
+        "label": "First Tier off($)",
+        "default": "30"
+      },
+      {
+        "type": "text",
+        "id": "second_tier_value",
+        "label": "Second Tier Value($)",
+        "default": "200"
+      },
+      {
+        "type": "richtext",
+        "id": "second_tier_copy",
+        "label": "Second Tier Copy",
+        "default": "<p>Spend $200.00 save $60.00<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "second_tier_off",
+        "label": "Second Tier off($)",
+        "default": "60"
+      },
+      {
+        "type": "text",
+        "id": "third_tier_value",
+        "label": "Third Tier Value($)",
+        "default": "325"
+      },
+      {
+        "type": "richtext",
+        "id": "third_tier_copy",
+        "label": "Third Tier Copy",
+        "default": "<p>Spend $325.00 save $100.00<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "third_tier_off",
+        "label": "Third Tier off($)",
+        "default": "100"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_giftmessage",
+        "label": "Enable Gift Message",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "gift_message_content",
+        "label": "Gift Message",
+        "default": "Cyber Week bonus!"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sale_price",
+        "label": "Show Sale Price",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Countdown",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_countdown",
+        "label": "Enable Countdown",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "set_time",
+        "label": "Set Time",
+        "default": "16"
+      },
+      {
+        "type": "text",
+        "id": "free_order_heading",
+        "label": "Order in next",
+        "default": "Order in next"
+      },
+      {
+        "type": "text",
+        "id": "free_order_ending",
+        "label": "for Free Same-Day Shipping",
+        "default": "for Free Same-Day Shipping"
+      },
+      {
+        "type": "text",
+        "id": "next_order_heading",
+        "label": "Order in next",
+        "default": "Order in next"
+      },
+      {
+        "type": "text",
+        "id": "next_order_ending",
+        "label": "for Free Next Day Shipping",
+        "default": "for Free Next Day Shipping"
+      },
+      {
+        "type": "color",
+        "id": "color_copy",
+        "label": "Color of Countdown bar copy",
+        "info": "Used for countdown copy color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_bar",
+        "label": "Color of Countdown bar",
+        "info": "Used for countdown copy",
+        "default": "#000"
+      }
+    ]
+  },
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_vertical_slide",
+        "label": "Enable Vertical Slide",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]
