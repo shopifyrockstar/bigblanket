@@ -1035,21 +1035,24 @@
           "924d7099-a1a6-4923-87b7-21af8a2ed900": {
             "type": "button",
             "settings": {
-              "text": "<p>Track Your<\/p><p>Order<\/p>",
+              "img": "shopify:\/\/shop_images\/Group_92.png",
+              "text": "<p>Track Your Order<\/p>",
               "target_url": "shopify:\/\/pages\/order-tracking"
             }
           },
           "6217b42c-89c1-4dab-bd2b-6b90245c8129": {
             "type": "button",
             "settings": {
-              "text": "<p>Start Your Return or<\/p><p>Exchange<\/p>",
+              "img": "shopify:\/\/shop_images\/Group_93.png",
+              "text": "<p>Start A Return<\/p>",
               "target_url": "shopify:\/\/pages\/returns-exchanges"
             }
           },
           "896a097b-596e-49e0-bbd1-af24dd24b62b": {
             "type": "button",
             "settings": {
-              "text": "<p>Manage Your<\/p><p>Account<\/p>",
+              "img": "shopify:\/\/shop_images\/Frame.png",
+              "text": "<p>Manage Your Account<\/p>",
               "target_url": "\/account"
             }
           }
@@ -1062,13 +1065,17 @@
         "settings": {
           "header_text": "Questions, comments, or just want to say hi? We're here M-F from 9 AM - 4 PM CST to help you out.",
           "email_title": "Email",
-          "email_content": "<p>support@bigblanket.com<\/p><p>Our team will answer between X-X CST<\/p>",
+          "email_content": "support@bigblanket.com",
+          "email_under_content": "Our team will answer between X-X CST",
           "text_title": "Text",
-          "text_content": "BIGQUESTION to 67488",
+          "text_content": "67488",
+          "text_under_content": "Text ‘BIGQUESTION’ for help",
           "call_title": "Call",
           "call_content": "1-800-TBD",
+          "call_under_content": "Anytime between blah blah",
           "write_title": "Write",
-          "write_content": "<p>3121 East Elm Street<br>Springfield, MO 65802<\/p>"
+          "write_content": "<p>3121 East Elm Street<br>Springfield, MO 65802<\/p>",
+          "write_under_title": "Big Blanket Co"
         }
       },
       "contact-faq": {

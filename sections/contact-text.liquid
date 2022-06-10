@@ -5,25 +5,30 @@
   <div class="text-wrapper">
     <div class="text-item-wrapper">
       <p>{{ section.settings.email_title }}</p>
-      <a href="mailto:{{ section.settings.email_content }}">{{ section.settings.email_content }}</a>
+      <a class="email-link" href="mailto:{{ section.settings.email_content }}">{{ section.settings.email_content }}</a>
+      <p>{{ section.settings.email_under_content }}</p>      
     </div>
     <div class="text-item-wrapper">
       <p>{{ section.settings.text_title }}</p>
       <p>{{ section.settings.text_content }}</p>
+      <p>{{ section.settings.text_under_content }}</p>      
     </div>
     <div class="text-item-wrapper">
       <p>{{ section.settings.call_title }}</p>
       <p>{{ section.settings.call_content }}</p>
+      <p>{{ section.settings.call_under_content }}</p>      
     </div>
     <div class="text-item-wrapper">
       <p>{{ section.settings.write_title }}</p>
-      {{ section.settings.write_content }}
+      <p>{{ section.settings.write_under_title }}</p>
+      {{ section.settings.write_content }}      
     </div>
   </div>
   
   <div class="button-wrapper">
     {% for block in section.blocks %}
-      <div class="button-item-wrapper">        
+      <div class="button-item-wrapper"> 
+        <img src="{{ block.settings.img | img_url: '120x' }}">       
         <a href="{{ block.settings.target_url }}">
           {{ block.settings.text }}
         </a>
@@ -52,6 +57,11 @@
       "type": "text",
       "label": "Email address"
     },
+    {
+      "id": "email_under_content",
+      "type": "text",
+      "label": "Email Bottom Text"
+    },
 	{
       "id": "text_title",
       "type": "text",
@@ -61,6 +71,11 @@
       "id": "text_content",
       "type": "text",
       "label": "Text content"
+    },
+    {
+      "id": "text_under_content",
+      "type": "text",
+      "label": "Text Bottom content"
     },
 	{
       "id": "call_title",
@@ -72,6 +87,11 @@
       "type": "text",
       "label": "Call content"
     },
+    {
+      "id": "call_under_content",
+      "type": "text",
+      "label": "Call Under content"
+    },
 	{
       "id": "write_title",
       "type": "text",
@@ -82,6 +102,11 @@
       "type": "textarea",
 	  "default": "<p></p>",
       "label": "Write content"
+    },
+    {
+      "id": "write_under_title",
+      "type": "text",
+      "label": "Write Bottom title"
     }
   ],
   "blocks" : [
@@ -89,6 +114,11 @@
         "type": "button",
         "name": "CTA button",
         "settings": [
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image"
+          }, 
           {
             "type": "richtext",
             "id": "text",
