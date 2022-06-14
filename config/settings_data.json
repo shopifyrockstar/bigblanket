@@ -1066,13 +1066,13 @@
           "header_text": "Questions, comments, or just want to say hi? We're here M-F from 9 AM - 4 PM CST to help you out.",
           "email_title": "Email",
           "email_content": "support@bigblanket.com",
-          "email_under_content": "Our team will answer between X-X CST",
+          "email_under_content": "Our team will answer <br>between X-X CST",
           "text_title": "Text",
           "text_content": "67488",
-          "text_under_content": "Text ‘BIGQUESTION’ for help",
+          "text_under_content": "Text ‘BIGQUESTION’ <br>for help",
           "call_title": "Call",
           "call_content": "1-800-TBD",
-          "call_under_content": "Anytime between blah blah",
+          "call_under_content": "Anytime between <br>blah blah",
           "write_title": "Write",
           "write_content": "<p>3121 East Elm Street<br>Springfield, MO 65802<\/p>",
           "write_under_title": "Big Blanket Co"
@@ -1084,24 +1084,50 @@
           "6c6055c4-48c6-464a-9057-31e3c3dbcd73": {
             "type": "faq",
             "settings": {
-              "faq_header": "What products do you carry?",
-              "faq_body": "<p><span style=\"font-weight: 400;\">In short, we carry very large, very big (we mean huge) blankets. There are four different Big Blanket collections to be exact. You can choose from:<\/span><\/p>\n\t\t<ul>\n\t\t\t<li><span style=\"font-weight: 400;\"><span style=\"color: #2b00ff;\"><a href=\"\/products\/the-big-blanket\" style=\"color: #2b00ff;\"><strong>The Original Stretch™<\/strong><\/a><\/span> is the original 10’ x 10’ blanket and our bestseller.<\/span><\/li>\n\t\t\t<li><span style=\"font-weight: 400;\"><span style=\"color: #2b00ff;\"><a href=\"\/products\/woven-big-blanket\" style=\"color: #2b00ff;\"><strong>The Premium Woven™<\/strong><\/a><\/span> is a super soft tight-knit 10’ x 10’ blanket in a baker’s dozen of modern styles.<\/span><\/li>\n\t\t\t<li>\n\t\t\t\t<span style=\"color: #2b00ff;\"> <a href=\"\/products\/premier-plush\" style=\"color: #2b00ff;\"> <b>The Premier Plush™<\/b><\/a><\/span> <span style=\"font-weight: 400;\">is a<\/span><span style=\"font-weight: 400;\"> fluffy microfiber 10’ x 10’ blanket and our fastest selling blanket ever.<\/span>\n\t\t\t<\/li>\n\t\t\t<li><span style=\"font-weight: 400;\"><span style=\"color: #2b00ff;\"><a href=\"\/products\/xl-weighted-blanket\" style=\"color: #2b00ff;\"><b>The XL Weighted™<\/b><\/a><\/span> is the largest weighted blanket you can buy and great for sharing as an all seasons comforter.<\/span><\/li>\n\t\t\t<li>\n\t\t\t\t<strong> <a href=\"https:\/\/bigblanket.com\/products\/classic-knitted-blanket\">The Classic Knitted™<\/a><\/strong> is a 10x10' chunky yet breathable and beautifully textured lightweight blanket..<\/li>\n\t\t\t<\/ul>"
+              "faq_header": "How can I make a change to an order I just placed?",
+              "faq_body": "<p>​​Email <a href=\"mailto:support@bigblanket.com\">support@bigblanket.com<\/a> or text BIGQUESTION to 67488 with your order number and how we can help! Please note our customer service hours are Monday through Friday, 8 AM to 4:30 PM CST. Rest assured that we do everything in our power to respond to urgent requests prior to any shipments leaving the warehouse.<\/p>"
             }
           },
           "6eea257a-42d0-4410-8704-a2f9190967d5": {
             "type": "faq",
             "settings": {
-              "faq_header": "Premium Woven FAQs",
-              "faq_body": "<span style=\"font-weight: bold;\">What is it made of?<br>\n\t\t<span style=\"font-weight: 400;\">The popular <\/span><b>Premium Woven<\/b><b>™<\/b><span style=\"font-weight: 400;\"> blanket is made of 100% acrylic that is tightly-knit for a soft, lightweight blanket or bedding. <br><\/span>\n\t\t<br><\/span>\n\t\t<span style=\"font-weight: bold;\">How big is it? <br><b>Premium Woven<\/b><b>™<\/b> <span style=\"font-weight: 400;\">blankets<\/span><span style=\"font-weight: 400;\"> are each a 10' x 10' (10 feet by 10 feet) blanket. In other words, 120\" x 120\" (120 inches by 120 inches) blanket. Or, if you prefer, a 100-square foot blanket. <br><\/span><br><\/span> \n\t\t<span style=\"font-weight: bold;\">How much does it weigh?<br><span style=\"font-weight: 400;\">The <\/span><b>Premium Woven™<\/b><span style=\"font-weight: 400;\">  is 10 pounds of cozy blanket bliss. <br><\/span><br><\/span> \n\t\t<b>Is it seamless?<\/b> <br>\n\t\t<b>Premium Woven™<\/b><span style=\"font-weight: 400;\"> blankets <\/span><span style=\"font-weight: 400;\">have 2 seams<\/span>\n\t\t<span style=\"font-weight: 400;\"> set 2-feet from the left and right edges of the blanket so it aligns with the edges on a king-sized mattress. The seams lay flat so they aren’t pesky but allow for total bed-making mastery.<br><br><\/span>\n\t\t<span style=\"font-weight: bold;\">How do I care for my Premium Woven™ Big Blanket? <br><\/span>\n\t\t<span>Machine wash cold with like colors. Do not bleach. Tumble dry low. Do not iron. Stay cozy.<br><br><\/span>\n\t\t<span style=\"font-weight: bold;\">How do I wash\/clean my Premium Woven™ Big Blanket? Is it machine washable? <br><\/span>\n\t\t<span style=\"font-weight: 400;\">You bet your britches it is. All Big Blankets, except the XL Weighted™ core, fit in a standard size home washing machine.<\/span>"
+              "faq_header": "When will I receive my order?",
+              "faq_body": "Orders placed by 2 PM ET will be shipped the same business day (Monday-Friday), excluding national holidays. Free FedEx Ground shipments typically arrive in 2-5 business days. Due to COVID-19 some shipments may be delayed."
+            }
+          },
+          "2e9ddc09-44a2-477b-a9ec-2123833a44bc": {
+            "type": "faq",
+            "settings": {
+              "faq_header": "What is your free shipping and returns policy?",
+              "faq_body": "<p>​​We offer free standard shipping on orders, exchanges and returns within the continental US and a 100 night, no questions asked, guarantee. All exchanges and returns must be clean and undamaged (no pet hair, stains, etc.) and, when possible, returned in original packaging. <strong>Items may be exchanged up to 2 times.<\/strong> Items returned in questionable condition are subject to restocking fees. Returns will be processed within 5-10 business days of being received. Final Sale items are not eligible for returns and exchanges.<\/p>​​"
+            }
+          },
+          "4932fac8-6279-4d1f-a858-196f677fe246": {
+            "type": "faq",
+            "settings": {
+              "faq_header": "How do I exchange my blanket?",
+              "faq_body": "<p>​​We make it easy. Just visit the <a href=\"\/pages\/new-returns\">Returns + Exchanges<\/a> page to submit a form. Returning or exchanging more than one item? Please submit separately. Final Sale items are not eligible for returns and exchanges.<\/p>​​"
+            }
+          },
+          "4051d00c-0c7c-4379-94cd-9a85f1c092cd": {
+            "type": "faq",
+            "settings": {
+              "faq_header": "How do I return my blanket?",
+              "faq_body": "<p>​​We offer free returns for US orders in the first 100 days after you received your blanket. Just visit the <a href=\"\/pages\/new-returns\">Returns + Exchanges<\/a> page to submit a form. Returning or exchanging more than one item? Please submit separately. Final Sale items are not eligible for returns and exchanges.\n            \n            I received a Big Blanket as a gift, how do I start a return or exchange?\n            \n            We’ve got you covered. Visit the Returns + Exchanges page and use the gift return\/exchange option at the bottom of the portal to keep the return\/exchange discrete.<\/p>"
             }
           }
         },
         "block_order": [
           "6c6055c4-48c6-464a-9057-31e3c3dbcd73",
-          "6eea257a-42d0-4410-8704-a2f9190967d5"
+          "6eea257a-42d0-4410-8704-a2f9190967d5",
+          "2e9ddc09-44a2-477b-a9ec-2123833a44bc",
+          "4932fac8-6279-4d1f-a858-196f677fe246",
+          "4051d00c-0c7c-4379-94cd-9a85f1c092cd"
         ],
         "settings": {
           "header_text": "FAQ",
+          "faq_img": "shopify:\/\/shop_images\/Image_from_iOS_14.jpg",
+          "right_header_text": "Still have questions?",
           "button_text": "See all",
           "target_url": "shopify:\/\/pages\/faqs"
         }
@@ -1112,14 +1138,14 @@
           "header_text": "",
           "email_title": "Press Inquiries",
           "email_content": "press@bigblanket.com",
-          "text_title": "Ambassador Interest",
-          "text_content": "Apply here",
+          "text_title": "Ambassadors",
+          "text_content": "Apply",
           "text_link": "shopify:\/\/pages\/about",
-          "text_title_2": "Wholesale Inquiry",
-          "text_content_2": "Submit here",
+          "text_title_2": "Wholesale Inquiries",
+          "text_content_2": "Submit",
           "text_link_2": "shopify:\/\/pages\/wholesale",
-          "text_title_3": "Custom Blanket Request",
-          "text_content_3": "Submit here",
+          "text_title_3": "Custom Blankets",
+          "text_content_3": "request",
           "text_link_3": "#"
         }
       }
