@@ -1909,6 +1909,9 @@ body:not(.template-index).header-timer-enabled {
   margin-bottom: 10px;
 }
 
+#shopify-section-contact-faq{
+  margin-bottom: 0;
+}
 @media (max-width:991px){
   .contact-wrapper .text-wrapper .text-item-wrapper{
     width:33.33%;
@@ -1995,20 +1998,32 @@ body:not(.template-index).header-timer-enabled {
   .faq-total-wrapper{
     display: flex;
     flex-direction: column;
-    padding-bottom: 200px;
+    /* padding-bottom: 200px;     */
   }
   .faq-total-wrapper .faq-wrapper{
     width: 100%;
     float: unset;
     order: 1;
+    padding: 0 40px;
   }
   .faq-total-wrapper .faq-image-wrapper{
-    position: absolute;
+    /* position: absolute;
     top: 65%;
     left: 0;
     max-width: unset;
     width: 110%;
+    transform: unset; */
+    position: relative;
+    order: 3;
+    max-width: 100%;
+    left: 0;
+    padding-bottom: 200px;
     transform: unset;
+  }
+  .faq-total-wrapper .faq-image-wrapper img{
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .faq-total-wrapper .faq-right-wrapper{
     width: 100%;
@@ -2026,6 +2041,15 @@ body:not(.template-index).header-timer-enabled {
   }
   .new-contact .bottom-contact-wrapper{
     padding-top: 50px;
+  }
+  .bottom-contact-wrapper .text-wrapper .text-item-wrapper a{
+    padding: 15px 30px;
+  }
+  .contact-wrapper .button-wrapper .button-item-wrapper a{
+    padding: 15px;
+  }
+  .contact-wrapper .button-wrapper .button-item-wrapper a p{
+    font-size: 15px;
   }
 }
 
