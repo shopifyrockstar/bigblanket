@@ -84,6 +84,12 @@
               "product-id": "classic-knitted-blanket"
             }
           },
+          "312c60d0-327d-44f7-a185-3f3b92a4ee9d": {
+            "type": "image",
+            "settings": {
+              "product-id": "xl-weighted-blanket"
+            }
+          },
           "1587546738959": {
             "type": "select",
             "settings": {
@@ -102,15 +108,16 @@
           "1587544395891",
           "1586864820674",
           "1587544388048",
+          "312c60d0-327d-44f7-a185-3f3b92a4ee9d",
           "1587546738959",
           "1587546753688"
         ],
         "settings": {
           "announcement_bar_enabled": true,
-          "announcement_bar_text_1": "$30 OFF ALL ORIGINAL STRETCH™ STYLES",
+          "announcement_bar_text_1": "FATHER'S DAY SALE: $30 OFF ALL ORIGINAL STRETCH™ STYLES",
           "announcement_bar_text_2": "",
           "announcement_bar_link": "shopify:\/\/products\/the-big-blanket",
-          "announcement_bar_text_1_mobile": "$30 OFF ALL ORIGINAL STRETCH™ STYLES",
+          "announcement_bar_text_1_mobile": "FATHER'S DAY SALE: $30 OFF ALL ORIGINAL STRETCH™ STYLES",
           "announcement_bar_text_2_mobile": "",
           "announcement_bar_link_mobile": "shopify:\/\/products\/the-big-blanket",
           "announcement_bar_countdown_enabled": false,
@@ -178,7 +185,7 @@
         "type": "bbd-upgrade",
         "settings": {
           "upg_img": "shopify:\/\/shop_images\/Stone_Premier_Plush.jpg",
-          "video_link": "",
+          "video_link": "https:\/\/player.vimeo.com\/progressive_redirect\/playback\/720401147\/rendition\/720p\/file.mp4?loc=external&signature=02d6a34fec74ee3b53b167143cc80674d0784310fcd873194649b9f6956406fd",
           "upg_title": "Arguably the perfect gift.",
           "cta": "shop now",
           "cta_link": "shopify:\/\/products\/the-big-blanket",
@@ -288,7 +295,7 @@
           "font_color": "#000000",
           "accent_color": "#000000",
           "time_func": "2",
-          "sl_autoplay": false
+          "sl_autoplay": true
         }
       },
       "1585923058476": {
@@ -510,7 +517,7 @@
           "font_color": "#000000",
           "accent_color": "#000000",
           "time_func": "2",
-          "sl_autoplay": false
+          "sl_autoplay": true
         }
       },
       "top-block": {
@@ -1037,7 +1044,7 @@
             "settings": {
               "img": "shopify:\/\/shop_images\/Group_92.png",
               "text": "<p>Track Your Order<\/p>",
-              "target_url": "shopify:\/\/pages\/order-tracking"
+              "target_url": "https:\/\/bigblanket.mymalomo.com\/"
             }
           },
           "6217b42c-89c1-4dab-bd2b-6b90245c8129": {
@@ -1045,7 +1052,7 @@
             "settings": {
               "img": "shopify:\/\/shop_images\/Group_93.png",
               "text": "<p>Start A Return<\/p>",
-              "target_url": "shopify:\/\/pages\/returns-exchanges"
+              "target_url": "https:\/\/returns.bigblanket.com\/#\/"
             }
           },
           "896a097b-596e-49e0-bbd1-af24dd24b62b": {
@@ -1066,13 +1073,13 @@
           "header_text": "Questions, comments, or just want to say hi? We're here M-F from 9 AM - 4 PM CST to help you out.",
           "email_title": "Email",
           "email_content": "support@bigblanket.com",
-          "email_under_content": "Our team will answer <br>between X-X CST",
+          "email_under_content": "Our team will answer <br>between 9am - 4pm CST",
           "text_title": "Text",
           "text_content": "67488",
           "text_under_content": "Text ‘BIGQUESTION’ <br>for help",
           "call_title": "Call",
-          "call_content": "1-800-TBD",
-          "call_under_content": "Anytime between <br>blah blah",
+          "call_content": "417-501-3896",
+          "call_under_content": "Anytime between <br>9am - 4pm CT",
           "write_title": "Write",
           "write_content": "<p>3121 East Elm Street<br>Springfield, MO 65802<\/p>",
           "write_under_title": "Big Blanket Co"
@@ -1085,14 +1092,14 @@
             "type": "faq",
             "settings": {
               "faq_header": "How can I make a change to an order I just placed?",
-              "faq_body": "<p>​​Email <a href=\"mailto:support@bigblanket.com\">support@bigblanket.com<\/a> or text BIGQUESTION to 67488 with your order number and how we can help! Please note our customer service hours are Monday through Friday, 8 AM to 4:30 PM CST. Rest assured that we do everything in our power to respond to urgent requests prior to any shipments leaving the warehouse.<\/p>"
+              "faq_body": "<p>​​Email <a href=\"mailto:support@bigblanket.com\">support@bigblanket.com<\/a> or text BIGQUESTION to 67488 with your order number and how we can help! Please note our customer service hours are Monday through Friday, 9 AM to 4 PM CST. Rest assured that we do everything in our power to respond to urgent requests prior to any shipments leaving the warehouse.<\/p>"
             }
           },
           "6eea257a-42d0-4410-8704-a2f9190967d5": {
             "type": "faq",
             "settings": {
               "faq_header": "When will I receive my order?",
-              "faq_body": "Orders placed by 2 PM ET will be shipped the same business day (Monday-Friday), excluding national holidays. Free FedEx Ground shipments typically arrive in 2-5 business days. Due to COVID-19 some shipments may be delayed."
+              "faq_body": "Orders placed by 2 PM ET will be shipped the same business day (Monday-Friday), excluding national holidays. Free FedEx Ground shipments typically arrive in 2-5 business days."
             }
           },
           "2e9ddc09-44a2-477b-a9ec-2123833a44bc": {
@@ -1128,7 +1135,7 @@
           "header_text": "FAQ",
           "faq_img": "shopify:\/\/shop_images\/Image_from_iOS_14.jpg",
           "right_header_text": "Still have questions?",
-          "button_text": "See all",
+          "button_text": "SEE ALL",
           "target_url": "shopify:\/\/pages\/faqs"
         }
       },
@@ -1140,13 +1147,13 @@
           "email_content": "press@bigblanket.com",
           "text_title": "Ambassadors",
           "text_content": "Apply",
-          "text_link": "shopify:\/\/pages\/about",
+          "text_link": "https:\/\/bigblanket.grin.live\/ambassadors",
           "text_title_2": "Wholesale Inquiries",
           "text_content_2": "Submit",
           "text_link_2": "shopify:\/\/pages\/wholesale",
           "text_title_3": "Custom Blankets",
           "text_content_3": "request",
-          "text_link_3": "#"
+          "text_link_3": "https:\/\/bigblanket.com\/pages\/bulk-orders"
         }
       }
     },
