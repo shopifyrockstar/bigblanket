@@ -33,7 +33,7 @@
     "show_giftmessage": true,
     "gift_message_content": "Bonus!",
     "show_sale_price": true,
-    "show_countdown": false,
+    "show_countdown": true,
     "set_time": "14",
     "free_order_heading": "Ships today when you order in the next",
     "free_order_ending": "",
