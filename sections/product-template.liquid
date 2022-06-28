@@ -1048,6 +1048,51 @@ data-enable-history-state="true"
   jQuery(".switch-to-swatch > div:first-of-type > span:first-child").addClass("active");
 </script>
 
+
+{% comment %} Google merchant center wants to know when to check your price{% endcomment %}
+{%- assign days_price_is_valid = 1 -%}
+{%- assign seconds_in_a_day = 86400 -%}
+{%- assign seconds_price_valid = days_price_is_valid | times: seconds_in_a_day -%}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ request.origin | append: product.url | json }},
+  {%- if product.featured_media.preview_image -%}
+    {%- assign image_size = product.featured_media.preview_image.width | append: 'x' -%}
+    "image": [
+      {{ product.featured_media.preview_image | img_url: image_size | prepend: "https:" | json }}
+    ],
+  {%- endif -%}
+  "description": {{ product.description | strip_html | json }},
+  {%- if product.selected_or_first_available_variant.sku != blank -%}
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  {%- endif -%}
+  "category": {{ product.type | json }},
+  "brand": {
+    "@type": "Organization",
+    "name": {{ product.vendor | default: shop.name | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- endif -%}
+        "availability" : "http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "priceValidUntil": "{{ 'now' | date: '%s' | plus: seconds_price_valid | date: '%Y-%m-%d'}}",
+        "url" : {{ request.origin | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
 {% schema %}
 {
   "name": {
