@@ -829,3 +829,12 @@ $("document").ready(function(){
 })
 
 $(".lazyimg").Lazy({});
+
+$('.attn-btn').click(function(evt) {
+  evt.preventDefault();
+  if(window.innerWidth >= 760){
+    window.__attentive.trigger(null,null,null,257537)
+   }else{
+   window.__attentive.trigger(null,null,null,257535)
+   }
+})
