@@ -21,16 +21,28 @@ $((function() {
     let sale_variant_compare_at_price = $(".color-swatch.active").data("sale_variant_compare_at_price");    
     var currency_format = $(".color-swatch.active").data("currency_format");
     
-	//if sitewide sale is enabled
-    if( $("body").hasClass("sitewide_sale-enabled") ){
-      //if percentage off is selected
-      if ( $(".but-price").hasClass("percentage-off") ){
-        var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);        
-        $(".but-price").text(currency_format + sale_price);
-      }else{//if fixed off is selected
-        var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
-        $(".but-price").text(currency_format + sale_price);
-      }
+	//if sitewide sale or single sale is enabled
+    if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
+      //if single product sale is enabled
+      if ($("body").hasClass("single_sale-enabled")) {        
+        //if percentage off is selected
+        if ( $(".but-price").hasClass("percentage-off") ){
+          var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($(".single-sale-value").data("single_off_amount")) / 100)).toFixed(2);        
+          $(".but-price").text(currency_format + sale_price);
+        }else{//if fixed off is selected
+          var sale_price = (sale_variant_compare_at_price - parseInt($(".single-sale-value").data("single_off_amount"))).toFixed(2);
+          $(".but-price").text(currency_format + sale_price);
+        }
+      }else{ ////if single product sale is not enabled
+        //if percentage off is selected
+        if ( $(".but-price").hasClass("percentage-off") ){
+          var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);        
+          $(".but-price").text(currency_format + sale_price);
+        }else{//if fixed off is selected
+          var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
+          $(".but-price").text(currency_format + sale_price);
+        }
+      }      
     }else{
       $(".but-price").text(variatnPrice);
     }
@@ -47,15 +59,27 @@ $((function() {
         let sale_variant_compare_at_price = $(".color-swatch.active").data("sale_variant_compare_at_price");    
 
         //if sitewide sale is enabled
-        if( $("body").hasClass("sitewide_sale-enabled") ){
-          //if percentage off is selected
-          if ( $(".but-price").hasClass("percentage-off") ){
-            var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);
-            $(".but-price").text(currency_format + sale_price);
-          }else{//if fixed off is selected
-            var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
-            $(".but-price").text(currency_format + sale_price);
-          }
+        if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
+          //if single product sale is enabled
+          if ($("body").hasClass("single_sale-enabled")) {        
+            //if percentage off is selected
+            if ( $(".but-price").hasClass("percentage-off") ){
+              var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($(".single-sale-value").data("single_off_amount")) / 100)).toFixed(2);        
+              $(".but-price").text(currency_format + sale_price);
+            }else{//if fixed off is selected
+              var sale_price = (sale_variant_compare_at_price - parseInt($(".single-sale-value").data("single_off_amount"))).toFixed(2);
+              $(".but-price").text(currency_format + sale_price);
+            }
+          }else{ ////if single product sale is not enabled
+            //if percentage off is selected
+            if ( $(".but-price").hasClass("percentage-off") ){
+              var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);        
+              $(".but-price").text(currency_format + sale_price);
+            }else{//if fixed off is selected
+              var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
+              $(".but-price").text(currency_format + sale_price);
+            }
+          }      
         }else{
           $(".but-price").text(variatnPrice);
         }

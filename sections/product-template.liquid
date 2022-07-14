@@ -517,15 +517,28 @@ data-enable-history-state="true"
         <span id="AddToCartText">Pre-Order </span> 
         {% else %}
         <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-        {% endif %}
-        - <div class="but-price {% if settings.way_off == 'percentage_off' %}percentage-off{% else %}fixed-off{% endif %}">
+        {% endif %}        
         
-        </div>
-        {% if preOrder or product.selected_or_first_available_variant.compare_at_price %}
-          <div class="product-single__sale-price hidden">
-          	<div>{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
-          </div>
-        {% endif %}
+        {% if settings.toggle_singlesale == true and settings.product_info == product.handle %}
+          <div class="single-sale-value hidden" data-single_off_amount="{{ settings.single_off_amount }}"></div>
+          - <div class="but-price 
+            {% if settings.single_way_off == 'percentage_off' %}percentage-off{% else %}fixed-off{% endif %}">        
+            </div>
+          {% if preOrder or product.selected_or_first_available_variant.compare_at_price %}
+            <div class="product-single__sale-price hidden">
+              <div>{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+            </div>
+          {% endif %}
+        {% else %}
+          - <div class="but-price 
+            {% if settings.way_off == 'percentage_off' %}percentage-off{% else %}fixed-off{% endif %}">        
+            </div>
+          {% if preOrder or product.selected_or_first_available_variant.compare_at_price %}
+            <div class="product-single__sale-price hidden">
+              <div>{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+            </div>
+          {% endif %}
+        {% endif %}        
 
       </button> 
       {% comment %}

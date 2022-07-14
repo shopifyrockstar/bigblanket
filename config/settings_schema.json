@@ -64,6 +64,43 @@
     ]
   },
   {
+    "name": "Single product Sale",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "toggle_singlesale",
+        "label": "Toggle Single Sale",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "product_info",
+        "label": "Choose a product"
+      },
+      {
+        "type": "select",
+        "id": "single_way_off",
+        "label": "Percentage\/Fixed off",
+        "default": "percentage_off",
+        "options": [
+          {
+            "value": "percentage_off",
+            "label": "Percentage Off"
+          },
+          {
+            "value": "fixed_off",
+            "label": "Fixed off"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "single_off_amount",
+        "label": "Amount"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {
