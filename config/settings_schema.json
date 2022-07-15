@@ -265,6 +265,22 @@
         "default": true
       },
       {
+        "type": "select",
+        "id": "tier_type",
+        "label": "Tier Type",
+        "options": [
+          {
+            "value": "percentage",
+            "label": "Percentage"
+          },
+          {
+            "value": "fixed",
+            "label": "Fixed"
+          }
+        ],
+        "default": "percentage"
+      },
+      {
         "type": "text",
         "id": "first_tier_value",
         "label": "First Tier Value($)",
@@ -279,7 +295,7 @@
       {
         "type": "text",
         "id": "first_tier_off",
-        "label": "First Tier off($)",
+        "label": "First Tier off ( %\/$ )",
         "default": "30"
       },
       {
@@ -297,7 +313,7 @@
       {
         "type": "text",
         "id": "second_tier_off",
-        "label": "Second Tier off($)",
+        "label": "Second Tier off ( %\/$ )",
         "default": "60"
       },
       {
@@ -315,7 +331,7 @@
       {
         "type": "text",
         "id": "third_tier_off",
-        "label": "Third Tier off($)",
+        "label": "Third Tier off ( %\/$ )",
         "default": "100"
       },
       {
