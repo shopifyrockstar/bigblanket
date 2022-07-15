@@ -2642,15 +2642,31 @@ var CartUpsell = /*#__PURE__*/function () {
 //           $(".top-wrapper .first-offer").addClass("hidden");
 //           $(".top-wrapper .second-offer").addClass("hidden");
 //           $(".top-wrapper .third-offer").addClass("hidden");
-          
-          var first_tier_value = parseInt($(".top-wrapper .first-offer").data("tier_value"))*100;
-          var first_tier_off = parseInt($(".top-wrapper .first-offer").data("tier_off"))*100;
-          
-          var second_tier_value = parseInt($(".top-wrapper .second-offer").data("tier_value"))*100;
-          var second_tier_off = parseInt($(".top-wrapper .second-offer").data("tier_off"))*100;
-          
-          var third_tier_value = parseInt($(".top-wrapper .third-offer").data("tier_value"))*100;
-          var third_tier_off = parseInt($(".top-wrapper .third-offer").data("tier_off"))*100;
+
+          var tier_type =  $(".cart-announcement-wrapper").data("discount_type");
+          console.log(tier_type);
+          if ( typeof tier_type !== 'undefined'){
+            if( tier_type == 'percentage' ){
+              var first_tier_value = parseInt($(".top-wrapper .first-offer").data("tier_value"))*100;
+              var first_tier_off = parseInt($(".top-wrapper .first-offer").data("tier_off"))/100;
+              
+              var second_tier_value = parseInt($(".top-wrapper .second-offer").data("tier_value"))*100;
+              var second_tier_off = parseInt($(".top-wrapper .second-offer").data("tier_off"))/100;
+              
+              var third_tier_value = parseInt($(".top-wrapper .third-offer").data("tier_value"))*100;
+              var third_tier_off = parseInt($(".top-wrapper .third-offer").data("tier_off"))/100; 
+            }else{
+              var first_tier_value = parseInt($(".top-wrapper .first-offer").data("tier_value"))*100;
+              var first_tier_off = parseInt($(".top-wrapper .first-offer").data("tier_off"))*100;
+              
+              var second_tier_value = parseInt($(".top-wrapper .second-offer").data("tier_value"))*100;
+              var second_tier_off = parseInt($(".top-wrapper .second-offer").data("tier_off"))*100;
+              
+              var third_tier_value = parseInt($(".top-wrapper .third-offer").data("tier_value"))*100;
+              var third_tier_off = parseInt($(".top-wrapper .third-offer").data("tier_off"))*100;    
+            }
+          }          
+          console.log(first_tier_off, second_tier_off, third_tier_off);
           
           if ( t.items_subtotal_price > 0 && t.items_subtotal_price < 160000 ){
           	var current_total_percentage_value = t.items_subtotal_price / 100;
@@ -2663,8 +2679,9 @@ var CartUpsell = /*#__PURE__*/function () {
           else {
             $('.gift-left').html(formatMoney(15000, e.moneyFormat));
           }
+          console.log(t.total_price);
                     
-          if ( t.original_total_price < first_tier_value ){
+          if ( t.total_price < first_tier_value ){
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2674,12 +2691,12 @@ var CartUpsell = /*#__PURE__*/function () {
             */
                         
             $(".cart-announcement-wrapper").removeClass("hidden");
-            $(".progress-bar-first").attr("value", t.original_total_price );
+            $(".progress-bar-first").attr("value", t.total_price );
             
 			//discount portion
             $(".discounted-amount").addClass("hidden");
             
-          }else if( t.original_total_price >= first_tier_value && t.original_total_price < second_tier_value ){   // first threshold
+          }else if( t.total_price >= first_tier_value && t.total_price < second_tier_value ){   // first threshold
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2687,20 +2704,34 @@ var CartUpsell = /*#__PURE__*/function () {
             $(".second-offer .spend-amount").html(formatMoney(second_tier_value, e.moneyFormat));
             $(".second-offer .save-amount").html(formatMoney(second_tier_off, e.moneyFormat));
             */
-            
+
             $(".cart-announcement-wrapper").removeClass("hidden");
             $(".progress-bar-first").attr("value", first_tier_value).addClass("completed");
-            $(".progress-bar-second").attr("value", ( t.original_total_price - first_tier_value));
+            $(".progress-bar-second").attr("value", ( t.total_price - first_tier_value));
             $(".tier-label.first").addClass("bold-text");
-            
+                
             //discount portion
             $(".discount-portion").removeClass("hidden");
             $(".discount-portion p").removeClass("hidden");
             $(".reached-amount").html(formatMoney(first_tier_value, e.moneyFormat));
-            $(".reached-saved-amount").html(formatMoney(first_tier_off, e.moneyFormat));
-            $(".discounted-amount-price").html(formatMoney(first_tier_off, e.moneyFormat));            
             
-          }else if( t.original_total_price >= second_tier_value && t.original_total_price < third_tier_value ){   // second threshold
+            
+            
+            if ( typeof tier_type !== 'undefined'){
+              if( tier_type == 'percentage' ){    
+                $(".reached-saved-amount").html( first_tier_off * 100 + "%");
+                if( t.discounted_price < t.total_price){
+                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.total_price, e.moneyFormat));  
+                }else{
+                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.total_price, e.moneyFormat));
+                }                
+              }else{                 
+                $(".reached-saved-amount").html(formatMoney(first_tier_off, e.moneyFormat));
+                $(".discounted-amount-price").html(formatMoney(first_tier_off, e.moneyFormat));
+              }
+            }
+            
+          }else if( t.total_price >= second_tier_value && t.total_price < third_tier_value ){   // second threshold
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2712,17 +2743,32 @@ var CartUpsell = /*#__PURE__*/function () {
             $(".cart-announcement-wrapper").removeClass("hidden");
             $(".progress-bar-first").attr("value", first_tier_value).addClass("completed");
             $(".progress-bar-second").attr("value", (second_tier_value - first_tier_value)).addClass("completed");
-            $(".progress-bar-third").attr("value", ( t.original_total_price - second_tier_value));
+            $(".progress-bar-third").attr("value", ( t.total_price - second_tier_value));
             $(".tier-label.second").addClass("bold-text");
             
             //discount portion
             $(".discount-portion").removeClass("hidden");
             $(".discount-portion p").removeClass("hidden");
             $(".reached-amount").html(formatMoney(second_tier_value, e.moneyFormat));
-            $(".reached-saved-amount").html(formatMoney(second_tier_off, e.moneyFormat));
-            $(".discounted-amount-price").html(formatMoney(second_tier_off, e.moneyFormat));            
+            // $(".reached-saved-amount").html(formatMoney(second_tier_off, e.moneyFormat));
+            // $(".discounted-amount-price").html(formatMoney(second_tier_off, e.moneyFormat));   
+
+            if ( typeof tier_type !== 'undefined'){
+              if( tier_type == 'percentage' ){    
+                $(".reached-saved-amount").html( second_tier_off * 100 + "%");
+                if( t.discounted_price < t.total_price){
+                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.total_price, e.moneyFormat));  
+                }else{
+                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.total_price, e.moneyFormat));
+                }                
+              }else{                 
+                $(".reached-saved-amount").html(formatMoney(second_tier_off, e.moneyFormat));
+                $(".discounted-amount-price").html(formatMoney(second_tier_off, e.moneyFormat));
+              }
+            }
           
-          }else if( t.original_total_price >= third_tier_value ){   // third threshold
+          }else if( t.total_price >= third_tier_value ){   // third threshold
+            console.log("original total price is ", t.total_price);
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-congrats").removeClass("hidden");            
@@ -2740,8 +2786,22 @@ var CartUpsell = /*#__PURE__*/function () {
             $(".discount-portion").removeClass("hidden");
             $(".discount-portion p").removeClass("hidden");
             $(".reached-amount").html(formatMoney(third_tier_value, e.moneyFormat));
-            $(".reached-saved-amount").html(formatMoney(third_tier_off, e.moneyFormat));
-            $(".discounted-amount-price").html(formatMoney(third_tier_off, e.moneyFormat));            
+            // $(".reached-saved-amount").html(formatMoney(third_tier_off, e.moneyFormat));
+            // $(".discounted-amount-price").html(formatMoney(third_tier_off, e.moneyFormat));            
+
+            if ( typeof tier_type !== 'undefined'){
+              if( tier_type == 'percentage' ){    
+                $(".reached-saved-amount").html( third_tier_off * 100 + "%");
+                if( t.discounted_price < t.total_price){
+                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.total_price, e.moneyFormat));  
+                }else{
+                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.total_price, e.moneyFormat));
+                }                
+              }else{                 
+                $(".reached-saved-amount").html(formatMoney(third_tier_off, e.moneyFormat));
+                $(".discounted-amount-price").html(formatMoney(third_tier_off, e.moneyFormat));
+              }
+            }
           
           }
           
