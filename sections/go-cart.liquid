@@ -123,13 +123,13 @@
           {% assign third_max_value = settings.third_tier_value | minus: settings.second_tier_value | append: '00'%}
           
           <progress data-index="4" max="{{ first_max_value }}" class="progress-bar progress-bar-first" value="70"></progress> 
-          <span class="tier-label first">{% if settings.tier_type == 'percentage' %}%{% else %}${% endif %}{{ settings.first_tier_off }} off</span>
+          <span class="tier-label first">{% if settings.tier_type == 'fixed' %}${% endif %}{{ settings.first_tier_off }}{% if settings.tier_type == 'percentage' %}%{% endif %} off</span>
           
           <progress data-index="3" max="{{ second_max_value }}" class="progress-bar progress-bar-second" value="0"></progress> 
-          <span class="tier-label last second ">{% if settings.tier_type == 'percentage' %}%{% else %}${% endif %}{{ settings.second_tier_off }} off</span>
+          <span class="tier-label last second ">{% if settings.tier_type == 'fixed' %}${% endif %}{{ settings.second_tier_off }}{% if settings.tier_type == 'percentage' %}%{% endif %} off</span>
           
           <progress data-index="2" max="{{ third_max_value }}" class="progress-bar progress-bar-third" value="0"></progress> 
-          <span class="tier-label last third ">{% if settings.tier_type == 'percentage' %}%{% else %}${% endif %}{{ settings.third_tier_off }} off</span>
+          <span class="tier-label last third ">{% if settings.tier_type == 'fixed' %}${% endif %}{{ settings.third_tier_off }}{% if settings.tier_type == 'percentage' %}%{% endif %} off</span>
           
 <!--           <progress data-index="1" max="10000" class="progress-bar progress-bar-fourth" value="0"></progress> 
           <span class="tier-label last fourth">$60 off</span> -->
