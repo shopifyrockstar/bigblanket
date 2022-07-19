@@ -2,7 +2,7 @@
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
 <!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
-     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.48&shop=bigblanket.myshopify.com"></script>
+     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.52&shop=bigblanket.myshopify.com"></script>
 <!-- End BlackCrow Script Tag -->
   {% render 'elevar-head' %}
   {% render 'elevar-head-listener' %}
@@ -213,30 +213,6 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 <!--   <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg" async></script> -->
   <script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
   <script type="lazyload2" data-src="{{ 'moment-timezone.js' | asset_url }}" ></script>
-
-  <!-- Nextdoor Pixel Code -->
-<script type='text/javascript'>
-  (function(win, doc, sdk_url){
-  if(win.ndp) return;
-  var tr=win.ndp=function(){
-  tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
-};
-  tr.queue = [];
-  var s='script';
-  var new_script_section=doc.createElement(s);
-  new_script_section.async=!0;
-  new_script_section.src=sdk_url;
-  var insert_pos=doc.getElementsByTagName(s)[0];
-  insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
-})(window, document, 'https://ads.nextdoor.com/public/pixel/ndp.js');
-  ndp('init','d33c7626-eb75-472b-a132-a146c7573dd6', {})
-  ndp('track','PAGE_VIEW');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://flask.nextdoor.com/pixel?pid=d33c7626-eb75-472b-a132-a146c7573dd6&ev=PAGE_VIEW&noscript=1"/>
-</noscript>
-<!-- End Nextdoor Pixel Code -->
   
 </head>
 
