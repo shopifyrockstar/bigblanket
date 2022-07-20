@@ -420,8 +420,8 @@ $((function() {
   $(".main-menu--left li:first-child a").hover((function() {
     $(this).siblings().removeClass("active");
     $(".header__mmenu").removeClass("active");
-    $(".header__mmenu_second").removeClass("active");
-    $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
+    // $(".header__mmenu_second").removeClass("active");
+    // $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
       $(this).addClass("active");
       $(".header__mmenu").addClass("active").stop(!0, !0).slideDown()
@@ -431,12 +431,12 @@ $((function() {
   $(".main-menu--right li:first-child a").hover((function() {
 //     $(this).siblings().removeClass("active");
 //     $(".header__mmenu").removeClass("active");
-    $(".header__mmenu_second").removeClass("active");
+    // $(".header__mmenu_second").removeClass("active");
 //     $(".header__mmenu").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
 //       console.log("windowWidth", "hehehe");
       $(this).addClass("active");      
-      $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
+      // $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
     }
   }), (function() {}));
   
@@ -451,16 +451,16 @@ $((function() {
     }
   }));
   
-  $(".header__mmenu_second").hover((function() {}), (function() {
-    if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
+  // $(".header__mmenu_second").hover((function() {}), (function() {
+  //   if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
       
-      setTimeout((function() {
-        $(".main-menu a").removeClass("active");
-        $(".main-menu--left li:last-child").removeClass("active");
-      }), 800);
-      $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
-    }
-  }));
+  //     setTimeout((function() {
+  //       $(".main-menu a").removeClass("active");
+  //       $(".main-menu--left li:last-child").removeClass("active");
+  //     }), 800);
+  //     $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
+  //   }
+  // }));
   
   $(".hamburger--js").on("click", (function(event) {
 	//if menu was already open
