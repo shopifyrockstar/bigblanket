@@ -1587,7 +1587,6 @@ body:not(.template-index).header-timer-enabled {
 /* .header__mmenu_second .header__mmenu-box_second .header-prod{
   width: calc(33.33% - 10px);
 } */
-
 .mobile-secondary-menu-title{
   width: 100%;
   text-align: center;
@@ -1602,6 +1601,9 @@ body:not(.template-index).header-timer-enabled {
 @media (max-width:768px){
   .header__content .mobile-show{
     display:block;
+  }
+  .header__content .mobile-show.mobile-secondary-menu-title{
+    display:none;
   }
 }
 
