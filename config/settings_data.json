@@ -3,8 +3,10 @@
     "preorder_color": "#232930",
     "preorder_button_text": "Pre-Order",
     "toggle_widesale": false,
-    "way_off": "fixed_off",
-    "off_amount": "40",
+    "way_off": "percentage_off",
+    "off_amount": "20",
+    "toggle_singlesale": false,
+    "product_info_discount": "the-big-blanket | 20\nst-pattys-flash-sale | 10",
     "color_accent": "#c4cdd5",
     "color_body_text": "#161d25",
     "color_main_bg": "#fff",
@@ -28,11 +30,13 @@
     "social_vimeo_link": "",
     "cart_notes_enable": false,
     "show_progressbar": false,
-    "first_tier_copy": "<p>Spend $100.00 save 10%<\/p>",
-    "first_tier_off": "10",
-    "second_tier_off": "15",
+    "tier_type": "fixed",
+    "first_tier_copy": "<p>Spend $100.00 save $25<\/p>",
+    "first_tier_off": "25",
+    "second_tier_off": "60",
     "third_tier_value": "300",
-    "third_tier_off": "20",
+    "third_tier_copy": "<p>Spend $300 save $100.00<\/p>",
+    "third_tier_off": "100",
     "show_giftmessage": true,
     "gift_message_content": "Bonus!",
     "show_sale_price": true,
@@ -59,6 +63,7 @@
     "checkout_accent_color": "#000000",
     "checkout_button_color": "#f7c945",
     "checkout_error_color": "#e32c2b",
+    "product_info": "the-big-blanket",
     "sections": {
       "header": {
         "type": "header",
@@ -117,14 +122,14 @@
         ],
         "settings": {
           "announcement_bar_enabled": true,
-          "announcement_bar_text_1": "SUMMER SALE EARLY ACCESS",
-          "announcement_bar_text_2": "10% off $100〡15% off $200〡20% off $300+",
+          "announcement_bar_text_1": "BACK TO BED SALE",
+          "announcement_bar_text_2": "GET 20% OFF SITEWIDE",
           "announcement_bar_link": "shopify:\/\/products\/the-big-blanket",
-          "announcement_bar_text_1_mobile": "SUMMER SALE EARLY ACCESS",
-          "announcement_bar_text_2_mobile": "10% off $100〡15% off $200〡20% off $300+",
+          "announcement_bar_text_1_mobile": "BACK TO BED SALE",
+          "announcement_bar_text_2_mobile": "GET 20% OFF SITEWIDE",
           "announcement_bar_link_mobile": "shopify:\/\/products\/the-big-blanket",
-          "announcement_bar_countdown_enabled": true,
-          "announcement_bar_countdown": "2022-07-20 01:59:59",
+          "announcement_bar_countdown_enabled": false,
+          "announcement_bar_countdown": "2022-08-08 01:59:59",
           "product_1": "original-stretch-last-call",
           "product_2": "premier-plush-blanket-sale",
           "product_3": "xl-weighted-blanket",
@@ -248,7 +253,7 @@
           "1590688217163"
         ],
         "settings": {
-          "grt_image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "grt_image": "shopify:\/\/shop_images\/BigBlanketCo_Big-Guarantee-Promise_copy.jpg",
           "video_link": "",
           "grt_title": "The Big Guarantee",
           "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
@@ -472,8 +477,8 @@
           "show_quantity_selector": true,
           "show_variant_labels": true,
           "enable_payment_button": false,
-          "gar_img": "shopify:\/\/shop_images\/The-Big-Guarantee.png",
-          "column_richtext": "<p><strong>The Big Guarantee<\/strong><\/p><p> We&#x27;re not satisfied unless you&#x27;re totally happy and ridiculously cozy in your Big Blanket.<\/p>"
+          "gar_img": "shopify:\/\/shop_images\/BigBlanketCo_Big-Guarantee-Badge-100x100.png",
+          "column_richtext": "<p><strong>The Big Guarantee<\/strong><\/p><p> We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket.<\/p>"
         }
       },
       "bbd-inpress": {
@@ -741,7 +746,7 @@
           "1590768707056"
         ],
         "settings": {
-          "grt_image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "grt_image": "shopify:\/\/shop_images\/BigBlanketCo_Big-Guarantee-Promise_copy.jpg",
           "video_link": "",
           "grt_title": "The Big Guarantee",
           "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
@@ -1009,7 +1014,7 @@
           "606cb41d-0cd1-4e24-b7b1-cd97477a507f"
         ],
         "settings": {
-          "grt_image": "shopify:\/\/shop_images\/Big_Guaranteee.jpg",
+          "grt_image": "shopify:\/\/shop_images\/BigBlanketCo_Big-Guarantee-Promise_copy.jpg",
           "video_link": "",
           "grt_title": "The Big Guarantee",
           "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
@@ -1081,7 +1086,7 @@
           "text_content": "67488",
           "text_under_content": "Text ‘BIGQUESTION’ <br>for help",
           "call_title": "Call",
-          "call_content": "417-501-3896",
+          "call_content": "417-217-7057",
           "call_under_content": "Anytime between <br>9am - 4pm CT",
           "write_title": "Write",
           "write_content": "<p>3121 East Elm Street<br>Springfield, MO 65802<\/p>",
