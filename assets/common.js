@@ -25,10 +25,9 @@ $((function() {
     if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
       //if single product sale is enabled
       if ($("body").hasClass("single_sale-enabled")) {
-        let current_url = (window.location.href).split("/").pop();
-        console.log(current_url); 
+        let current_url = (window.location.href).split("/").pop();        
         for (let i = 0; i < items.length; i++) {
-          if ( current_url.indexOf(items[i].handle) !== -1 ){
+          if ( current_url.indexOf(items[i].handle) !== -1 ){ //if current product is listed
             //if percentage off is selected
             if ( $(".but-price").hasClass("percentage-off") ){
               console.log(parseInt(items[i].discounts), sale_variant_compare_at_price); 
@@ -39,6 +38,8 @@ $((function() {
               var sale_price = (sale_variant_compare_at_price - parseInt(items[i].discounts)).toFixed(2);
               $(".but-price").text(currency_format + sale_price);
             }
+          }else{ //if current product isn't listed
+            $(".but-price").text(variatnPrice);
           }
         }
       }else{ ////if single product sale is not enabled
@@ -451,7 +452,7 @@ $((function() {
 //     $(".header__mmenu").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
 //       console.log("windowWidth", "hehehe");
-      $(this).addClass("active");      
+      // $(this).addClass("active");      
       // $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
     }
   }), (function() {}));

@@ -2,7 +2,7 @@
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
 <!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
-     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.55&shop=bigblanket.myshopify.com"></script>
+     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.57&shop=bigblanket.myshopify.com"></script>
 <!-- End BlackCrow Script Tag -->
   {% render 'elevar-head' %}
   {% render 'elevar-head-listener' %}
@@ -299,7 +299,15 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 </script>
   
   {% render 'optimize-js' %}
- 
+
+{% if product %}
+<script type="text/javascript">
+var _learnq = _learnq || [];
+	document.getElementById("AddToCart").addEventListener('click',function (){
+ 		_learnq.push(['track', 'Added to Cart', item]);
+	});</script>
+{% endif %}  
+  
 </body>
 </html>
 <script type="text/javascript" src="https://pop6serve.com/popsixle.php?t=0b5136a235d24330e4f0d2fa2562fbf548d1fc1d7f96fc177337a72cc7d3bd7d"></script>
