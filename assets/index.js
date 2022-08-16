@@ -2681,7 +2681,7 @@ var CartUpsell = /*#__PURE__*/function () {
           }
           console.log(t.total_price);
                     
-          if ( t.total_price < first_tier_value ){
+          if ( t.original_total_price < first_tier_value ){
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2691,12 +2691,12 @@ var CartUpsell = /*#__PURE__*/function () {
             */
                         
             $(".cart-announcement-wrapper").removeClass("hidden");
-            $(".progress-bar-first").attr("value", t.total_price );
+            $(".progress-bar-first").attr("value", t.original_total_price );
             
 			//discount portion
             $(".discounted-amount").addClass("hidden");
             
-          }else if( t.total_price >= first_tier_value && t.total_price < second_tier_value ){   // first threshold
+          }else if( t.original_total_price >= first_tier_value && t.original_total_price < second_tier_value ){   // first threshold
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2707,7 +2707,7 @@ var CartUpsell = /*#__PURE__*/function () {
 
             $(".cart-announcement-wrapper").removeClass("hidden");
             $(".progress-bar-first").attr("value", first_tier_value).addClass("completed");
-            $(".progress-bar-second").attr("value", ( t.total_price - first_tier_value));
+            $(".progress-bar-second").attr("value", ( t.original_total_price - first_tier_value));
             $(".tier-label.first").addClass("bold-text");
                 
             //discount portion
@@ -2721,9 +2721,9 @@ var CartUpsell = /*#__PURE__*/function () {
               if( tier_type == 'percentage' ){    
                 $(".reached-saved-amount").html( first_tier_off * 100 + "%");
                 if( t.discounted_price < t.total_price){
-                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.total_price, e.moneyFormat));  
+                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.original_total_price, e.moneyFormat));  
                 }else{
-                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.total_price, e.moneyFormat));
+                  $(".discounted-amount-price").html(formatMoney(first_tier_off*t.original_total_price, e.moneyFormat));
                 }                
               }else{                 
                 $(".reached-saved-amount").html(formatMoney(first_tier_off, e.moneyFormat));
@@ -2731,7 +2731,7 @@ var CartUpsell = /*#__PURE__*/function () {
               }
             }
             
-          }else if( t.total_price >= second_tier_value && t.total_price < third_tier_value ){   // second threshold
+          }else if( t.original_total_price >= second_tier_value && t.original_total_price < third_tier_value ){   // second threshold
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-copy").removeClass("hidden");            
@@ -2743,7 +2743,7 @@ var CartUpsell = /*#__PURE__*/function () {
             $(".cart-announcement-wrapper").removeClass("hidden");
             $(".progress-bar-first").attr("value", first_tier_value).addClass("completed");
             $(".progress-bar-second").attr("value", (second_tier_value - first_tier_value)).addClass("completed");
-            $(".progress-bar-third").attr("value", ( t.total_price - second_tier_value));
+            $(".progress-bar-third").attr("value", ( t.original_total_price - second_tier_value));
             $(".tier-label.second").addClass("bold-text");
             
             //discount portion
@@ -2756,10 +2756,10 @@ var CartUpsell = /*#__PURE__*/function () {
             if ( typeof tier_type !== 'undefined'){
               if( tier_type == 'percentage' ){    
                 $(".reached-saved-amount").html( second_tier_off * 100 + "%");
-                if( t.discounted_price < t.total_price){
-                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.total_price, e.moneyFormat));  
+                if( t.discounted_price < t.original_total_price){
+                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.original_total_price, e.moneyFormat));  
                 }else{
-                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.total_price, e.moneyFormat));
+                  $(".discounted-amount-price").html(formatMoney(second_tier_off*t.original_total_price, e.moneyFormat));
                 }                
               }else{                 
                 $(".reached-saved-amount").html(formatMoney(second_tier_off, e.moneyFormat));
@@ -2767,8 +2767,8 @@ var CartUpsell = /*#__PURE__*/function () {
               }
             }
           
-          }else if( t.total_price >= third_tier_value ){   // third threshold
-            console.log("original total price is ", t.total_price);
+          }else if( t.original_total_price >= third_tier_value ){   // third threshold
+            console.log("original total price is ", t.original_total_price);
             /*
             $(".top-wrapper").removeClass("hidden");
             $(".top-wrapper-congrats").removeClass("hidden");            
@@ -2792,10 +2792,10 @@ var CartUpsell = /*#__PURE__*/function () {
             if ( typeof tier_type !== 'undefined'){
               if( tier_type == 'percentage' ){    
                 $(".reached-saved-amount").html( third_tier_off * 100 + "%");
-                if( t.discounted_price < t.total_price){
-                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.total_price, e.moneyFormat));  
+                if( t.discounted_price < t.original_total_price){
+                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.original_total_price, e.moneyFormat));  
                 }else{
-                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.total_price, e.moneyFormat));
+                  $(".discounted-amount-price").html(formatMoney(third_tier_off*t.original_total_price, e.moneyFormat));
                 }                
               }else{                 
                 $(".reached-saved-amount").html(formatMoney(third_tier_off, e.moneyFormat));

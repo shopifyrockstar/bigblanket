@@ -24,14 +24,22 @@ $((function() {
 	//if sitewide sale or single sale is enabled
     if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
       //if single product sale is enabled
-      if ($("body").hasClass("single_sale-enabled")) {        
-        //if percentage off is selected
-        if ( $(".but-price").hasClass("percentage-off") ){
-          var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($(".single-sale-value").data("single_off_amount")) / 100)).toFixed(2);        
-          $(".but-price").text(currency_format + sale_price);
-        }else{//if fixed off is selected
-          var sale_price = (sale_variant_compare_at_price - parseInt($(".single-sale-value").data("single_off_amount"))).toFixed(2);
-          $(".but-price").text(currency_format + sale_price);
+      if ($("body").hasClass("single_sale-enabled")) {
+        let current_url = (window.location.href).split("/").pop();
+        console.log(current_url); 
+        for (let i = 0; i < items.length; i++) {
+          if ( current_url.indexOf(items[i].handle) !== -1 ){
+            //if percentage off is selected
+            if ( $(".but-price").hasClass("percentage-off") ){
+              console.log(parseInt(items[i].discounts), sale_variant_compare_at_price); 
+              var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt(items[i].discounts) / 100)).toFixed(2);        
+              console.log(sale_price); 
+              $(".but-price").text(currency_format + sale_price);
+            }else{//if fixed off is selected
+              var sale_price = (sale_variant_compare_at_price - parseInt(items[i].discounts)).toFixed(2);
+              $(".but-price").text(currency_format + sale_price);
+            }
+          }
         }
       }else{ ////if single product sale is not enabled
         //if percentage off is selected
@@ -44,6 +52,7 @@ $((function() {
         }
       }      
     }else{
+      console.log("nonono");
       $(".but-price").text(variatnPrice);
     }
     //         console.log(variant_compare_at_price);
@@ -58,31 +67,38 @@ $((function() {
         let variant_compare_at_price = $(".color-swatch.active").data("variant_compare_at_price");    
         let sale_variant_compare_at_price = $(".color-swatch.active").data("sale_variant_compare_at_price");    
 
-        //if sitewide sale is enabled
-        if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
-          //if single product sale is enabled
-          if ($("body").hasClass("single_sale-enabled")) {        
-            //if percentage off is selected
-            if ( $(".but-price").hasClass("percentage-off") ){
-              var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($(".single-sale-value").data("single_off_amount")) / 100)).toFixed(2);        
-              $(".but-price").text(currency_format + sale_price);
-            }else{//if fixed off is selected
-              var sale_price = (sale_variant_compare_at_price - parseInt($(".single-sale-value").data("single_off_amount"))).toFixed(2);
-              $(".but-price").text(currency_format + sale_price);
+       //if sitewide sale or single sale is enabled
+      if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
+        //if single product sale is enabled
+        if ($("body").hasClass("single_sale-enabled")) {
+          let current_url = (window.location.href).split("/").pop();
+          for (let i = 0; i < items.length; i++) {
+            if ( current_url.indexOf(items[i].handle) !== -1 ){
+              //if percentage off is selected
+              if ( $(".but-price").hasClass("percentage-off") ){
+                console.log(parseInt(items[i].discounts), sale_variant_compare_at_price); 
+                var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt(items[i].discounts) / 100)).toFixed(2);        
+                console.log(sale_price); 
+                $(".but-price").text(currency_format + sale_price);
+              }else{//if fixed off is selected
+                var sale_price = (sale_variant_compare_at_price - parseInt(items[i].discounts)).toFixed(2);
+                $(".but-price").text(currency_format + sale_price);
+              }
             }
-          }else{ ////if single product sale is not enabled
-            //if percentage off is selected
-            if ( $(".but-price").hasClass("percentage-off") ){
-              var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);        
-              $(".but-price").text(currency_format + sale_price);
-            }else{//if fixed off is selected
-              var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
-              $(".but-price").text(currency_format + sale_price);
-            }
-          }      
-        }else{
-          $(".but-price").text(variatnPrice);
-        }
+          }
+        }else{ ////if single product sale is not enabled
+          //if percentage off is selected
+          if ( $(".but-price").hasClass("percentage-off") ){
+            var sale_price = (sale_variant_compare_at_price - (sale_variant_compare_at_price * parseInt($("#AddToCart").data("off_amount")) / 100)).toFixed(2);        
+            $(".but-price").text(currency_format + sale_price);
+          }else{//if fixed off is selected
+            var sale_price = (sale_variant_compare_at_price - parseInt($("#AddToCart").data("off_amount"))).toFixed(2);
+            $(".but-price").text(currency_format + sale_price);
+          }
+        }      
+      }else{
+        $(".but-price").text(variatnPrice);
+      }
       }()
     }))
   }
@@ -420,8 +436,8 @@ $((function() {
   $(".main-menu--left li:first-child a").hover((function() {
     $(this).siblings().removeClass("active");
     $(".header__mmenu").removeClass("active");
-    $(".header__mmenu_second").removeClass("active");
-    $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
+    // $(".header__mmenu_second").removeClass("active");
+    // $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
       $(this).addClass("active");
       $(".header__mmenu").addClass("active").stop(!0, !0).slideDown()
@@ -431,12 +447,12 @@ $((function() {
   $(".main-menu--right li:first-child a").hover((function() {
 //     $(this).siblings().removeClass("active");
 //     $(".header__mmenu").removeClass("active");
-    $(".header__mmenu_second").removeClass("active");
+    // $(".header__mmenu_second").removeClass("active");
 //     $(".header__mmenu").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
 //       console.log("windowWidth", "hehehe");
-      $(this).addClass("active");      
-      $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
+      // $(this).addClass("active");      
+      // $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
     }
   }), (function() {}));
   
@@ -451,16 +467,16 @@ $((function() {
     }
   }));
   
-  $(".header__mmenu_second").hover((function() {}), (function() {
-    if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
+  // $(".header__mmenu_second").hover((function() {}), (function() {
+  //   if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
       
-      setTimeout((function() {
-        $(".main-menu a").removeClass("active");
-        $(".main-menu--left li:last-child").removeClass("active");
-      }), 800);
-      $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
-    }
-  }));
+  //     setTimeout((function() {
+  //       $(".main-menu a").removeClass("active");
+  //       $(".main-menu--left li:last-child").removeClass("active");
+  //     }), 800);
+  //     $(".header__mmenu_second").removeClass("active").stop(!0).slideUp();
+  //   }
+  // }));
   
   $(".hamburger--js").on("click", (function(event) {
 	//if menu was already open

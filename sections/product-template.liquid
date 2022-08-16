@@ -1,3 +1,17 @@
+{% if settings.toggle_singlesale == true %}
+{% assign textarea = settings.product_info_discount | newline_to_br | split: '<br />' %}
+  
+{% for text_row in textarea %}
+  {% assign text_row_array = text_row | split: '|' %}
+  <script>
+    var item = {};
+    item.handle = "{{text_row_array[0] | strip }}";
+    item.discounts = "{{text_row_array[1] | strip }}";
+    items.push(item);
+  </script>
+{% endfor %}  
+{% endif %}
+  
 <div class="product-template__container page-width"
 id="ProductSection-{{ section.id }}"
 data-section-id="{{ section.id }}"
@@ -519,9 +533,9 @@ data-enable-history-state="true"
         <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
         {% endif %}        
         
-        {% if settings.toggle_singlesale == true and settings.product_info == product.handle %}
+        {% if settings.toggle_singlesale == true %}
           <div class="single-sale-value hidden" data-single_off_amount="{{ settings.single_off_amount }}"></div>
-          - <div class="but-price 
+          - <div class="but-price
             {% if settings.single_way_off == 'percentage_off' %}percentage-off{% else %}fixed-off{% endif %}">        
             </div>
           {% if preOrder or product.selected_or_first_available_variant.compare_at_price %}

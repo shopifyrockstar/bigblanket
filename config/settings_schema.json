@@ -73,9 +73,9 @@
         "default": false
       },
       {
-        "type": "product",
-        "id": "product_info",
-        "label": "Choose a product"
+        "type": "textarea",
+        "id": "product_info_discount",
+        "label": "Format: {{ Product handle }} | {{ Discount amount }} "
       },
       {
         "type": "select",
@@ -92,11 +92,6 @@
             "label": "Fixed off"
           }
         ]
-      },
-      {
-        "type": "text",
-        "id": "single_off_amount",
-        "label": "Amount"
       }
     ]
   },
