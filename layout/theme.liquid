@@ -299,7 +299,15 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 </script>
   
   {% render 'optimize-js' %}
- 
+
+{% if product %}
+<script type="text/javascript">
+var _learnq = _learnq || [];
+	document.getElementById("AddToCart").addEventListener('click',function (){
+ 		_learnq.push(['track', 'Added to Cart', item]);
+	});</script>
+{% endif %}  
+  
 </body>
 </html>
 <script type="text/javascript" src="https://pop6serve.com/popsixle.php?t=0b5136a235d24330e4f0d2fa2562fbf548d1fc1d7f96fc177337a72cc7d3bd7d"></script>

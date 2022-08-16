@@ -451,7 +451,7 @@ $((function() {
 //     $(".header__mmenu").removeClass("active").stop(!0).slideUp();
     if ((windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) > 1024) {
 //       console.log("windowWidth", "hehehe");
-      $(this).addClass("active");      
+      // $(this).addClass("active");      
       // $(".header__mmenu_second").addClass("active").stop(!0, !0).slideDown()
     }
   }), (function() {}));

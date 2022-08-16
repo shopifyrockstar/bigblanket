@@ -5,8 +5,8 @@
     "toggle_widesale": false,
     "way_off": "percentage_off",
     "off_amount": "20",
-    "toggle_singlesale": false,
-    "product_info_discount": "the-big-blanket | 20\nst-pattys-flash-sale | 10",
+    "toggle_singlesale": true,
+    "product_info_discount": "the-big-blanket | 20\nclassic-knitted-blanket | 20\npremier-plush | 20\nwoven-big-blanket | 20",
     "color_accent": "#c4cdd5",
     "color_body_text": "#161d25",
     "color_main_bg": "#fff",
@@ -1174,7 +1174,15 @@
       "1585922987446",
       "1586182605577",
       "1585923058476"
-    ]
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
