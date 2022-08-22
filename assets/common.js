@@ -25,9 +25,11 @@ $((function() {
     if( $("body").hasClass("sitewide_sale-enabled") || $("body").hasClass("single_sale-enabled") ){
       //if single product sale is enabled
       if ($("body").hasClass("single_sale-enabled")) {
-        let current_url = (window.location.href).split("/").pop();        
+        let current_url = (window.location.href).split("/").pop(); 
+        let is_belong = false;       
         for (let i = 0; i < items.length; i++) {
           if ( current_url.indexOf(items[i].handle) !== -1 ){ //if current product is listed
+            is_belong = true;       
             //if percentage off is selected
             if ( $(".but-price").hasClass("percentage-off") ){
               console.log(parseInt(items[i].discounts), sale_variant_compare_at_price); 
@@ -38,9 +40,10 @@ $((function() {
               var sale_price = (sale_variant_compare_at_price - parseInt(items[i].discounts)).toFixed(2);
               $(".but-price").text(currency_format + sale_price);
             }
-          }else{ //if current product isn't listed
-            $(".but-price").text(variatnPrice);
           }
+        }
+        if ( is_belong == false ){
+          $(".but-price").text(variatnPrice);
         }
       }else{ ////if single product sale is not enabled
         //if percentage off is selected
@@ -53,7 +56,6 @@ $((function() {
         }
       }      
     }else{
-      console.log("nonono");
       $(".but-price").text(variatnPrice);
     }
     //         console.log(variant_compare_at_price);
