@@ -319,6 +319,7 @@ $((function() {
     //clicking function of color swatch
     $(document).on("click", ".color-swatch.group-Solid", (function(event) {
       var cTitle = $(this).prop("title");
+      console.log(cTitle);
       $(".breakdown-box span").remove();
       $(".breakdown-box.group-Solid > div").append("<span> " + cTitle + "</span>");      
       //getting some values for DY API SPA event
@@ -368,7 +369,7 @@ $((function() {
     
     $(".colors-box span").each((function(index, el) {
       let curIndex = $(el).attr("id");
-      curIndex.includes("Pattern") ? $(el).addClass("group-Pattern") : curIndex.includes("Limited-Edition") ? $(el).addClass("group-Limited-Edition") : curIndex.includes("Pattern") || curIndex.includes("Limited-Edition") || $(el).addClass("group-Solid")
+      curIndex.includes("Pattern") ? $(el).addClass("group-Pattern") : curIndex.includes("Limited-Edition") ? $(el).addClass("group-Limited-Edition") : curIndex.includes("Pattern") || curIndex.includes("Limited-Edition") || $(el).addClass("group-Solid")      
     }));
     
     $(".group-Solid").addClass("visible")

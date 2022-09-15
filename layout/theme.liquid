@@ -1,13 +1,14 @@
 <!doctype html>
 <html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
 <head>
-<!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
-     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.57&shop=bigblanket.myshopify.com"></script>
-<!-- End BlackCrow Script Tag -->
   {% render 'elevar-head' %}
+<!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
+     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.62&shop=bigblanket.myshopify.com"></script>
+<!-- End BlackCrow Script Tag -->
   {% render 'elevar-head-listener' %}
   
-    
+<meta name="google-site-verification" content="14mR7X1E9jekxidGefABuVCHiS4tidfTFy7ecpI98oE" />
+  
   <!-- Redirects --> 
   {% if product.title contains "Smoke" %}
   <script>
@@ -26,6 +27,13 @@
   window.location.replace("/products/woven-big-blanket"); // add your redirection URL here
   </script>
   {% endif %}
+
+   {% if product.title contains "Big Bedding" %}
+  <script>
+  window.location.replace("/collections/bedding"); // add your redirection URL here
+  </script>
+  {% endif %} 
+  
   <!-- End Redirects -->  
 
 <!-- <meta http-equiv="Content-Security-Policy" content="img-src * 'self' data:; default-src * 'self' gap: ; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; "> -->
@@ -221,9 +229,9 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% if settings.toggle_widesale == true %}sitewide_sale-enabled{% endif %} {% if settings.toggle_singlesale == true and template contains 'product' %} single_sale-enabled{% endif %}">
+  {% render 'elevar-body-end' %}
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
 
-  {% render 'elevar-body-end' %}
 
   {% section 'header' %}
 

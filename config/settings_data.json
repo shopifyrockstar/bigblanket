@@ -40,8 +40,8 @@
     "show_giftmessage": true,
     "gift_message_content": "Bonus!",
     "show_sale_price": true,
-    "show_countdown": true,
-    "set_time": "14",
+    "show_countdown": false,
+    "set_time": "15",
     "free_order_heading": "Ships today when you order in the next",
     "free_order_ending": "",
     "next_order_heading": "Ships tomorrow when you order in the next",
@@ -95,7 +95,7 @@
           "312c60d0-327d-44f7-a185-3f3b92a4ee9d": {
             "type": "image",
             "settings": {
-              "product-id": "xl-weighted-blanket"
+              "product-id": "big-bedding"
             }
           },
           "1587546738959": {
@@ -127,9 +127,9 @@
           "announcement_bar_link": "shopify:\/\/products\/the-big-blanket",
           "announcement_bar_text_1_mobile": "20% OFF + FREE USA SHIPPING",
           "announcement_bar_text_2_mobile": "",
-          "announcement_bar_link_mobile": "shopify:\/\/products\/the-big-blanket",
-          "announcement_bar_countdown_enabled": true,
-          "announcement_bar_countdown": "2022-08-22 01:59:59",
+          "announcement_bar_link_mobile": "shopify:\/\/products\/premier-plush",
+          "announcement_bar_countdown_enabled": false,
+          "announcement_bar_countdown": "2022-09-12 01:59:59",
           "product_1": "original-stretch-last-call",
           "product_2": "premier-plush-blanket-sale",
           "product_3": "xl-weighted-blanket",
@@ -791,9 +791,9 @@
           "647d2ac2-b851-48db-9d46-980e29857f14"
         ],
         "settings": {
-          "video_link": "https:\/\/player.vimeo.com\/external\/428264258.hd.mp4?s=b83837ed11653240f1d9b1a7d5d064e77fd03ea2&profile_id=174",
-          "grt_title": "XL Weighted™",
-          "grt_subtitle": "Core — Hand wash or spot clean. <br> <br>Duvet — Machine wash cold with like colors on a gentle cycle. Tumble dry low, remove promptly. Non-chlorine bleach when needed. Warm iron."
+          "video_link": "https:\/\/player.vimeo.com\/progressive_redirect\/playback\/698314061\/rendition\/720p\/file.mp4?loc=external&signature=015ac62d8f18b96e1d0dd4f2816be069f84748f2d57235314dc1054078dcb501",
+          "grt_title": "Classic Knitted™",
+          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Stay cozy."
         }
       },
       "care-section-left": {
@@ -1032,9 +1032,10 @@
       "care-section-left-3": {
         "type": "care-section-left-3",
         "settings": {
-          "video_link": "https:\/\/player.vimeo.com\/progressive_redirect\/playback\/698314061\/rendition\/720p\/file.mp4?loc=external&signature=015ac62d8f18b96e1d0dd4f2816be069f84748f2d57235314dc1054078dcb501",
-          "grt_title": "Classic Knitted™",
-          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Stay cozy."
+          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-Sheets-PLP-ProductCard-370x370-1.jpg",
+          "video_link": "",
+          "grt_title": "Sheets",
+          "grt_subtitle": "Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy."
         }
       },
       "contact-hero": {
@@ -1163,6 +1164,90 @@
           "text_content_3": "request",
           "text_link_3": "https:\/\/bigblanket.com\/pages\/bulk-orders"
         }
+      },
+      "bbd-prod-section-top-2": {
+        "type": "bbd-prod-section-top-2",
+        "settings": {
+          "bg_img": "shopify:\/\/shop_images\/BigBlanket-BigBedding-PLP-Header-1366x540-1.jpg",
+          "bg_img_mg": "shopify:\/\/shop_images\/BigBlanket-BigBedding-PLP-Header-375x375-1.jpg",
+          "h1_text": "Bedding<br>just got <i>bigger.<\/i>",
+          "body_text": "SELECT THE FULL SET TO SAVE 10%",
+          "text_position": "center",
+          "text_color": "#ffffff"
+        }
+      },
+      "collection-template-2": {
+        "type": "collection-template-2",
+        "settings": {
+          "product_vendor_enable": false
+        }
+      },
+      "bbd-guarantee-2": {
+        "type": "bbd-guarantee-2",
+        "blocks": {
+          "db1b52fd-2320-4a92-b7c8-e77715bee523": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket-BigBedding-Sheets-Icon-25Larger.png",
+              "icon_svg": "",
+              "gtr_optext": "Biggest, Best Blankets You Can Buy"
+            }
+          },
+          "866778ea-60e3-40ed-8311-c0165019b9f7": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_100Night.png",
+              "icon_svg": "",
+              "gtr_optext": "100 Night Guarantee"
+            }
+          },
+          "35bfbfea-6fdc-4ca9-972a-9997dc7de0cf": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_HereForYou-1.png",
+              "icon_svg": "",
+              "gtr_optext": "We're Always Here for You"
+            }
+          },
+          "fd1a03a0-4853-441a-a0bf-864ca39d5d33": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/Group_93.png",
+              "icon_svg": "",
+              "gtr_optext": "Free, Simple Returns + Exchanges"
+            }
+          },
+          "2d67a5dc-d489-45b9-a38d-8fa186f39d4a": {
+            "type": "select",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/BigBlanket_Icons_FreeUSShipping-2.png",
+              "icon_svg": "",
+              "gtr_optext": "Free Shipping on All US Orders"
+            }
+          }
+        },
+        "block_order": [
+          "db1b52fd-2320-4a92-b7c8-e77715bee523",
+          "866778ea-60e3-40ed-8311-c0165019b9f7",
+          "35bfbfea-6fdc-4ca9-972a-9997dc7de0cf",
+          "fd1a03a0-4853-441a-a0bf-864ca39d5d33",
+          "2d67a5dc-d489-45b9-a38d-8fa186f39d4a"
+        ],
+        "settings": {
+          "grt_image": "shopify:\/\/shop_images\/BigBlanketCo_Big-Guarantee-Promise_copy.jpg",
+          "video_link": "",
+          "grt_title": "The Big Guarantee",
+          "grt_subtitle": "We're not satisfied unless you're totally happy and ridiculously cozy in your Big Blanket."
+        }
+      },
+      "care-section-right-3": {
+        "type": "care-section-right-3",
+        "settings": {
+          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-DuvetCover-PLP-ProductCard-370x370-3.jpg",
+          "video_link": "",
+          "grt_title": "Duvet",
+          "grt_subtitle": "Cover — Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy. <br> <br>Insert — Machine wash cold. Gentle cycle. Do not bleach. Tumble dry low. Do not iron."
+        }
       }
     },
     "content_for_index": [
@@ -1178,6 +1263,12 @@
     "blocks": {
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "5439026248262864547": {
+        "type": "shopify:\/\/apps\/preorder-globo-back-in-stock\/blocks\/app-embed\/e547a0ad-8212-4bcc-b02f-761faa9b8af2",
         "disabled": false,
         "settings": {
         }

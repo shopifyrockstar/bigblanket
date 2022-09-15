@@ -16,7 +16,7 @@
     script.onerror = () => {
       console.error("Elevar Data Layer: JS script failed to load");
     };
-    script.onload = () => {
+    script.onload = async () => {
       if (!window.ElevarGtmSuite) {
         console.error("Elevar Data Layer: `ElevarGtmSuite` is not defined");
         return;
@@ -52,8 +52,7 @@
 ;
 
       if (config.event_config.save_order_notes) {
-        window.ElevarGtmSuite.handlers.cookieReconcile(cartData);
-        window.ElevarGtmSuite.handlers.paramReconcile(cartData);
+        await window.ElevarGtmSuite.handlers.cartAttributesReconcile(cartData, config.consent_enabled);
       }
 
       if (config.event_config.user) {
@@ -88,11 +87,11 @@
       }
 
       if (config.event_config.product_add_to_cart_ajax) {
-        window.ElevarGtmSuite.handlers.productAddToCartAjax(config.event_config.save_order_notes);
+        window.ElevarGtmSuite.handlers.productAddToCartAjax(config.event_config.save_order_notes, config.consent_enabled);
       }
 
       if (config.event_config.cart_reconcile) {
-        window.ElevarGtmSuite.handlers.cartReconcile(cartData);
+        window.ElevarGtmSuite.handlers.cartItemsReconcile(cartData);
       }
 
       {%- if request.page_type == "cart" -%}
@@ -111,7 +110,7 @@
     items: [
       {%- assign itemIndex = 1 -%}
       {%- for product in collection.products -%}
-        {%- for variant in product.variants -%}
+        {%- for variant in product.variants limit:1 -%}
           {
             {%- if variant.sku != blank -%}
               id: {{- variant.sku | json -}},
@@ -216,7 +215,7 @@
           window.ElevarGtmSuite.handlers.productView(product);
         }
         if (config.event_config.product_add_to_cart) {
-          window.ElevarGtmSuite.handlers.productAddToCartForm(product, config.event_config.save_order_notes);
+          window.ElevarGtmSuite.handlers.productAddToCartForm(product, config.event_config.save_order_notes, config.consent_enabled);
         }
       {%- endif -%}
     };

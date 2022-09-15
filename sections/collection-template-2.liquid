@@ -111,11 +111,11 @@
             {% if variant.available %}
               <div class="collection-block__item collection-block__item--variant" data-variantid="{{variant.id}}">
                 <div class="collection-block__porduct">
-                  {% if variant.option2 != blank %}
+                  {% comment %} {% if variant.option2 != blank %}
                     <div class="collection-block__porduct-ico">
                       {{variant.option2}}
                     </div>
-                  {% endif %}
+                  {% endif %} {% endcomment %}
                   <a href="{{variant.url}}" class="collection-block__porduct-img">
                     <img src="{{variant.image | img_url: '300x' }}" alt="{{ product.title }}">
                   </a>
