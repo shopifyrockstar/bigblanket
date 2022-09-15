@@ -11,6 +11,10 @@
   </script>
 {% endfor %}  
 {% endif %}
+<script>
+  var split_color = false;
+  var size_variant_title = [];
+</script>
   
 <div class="product-template__container page-width"
 id="ProductSection-{{ section.id }}"
@@ -407,91 +411,118 @@ data-enable-history-state="true"
       <p class="close-button">Close X</p>
       
       {% if product.available %}
-      {% unless product.has_only_default_variant %}
-      {% for option in product.options_with_values %}
-      {% if option.name == "Color" %}
-      <div class="selector-wrapper js product-form__item">
-        <label class="some-to-remove group-Solid {% if option.name == 'default' %}label--hidden {% endif %}" for="SingleOptionSelector-{{ forloop.index0 }}">
-          {{ option.name }}: 
-        </label>
-        <span class="some-to-remove blanket-color group-Solid"></span>
-        <div class="colors-box"> 
-
-          {% for value in option.values %}
-
-            {% if option.name contains "Color" %}
-              {% for variant in product.variants %} 
-              {%- assign display = "block" -%}
-          	  {% if product.title == 'XL Weighted™ Blanket' %}
-          		
-          		{% if variant.image and variant.title contains value %}
-                {%- assign img = variant.image | img_url: "large" -%}
-                {%- assign sku = variant.sku -%}
-                {%- assign price_prod = variant.price -%}
-                {%- assign varId = variant.id -%} 
-                {%- assign display = "none" -%}
-                {%- assign available  = variant.available -%}
-
-                {% if available  %}
-                {% comment %}<span data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>{% endcomment %}
-                <span data-currency_format="{{ localization.country.currency.symbol }}" data-variant_compare_at_price="{{ variant.compare_at_price | money }}" data-sale_variant_compare_at_price="{{ variant.compare_at_price | divided_by: 100.0 }}" data-priceprod="{{price_prod | money }}" data-dyprice="{{price_prod | divided_by: 100.0 }}" data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" data-id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>
-                {% endif %}
-                {% endif %}
-          		
-          	  {% else %}
-          		
-          		{% if variant.image and variant.title == value%}
-                {%- assign img = variant.image | img_url: "large" -%}
-                {%- assign sku = variant.sku -%}
-                {%- assign price_prod = variant.price -%}
-                {%- assign varId = variant.id -%} 
-                {%- assign display = "none" -%}
-                {%- assign available  = variant.available -%}
-
-                {% if available  %}
-                {% comment %}<span data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>{% endcomment %}
-                <span data-currency_format="{{ localization.country.currency.symbol }}" data-variant_compare_at_price="{{ variant.compare_at_price | money }}" data-sale_variant_compare_at_price="{{ variant.compare_at_price | divided_by: 100.0 }}" data-priceprod="{{price_prod | money }}" data-dyprice="{{price_prod | divided_by: 100.0 }}" data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" data-id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>
-                {% endif %}
-                {% endif %}
-          		
-          	  {% endif %}
-              
-              {% endfor %} 
+      {% if product.title == 'Sateen Dream™ Sheets' or product.title == 'Sateen Dream™ Pillowcases' or product.title == 'Sateen Dream™ Duvet Cover' or product.title == 'Big Duvet™ Insert' %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            {% if option.name contains 'Size' %}
+              {% for value in option.values %}
+              <script>
+                size_variant_title.push('{{ value }}');
+              </script>
+              {% endfor %}
             {% endif %}
           {% endfor %}
+        {% endunless %}
+        <script>
+          var split_color = true;          
+        </script>
+      {% endif %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
 
-        </div>
-        <select hidden  class="single-option-selector-custom single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
-          {% for value in option.values %}
-          <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+            {% if option.name == "Color" %}
+              <div class="selector-wrapper js product-form__item">
+                <label class="some-to-remove group-Solid {% if option.name == 'default' %}label--hidden {% endif %}" for="SingleOptionSelector-{{ forloop.index0 }}">
+                  {{ option.name }}: 
+                </label>
+                <span class="some-to-remove blanket-color group-Solid"></span>
+                <div class="colors-box"> 
+
+                  {% for value in option.values %}
+                    {% assign prev_variant_title = '' %}
+                    {% if option.name contains "Color" %}
+                      {% for variant in product.variants %} 
+                        {%- assign display = "block" -%}
+                        {% if product.title == 'XL Weighted™ Blanket' %}
+                        
+                          {% if variant.image and variant.title contains value %}
+                            {%- assign img = variant.image | img_url: "large" -%}
+                            {%- assign sku = variant.sku -%}
+                            {%- assign price_prod = variant.price -%}
+                            {%- assign varId = variant.id -%} 
+                            {%- assign display = "none" -%}
+                            {%- assign available  = variant.available -%}
+            
+                            {% if available  %}
+                              <span data-currency_format="{{ localization.country.currency.symbol }}" data-variant_compare_at_price="{{ variant.compare_at_price | money }}" data-sale_variant_compare_at_price="{{ variant.compare_at_price | divided_by: 100.0 }}" data-priceprod="{{price_prod | money }}" data-dyprice="{{price_prod | divided_by: 100.0 }}" data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" data-id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>
+                            {% endif %}
+                          {% endif %}
+                        
+                        {% elsif product.title == 'Sateen Dream™ Sheets' or product.title == 'Sateen Dream™ Pillowcases' or product.title == 'Sateen Dream™ Duvet Cover' or product.title == 'Big Duvet™ Insert' %}                          
+                        
+                          {% if variant.image and variant.title contains value %}
+                            {%- assign img = variant.image | img_url: "large" -%}
+                            {%- assign sku = variant.sku -%}
+                            {%- assign price_prod = variant.price -%}
+                            {%- assign varId = variant.id -%} 
+                            {%- assign display = "none" -%}
+                            {%- assign available  = variant.available -%}
+
+                            {% if available  %}                              
+                              {% assign current_variant_title = variant.title | split:'/' | last %}
+                              <span data-currency_format="{{ localization.country.currency.symbol }}" data-variant_compare_at_price="{{ variant.compare_at_price | money }}" data-sale_variant_compare_at_price="{{ variant.compare_at_price | divided_by: 100.0 }}" data-priceprod="{{price_prod | money }}" data-dyprice="{{price_prod | divided_by: 100.0 }}" data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" data-id="{{sku}}" style="background-image:url({{img}});" title="{{value}}" data-variant-title="{{ variant.title }}" {% if current_variant_title == prev_variant_title %}data-order="second"{% else %}data-order="first"{% endif %}></span>                              
+                              {% if current_variant_title == prev_variant_title %}
+                                {% comment %} <p>asdf</p> {% endcomment %}
+                              {% endif %}
+                              {% assign prev_variant_title = variant.title | split:'/' | last %}
+                            {% endif %}
+                          {% endif %}
+
+                        {% else %}
+                        
+                          {% if variant.image and variant.title == value %}
+                            {%- assign img = variant.image | img_url: "large" -%}
+                            {%- assign sku = variant.sku -%}
+                            {%- assign price_prod = variant.price -%}
+                            {%- assign varId = variant.id -%} 
+                            {%- assign display = "none" -%}
+                            {%- assign available  = variant.available -%}
+            
+                            {% if available  %}
+                              <span data-currency_format="{{ localization.country.currency.symbol }}" data-variant_compare_at_price="{{ variant.compare_at_price | money }}" data-sale_variant_compare_at_price="{{ variant.compare_at_price | divided_by: 100.0 }}" data-priceprod="{{price_prod | money }}" data-dyprice="{{price_prod | divided_by: 100.0 }}" data-varprodid="{{varId}}"  onclick="colorSwatchHandler('{{value}}');" class="color-swatch" id="{{sku}}" data-id="{{sku}}" style="background-image:url({{img}});" title="{{value}}"></span>
+                            {% endif %}
+                          {% endif %}
+                        
+                        {% endif %}
+                      
+                      {% endfor %} 
+                    {% endif %}
+                  {% endfor %}
+
+                </div>
+                <select hidden  class="single-option-selector-custom single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                  {% for value in option.values %}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% else %}
+              {% unless product.title == 'Sateen Dream™ Sheets' or product.title == 'Sateen Dream™ Pillowcases' or product.title == 'Sateen Dream™ Duvet Cover' or product.title == 'Big Duvet™ Insert' %}
+                <div class="variants__title">
+                  {{ option.name }}:
+                </div>
+                <div class="variants__group">
+                  {% for value in option.values %}
+                  <div class="variants__group-item  {% if option.selected_value == value %}active{% endif %}" data-vargroup="{{value}}">
+                    {{ value | escape }}
+                  </div>
+                  {% endfor %}
+                </div>
+              {% endunless %}
+            {% endif %}
           {% endfor %}
-        </select>
-      </div>
-
-      {% else %}
-
-      <div class="variants__title">
-        {{ option.name }}:
-      </div>
-
-
-      <div class="variants__group">
-        {% for value in option.values %}
-        <div class="variants__group-item  {% if option.selected_value == value %}active{% endif %}" data-vargroup="{{value}}">
-          {{ value | escape }}
-        </div>
-        {% endfor %}
-      </div>
+        {% endunless %}
       {% endif %}
-      {% endfor %}
-      {% endunless %}
-      {% endif %}
-
-
-
-
-
-
 
       <div class="hidden">
 
@@ -915,8 +946,7 @@ data-enable-history-state="true"
       }else{
         $(el).addClass('hide');
         $(el).removeClass('visWght');
-      }
-      // console.log("colorId", colorId);
+      } 
     });
 
 
@@ -930,15 +960,18 @@ data-enable-history-state="true"
   <script>
     // SS_2020
     jQuery(document).ready(function() {
-      $(".switch-to-swatch > div").prepend("<div class='breakdown-box breakdown-zero group-Solid'><div>{{product.metafields.tab_copy.first_tab_name}}</div></div>")
-      var firstPattern = $(".switch-to-swatch > div").find("span[id*='Pattern']").first();
-      var firstLE = $(".switch-to-swatch > div").find("span[id*='Limited-Edition']").first();
-      $(firstPattern).before("<div class='breakdown-box breakdown-first group-Pattern'><div>{{product.metafields.tab_copy.second_tab_name}}</div></div>");
-      $(firstLE).before("<div class='breakdown-box breakdown-two group-Limited-Edition'><div>Limited Edition:</div></div>");
+      if ( split_color != true ){
+        $(".switch-to-swatch > div").prepend("<div class='breakdown-box breakdown-zero group-Solid'><div>{{product.metafields.tab_copy.first_tab_name}}</div></div>")
+        var firstPattern = $(".switch-to-swatch > div").find("span[id*='Pattern']").first();
+        var firstLE = $(".switch-to-swatch > div").find("span[id*='Limited-Edition']").first();
+        $(firstPattern).before("<div class='breakdown-box breakdown-first group-Pattern'><div>{{product.metafields.tab_copy.second_tab_name}}</div></div>");
+        $(firstLE).before("<div class='breakdown-box breakdown-two group-Limited-Edition'><div>Limited Edition:</div></div>");
+        
+        //click first swatch on load
+  //       $('.color-swatch')[0].click();
+        setTimeout(function(){ document.querySelector('.color-swatch.active').click(); }, 1000);
+      }
       
-      //click first swatch on load
-//       $('.color-swatch')[0].click();
-      setTimeout(function(){ document.querySelector('.color-swatch.active').click(); }, 1000);
 
 		 
 //          $(".switch-to-swatch").prepend("<div class='breakdown-box breakdown-zero group-Solid'><div>{{product.metafields.tab_copy.first_tab_name}}</div></div>")
@@ -1185,3 +1218,37 @@ data-enable-history-state="true"
 ]
 }
 {% endschema %}
+
+<script>
+$(window).on('load', function(){
+  console.log(size_variant_title[0], size_variant_title[1]);
+  if ( split_color == true ){
+    $(".switch-to-swatch > div").prepend("<div class='breakdown-box breakdown-first group-Pattern'><div>" + size_variant_title[1] + "</div></div>");
+    $(".switch-to-swatch > div").prepend("<div class='breakdown-box breakdown-zero group-Solid'><div>" + size_variant_title[0] + "</div></div>");
+    $($(".colors-box .color-swatch").get().reverse()).each(function(){
+      $(this).removeClass('hide');
+      if ($(this).data('order') == 'first'){
+        $('.breakdown-zero').after($(this));
+        if ($(this).hasClass('active')){
+          var cTitle = $(this).prop("title");
+          $(".breakdown-zero span").remove();
+          $(".breakdown-zero.group-Solid > div").append("<span> " + cTitle + "</span>");  
+        }
+      }
+      if ($(this).data('order') == 'second'){
+        $('.breakdown-first').after($(this));
+        if ($(this).hasClass('group-Solid')){
+          $(this).removeClass('group-Solid').addClass('group-Pattern');
+        }
+        if ($(this).hasClass('active')){
+          var cTitle = $(this).prop("title");
+          $(".breakdown-first span").remove();
+          $(".breakdown-first.group-Pattern > div").append("<span> " + cTitle + "</span>");  
+        }
+      }
+    })
+    
+  }
+  
+})
+</script>
