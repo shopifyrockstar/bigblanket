@@ -16,7 +16,7 @@
     script.onerror = () => {
       console.error("Elevar Data Layer: JS script failed to load");
     };
-    script.onload = () => {
+    script.onload = async () => {
       if (!window.ElevarGtmSuite) {
         console.error("Elevar Data Layer: `ElevarGtmSuite` is not defined");
         return;
@@ -52,8 +52,7 @@
 ;
 
       if (config.event_config.save_order_notes) {
-        window.ElevarGtmSuite.handlers.cookieReconcile(cartData);
-        window.ElevarGtmSuite.handlers.paramReconcile(cartData);
+        await window.ElevarGtmSuite.handlers.cartAttributesReconcile(cartData, config.consent_enabled);
       }
 
       if (config.event_config.user) {
@@ -88,8 +87,19 @@
       }
 
       {%- if checkout -%}
+        {%- if checkout.attributes == empty -%}
+          if (config.event_config.save_order_notes) {
+            window.ElevarGtmSuite.handlers.storeOrderNotesOffsite({%- if checkout -%}
+  {
+    checkoutId: {{- checkout.id | json -}}
+  }
+{%- endif -%}
+);
+          }
+        {%- endif -%}
+
         {% if request.path contains "thank_you" %}
-          if (config.event_config.checkout_complete && Shopify && Shopify.Checkout && Shopify.Checkout.page === "thank_you") {
+          if (config.event_config.checkout_complete && Shopify?.Checkout?.page?.includes("thank_you")) {
             window.ElevarGtmSuite.handlers.checkoutComplete({%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
@@ -109,7 +119,12 @@
       {% if checkout.discount_applications %}
         coupon: {{ checkout.discount_applications[0].title | json }},
       {% endif %}
-      subTotal: "{{- checkout.line_items_subtotal_price | times: 0.01 | json -}}",
+      {%- if order.subtotal_price -%}
+        subTotal: "{{- order.subtotal_price | times: 0.01 | json -}}",
+      {%- elsif checkout.subtotal_price -%}
+        subTotal: "{{- checkout.subtotal_price | times: 0.01 | json -}}",
+      {%- endif -%}
+      productSubTotal: "{{- checkout.line_items_subtotal_price | times: 0.01 | json -}}",
       discountAmount: "{{- checkout.discounts_amount | times: 0.01 | json -}}"
     },
     {%- if checkout.customer -%}
@@ -160,7 +175,7 @@
           }
         {%- endif -%}
 
-        if (Shopify && Shopify.Checkout && Shopify.Checkout.page !== "thank_you") {
+        if (Shopify?.Checkout && !Shopify.Checkout.page?.includes("thank_you")) {
           const checkoutStep = {%- if checkout -%}
   {
     currencyCode: {{- checkout.currency | json -}},
@@ -186,7 +201,7 @@
 ;
 
           if (config.event_config.cart_reconcile) {
-            window.ElevarGtmSuite.handlers.cartReconcile(checkoutStep);
+            window.ElevarGtmSuite.handlers.cartItemsReconcile(checkoutStep);
           }
           if (config.event_config.checkout_step) {
             window.ElevarGtmSuite.handlers.checkoutStep(checkoutStep);
