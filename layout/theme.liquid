@@ -3,9 +3,10 @@
 <head>
   {% render 'elevar-head' %}
 <!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
-     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.62&shop=bigblanket.myshopify.com"></script>
+     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.69&shop=bigblanket.myshopify.com"></script>
 <!-- End BlackCrow Script Tag -->
   {% render 'elevar-head-listener' %}
+
   
 <meta name="google-site-verification" content="14mR7X1E9jekxidGefABuVCHiS4tidfTFy7ecpI98oE" />
   
@@ -226,6 +227,8 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
     var items = [];
   </script>
   {% endif %}
+
+ {% render 'giftship' %} 
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% if settings.toggle_widesale == true %}sitewide_sale-enabled{% endif %} {% if settings.toggle_singlesale == true and template contains 'product' %} single_sale-enabled{% endif %}">
