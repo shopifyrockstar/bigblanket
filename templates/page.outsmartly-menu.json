@@ -1,0 +1,67 @@
+{
+  "layout": "theme.outsmartly",
+  "sections": {
+    "814a4944-4b64-43c9-9c24-6bb8b7872c40": {
+      "type": "outsmartly-menu",
+      "blocks": {
+        "979ec1d8-40e7-4cd1-86bc-082ebe780069": {
+          "type": "menuItem",
+          "settings": {
+            "title": "Original Stretch™ Blanket",
+            "subtitle": "10'x10' + Ultra-Soft + Stretchy",
+            "subtitleSmall": "21 Colors",
+            "image": "shopify:\/\/shop_images\/Smoke_Grey_V2.jpg",
+            "href": "shopify:\/\/products\/the-big-blanket",
+            "buttonLabel": "Shop Now"
+          }
+        },
+        "1277e80f-0be0-4303-8f0c-c28d30eea6ec": {
+          "type": "menuItem",
+          "settings": {
+            "title": "Premier Plush™ Blanket",
+            "subtitle": "10'x10' + Fluffy + Breathable",
+            "subtitleSmall": "16 Colors",
+            "image": "shopify:\/\/shop_images\/acf.PP-Aqua.webp",
+            "href": "shopify:\/\/products\/premier-plush",
+            "buttonLabel": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "979ec1d8-40e7-4cd1-86bc-082ebe780069",
+        "1277e80f-0be0-4303-8f0c-c28d30eea6ec"
+      ],
+      "settings": {
+        "title": "Default menu",
+        "variationId": "default"
+      }
+    },
+    "68b34bad-e466-4e79-9ce8-232a81f91328": {
+      "type": "outsmartly-menu",
+      "blocks": {
+        "f964637f-3f27-4d7b-b7cf-bbede30ab0b7": {
+          "type": "menuItem",
+          "settings": {
+            "title": "The Biggest Bedding",
+            "subtitle": "Don't Take Sheets From Anyone",
+            "subtitleSmall": "Sheets, Duvets, Covers + Pillowcases",
+            "image": "shopify:\/\/shop_images\/Wresting.jpg",
+            "href": "shopify:\/\/collections\/bedding",
+            "buttonLabel": "Explore Now"
+          }
+        }
+      },
+      "block_order": [
+        "f964637f-3f27-4d7b-b7cf-bbede30ab0b7"
+      ],
+      "settings": {
+        "title": "Alternative Variation",
+        "variationId": "alternative"
+      }
+    }
+  },
+  "order": [
+    "814a4944-4b64-43c9-9c24-6bb8b7872c40",
+    "68b34bad-e466-4e79-9ce8-232a81f91328"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "layout": "theme.outsmartly",
+  "sections": {
+    "ad4fc9af-ebd2-4ff6-bc38-f7a36ad9cffd": {
+      "type": "outsmartly-shipping",
+      "blocks": {
+        "c75698c4-718a-46bf-b971-1339cda54680": {
+          "type": "shippingVariation",
+          "settings": {
+            "title": "Default Shipping",
+            "variationId": "default",
+            "threshold": 0,
+            "incompleteMessage": "You are __AMOUNT_AWAY__ from free shipping.",
+            "completeMessage": "You've earned fast + free shipping!",
+            "shippingLabel": "Shipping",
+            "shippingPrice": 0,
+            "freeShippingLabel": "Free"
+          }
+        },
+        "7d39d46a-cdbb-424c-bc25-9b087898f1cf": {
+          "type": "shippingVariation",
+          "settings": {
+            "title": "$100 Threshold",
+            "variationId": "threshold",
+            "threshold": 100,
+            "incompleteMessage": "You are __AMOUNT_AWAY__ from free shipping",
+            "completeMessage": "You've earned fast + free shipping!",
+            "shippingLabel": "Shipping",
+            "shippingPrice": 7,
+            "freeShippingLabel": "Free"
+          }
+        }
+      },
+      "block_order": [
+        "c75698c4-718a-46bf-b971-1339cda54680",
+        "7d39d46a-cdbb-424c-bc25-9b087898f1cf"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "ad4fc9af-ebd2-4ff6-bc38-f7a36ad9cffd"
+  ]
+}
