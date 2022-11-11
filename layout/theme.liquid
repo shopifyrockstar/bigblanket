@@ -205,8 +205,7 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
   {% if handle contains 'privacy-policy' %}<meta name="robots" content="noindex">{% endif %}{% if handle contains 'terms-of-service' %}<meta name="robots" content="noindex">{% endif %}{% if handle contains 'all-collections' %}<meta name="robots" content="noindex">{% endif %}{% if handle contains 'boban-giveaway' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'theskimm' %}<meta name="robots" content="noindex">{% endif %}    {% if handle contains 'happymom' %}<meta name="robots" content="noindex">{% endif %}{% if handle contains 'happymom' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'collections-test' %}<meta name="robots" content="noindex">{% endif %}   {% if handle contains 'secret-sale' %}<meta name="robots" content="noindex">{% endif %}  
   
   {% if handle contains 'secret-sale' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'rise-ai-giftcard' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'ultimate-comfort-giveaway' %}<meta name="robots" content="noindex">{% endif %}   {% if handle contains 'getcozy20-subscribe-page' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'snuggle' %}<meta name="robots" content="noindex">{% endif %}  {% if handle contains 'e-gift-card-bonus' %}<meta name="robots" content="noindex">{% endif %}{% if handle contains 'test-1' %}<meta name="robots" content="noindex">{% endif %} {% if handle contains 'email-signup' %}<meta name="robots" content="noindex">{% endif %} {% if handle contains 'seamless' %}<meta name="robots" content="noindex">{% endif %}
-    
-  
+
   <!-- End Noindex Pages --> 
  
   
@@ -232,8 +231,10 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% if settings.toggle_widesale == true %}sitewide_sale-enabled{% endif %} {% if settings.toggle_singlesale == true and template contains 'product' %} single_sale-enabled{% endif %}">
-  {% render 'elevar-body-end' %}
 <script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} {% if product.first_available_variant.price %}window.KlarnaThemeGlobals.data_purchase_amount = {{ product.first_available_variant.price }};{% endif %}window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+
+  {% render 'elevar-body-end' %}
+
 
 
   {% section 'header' %}
@@ -321,5 +322,3 @@ var _learnq = _learnq || [];
   
 </body>
 </html>
-<script type="text/javascript" src="https://pop6serve.com/popsixle.php?t=0b5136a235d24330e4f0d2fa2562fbf548d1fc1d7f96fc177337a72cc7d3bd7d"></script>
-

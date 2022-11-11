@@ -1,0 +1,63 @@
+{% schema %}
+{
+  "name": "Outsmartly Menu",
+  "templates": ["page"],
+  "settings": [
+     {
+      "type": "text",
+      "id": "title",
+      "label": "Friendly Name",
+      "info": "The is just an internal friendly name."
+    },
+    {
+      "type": "text",
+      "id": "variationId",
+      "label": "Variation ID"
+    }
+  ],
+  "blocks": [
+    {
+       "name": "Menu Item",
+       "type": "menuItem",
+	   "limit": 7,
+       "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "text",
+              "id": "subtitle",
+              "label": "Subtitle"
+            },
+           {
+              "type": "text",
+              "id": "subtitleSmall",
+              "label": "Subtitle Small"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+           {
+              "type": "url",
+              "id": "href",
+              "label": "Link"
+            },
+           {
+              "type": "text",
+              "id": "buttonLabel",
+              "label": "Button Label"
+            }
+       ]
+     }
+   ],
+  "presets": [
+  {
+  	"name": "Outsmartly Menu"
+  }
+  ]
+}
+{% endschema %}

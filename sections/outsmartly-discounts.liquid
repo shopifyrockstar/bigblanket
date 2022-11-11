@@ -1,0 +1,120 @@
+{% schema %}
+{
+  "name": "Outsmartly Discounts",
+  "templates": ["page"],
+  "settings": [
+  ],
+  "blocks": [
+    {
+       "name": "Disount Variation",
+       "type": "discountVariation",
+	   "limit": 3,
+       "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Friendly Name",
+              "info": "The is just an internal friendly name."
+            },
+            {
+              "type": "text",
+              "id": "variationId",
+              "label": "Variation ID",
+              "info": "The line item value that will be used in a script to match variations (must be unique)"
+            },
+           {
+              "type": "textarea",
+              "id": "topBarMessageLine1",
+              "label": "Top Bar Message Line 1"
+            },
+            {
+              "type": "textarea",
+              "id": "topBarMessageLine2",
+              "label": "Top Bar Message Line 2"
+            },
+            {
+              "type": "textarea",
+              "id": "pdpCouponMessage",
+              "label": "PDP Coupon Initial Message"
+            },
+            {
+              "type": "textarea",
+              "id": "pdpCouponMessageChecked",
+              "label": "PDP Coupon Checked Message"
+            },
+            {
+              "type": "textarea",
+              "id": "strikethroughDiscountMessage",
+              "label": "Discounted Price Message",
+              "info": "This is the message after the strikethrough price, example: (See Discount In Cart)"
+            },
+            {
+              "type": "checkbox",
+              "id": "progressBarEnabled",
+              "label": "Enable Progress Bar in Cart",
+              "default": false
+            },
+            {
+              "type": "html",
+              "id": "progressBarInProgressMessage",
+              "label": "Progress Bar In Progress Message",
+              "info": "Example (html OK): You are <b>$_SPEND_</b> away from <b>$_DISCOUNT_ OFF</b>. Note: placeholders must be all caps and start/end with an underscore."
+            },
+            {
+              "type": "html",
+              "id": "progressBarCompletedMessage",
+              "label": "Progress Bar Completed Message",
+              "info": "This will show when the progress bar is full"
+            },
+            {
+              "type": "html",
+              "id": "progressBarTierTemplate",
+              "label": "Progress Bar Tier Template",
+              "info": "Example: $_DISCOUNT_ off"
+            },
+            {
+              "type": "number",
+              "id": "threshold1",
+              "label": "Threshold for Tier 1"
+            },
+            {
+              "type": "number",
+              "id": "tier1",
+              "label": "Discount Tier 1"
+            },
+            {
+              "type": "number",
+              "id": "threshold2",
+              "label": "Threshold for Tier 2"
+            },
+            {
+              "type": "number",
+              "id": "tier2",
+              "label": "Discount Tier 2"
+            },
+            {
+              "type": "number",
+              "id": "threshold3",
+              "label": "Threshold for Tier 3"
+            },
+            {
+              "type": "number",
+              "id": "tier3",
+              "label": "Discount Tier 3"
+            },
+            {
+              "type": "html",
+              "id": "subtotalDiscountMessage",
+              "label": "Subtotal Discount Message",
+              "info": "Example: Discount (Spend _THRESHOLD_ save _DISCOUNT_)"
+            }
+       ]
+     }
+   ],
+  "presets": [
+  {
+  	"name": "Discounts"
+  }
+  ]
+}
+{% endschema %}

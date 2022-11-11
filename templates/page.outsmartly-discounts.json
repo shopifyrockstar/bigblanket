@@ -1,0 +1,83 @@
+{
+  "layout": "theme.outsmartly",
+  "sections": {
+    "discounts": {
+      "type": "outsmartly-discounts",
+      "blocks": {
+        "4b4259d4-3580-4429-a518-4d61215b85f2": {
+          "type": "discountVariation",
+          "settings": {
+            "title": "BLACK FRIDAY EARLY ACCESS",
+            "variationId": "fallflashsale",
+            "topBarMessageLine1": "BLACK FRIDAY EARLY ACCESS",
+            "topBarMessageLine2": "$25 off $100〡$50 off $200〡$100 off $300+",
+            "pdpCouponMessage": "Get EARLY BLACK FRIDAY savings when you click here",
+            "pdpCouponMessageChecked": "Your discount has been applied. See savings in cart.",
+            "strikethroughDiscountMessage": "Early Access discount applied. See discount in cart.",
+            "progressBarEnabled": false,
+            "progressBarInProgressMessage": "You are <b>$_SPEND_<\/b> away from <b>$_DISCOUNT_ OFF<\/b>",
+            "progressBarCompletedMessage": "Our BIGGEST savings are in your cart!",
+            "progressBarTierTemplate": "$_DISCOUNT_ off",
+            "threshold1": 100,
+            "tier1": 30,
+            "threshold2": 200,
+            "tier2": 50,
+            "threshold3": 300,
+            "tier3": 100,
+            "subtotalDiscountMessage": "Discount (Spend _THRESHOLD_ save _DISCOUNT_)"
+          }
+        },
+        "ca732f07-5dda-4fe2-b45e-ca2bfe3242af": {
+          "type": "discountVariation",
+          "settings": {
+            "title": "Big Sale",
+            "variationId": "bigsale",
+            "topBarMessageLine1": "FALL FLASH SALE",
+            "topBarMessageLine2": "20% OFF ALL PRODUCTS",
+            "pdpCouponMessage": "Get the Fall Flash Sale savings when you click here.",
+            "pdpCouponMessageChecked": "Fall Flash Sale Discount Applied. See Discount in Cart.",
+            "strikethroughDiscountMessage": "See Discount In Cart",
+            "progressBarEnabled": false,
+            "progressBarInProgressMessage": "",
+            "progressBarCompletedMessage": "",
+            "progressBarTierTemplate": "",
+            "subtotalDiscountMessage": ""
+          }
+        },
+        "cac5de90-fd3d-445e-a88d-76a145ea5d75": {
+          "type": "discountVariation",
+          "settings": {
+            "title": "Fall Flash Sale (V2 - $325)",
+            "variationId": "fallflashsalev2",
+            "topBarMessageLine1": "FALL FLASH SALE",
+            "topBarMessageLine2": "$30 off $100+〡$50 off $200+〡$100 off $325+",
+            "pdpCouponMessage": "Get the Fall Flash Sale savings when you click here.",
+            "pdpCouponMessageChecked": "Fall Flash Sale Discount Applied. See Discount in Cart.",
+            "strikethroughDiscountMessage": "See Discount In Cart",
+            "progressBarEnabled": true,
+            "progressBarInProgressMessage": "You are <b>$_SPEND_<\/b> away from <b>$_DISCOUNT_ OFF<\/b>",
+            "progressBarCompletedMessage": "Our BIGGEST savings are in your cart!",
+            "progressBarTierTemplate": "$_DISCOUNT_ off",
+            "threshold1": 100,
+            "tier1": 30,
+            "threshold2": 200,
+            "tier2": 50,
+            "threshold3": 325,
+            "tier3": 100,
+            "subtotalDiscountMessage": "Discount (Spend _THRESHOLD_ save _DISCOUNT_)"
+          }
+        }
+      },
+      "block_order": [
+        "4b4259d4-3580-4429-a518-4d61215b85f2",
+        "ca732f07-5dda-4fe2-b45e-ca2bfe3242af",
+        "cac5de90-fd3d-445e-a88d-76a145ea5d75"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "discounts"
+  ]
+}
