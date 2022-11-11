@@ -1,0 +1,62 @@
+{% schema %}
+{
+  "name": "Outsmartly Shipping",
+  "templates": ["page"],
+  "settings": [
+  ],
+  "blocks": [
+    {
+       "name": "Shipping Variation",
+       "type": "shippingVariation",
+       "settings": [
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Friendly Name",
+                "info": "The is just an internal friendly name."
+              },
+              {
+                "type": "text",
+                "id": "variationId",
+                "label": "Variation ID"
+              },
+            {
+              "type": "number",
+              "id": "threshold",
+              "label": "Free Shipping Threshold"
+            },
+            {
+              "type": "text",
+              "id": "incompleteMessage",
+              "label": "Incomplete Message"
+            },
+           {
+              "type": "text",
+              "id": "completeMessage",
+              "label": "Unlocked Message"
+            },
+            {
+              "type": "text",
+              "id": "shippingLabel",
+              "label": "Shipping Label"
+            },
+           {
+              "type": "number",
+              "id": "shippingPrice",
+              "label": "Shipping Price"
+            },
+           {
+              "type": "text",
+              "id": "freeShippingLabel",
+              "label": "Free Shipping Label"
+            }
+       ]
+     }
+   ],
+  "presets": [
+  {
+  	"name": "Outsmartly Shipping"
+  }
+  ]
+}
+{% endschema %}

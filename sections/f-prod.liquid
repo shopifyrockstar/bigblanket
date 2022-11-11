@@ -14,7 +14,7 @@
       <a href="{{ product.url | default: '#' }}" class="collection-list__item">
         {% if block.settings.image != blank %}
 
-          <img class="img-product-home-page lazyimg" src="#" data-src="{{ block.settings.image | product_img_url: 'master' }}">
+          <img class="img-product-home-page lazyimg" src="#" data-src="{{ block.settings.image | img_url: 'master' }}">
 
         {% elsif product.metafields.pdp_image2.pdp_image2 != blank %}
 
@@ -22,7 +22,7 @@
 
         {% else %}
 
-        <img class="img-product-home-page lazyimg" src="#" data-src="{{ product.featured_image | product_img_url: 'master' }}">
+        <img class="img-product-home-page lazyimg" src="#" data-src="{{ product.featured_image | img_url: 'master' }}">
 
         {% endif %}
         

@@ -3,7 +3,7 @@
 <head>
   {% render 'elevar-head' %}
 <!-- Begin BlackCrow Script Tag: DO NOT MODIFY! -->
-     <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.62&shop=bigblanket.myshopify.com"></script>
+     {% comment %} <script type="text/javascript" async src="https://shopify-init.blackcrow.ai/js/core/bigblanket.js?shopify_app_version=1.0.80&shop=bigblanket.myshopify.com"></script> {% endcomment %}
 <!-- End BlackCrow Script Tag -->
   {% render 'elevar-head-listener' %}
 {% comment %}DLADMNEW{% endcomment %}{% render 'dla_dm_css_main' %}{% render 'dla_dm_css_hide_event_targets' %}{% render 'dla_dm_js_main' %}{% render 'dla_dm_js_currency' %}{% comment %}ENDDLADMNEW{% endcomment %}
@@ -11,11 +11,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
   <meta name="referrer" content="origin"> 
-
-  <script src="https://cdn.yottaa.com/rapid.rum.min.js?key=ap2yIuAujD5tjQ"></script>
-<script>
-  Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5tjQ');
-</script>
   
   <title>{{ page_title }}</title>
 
@@ -196,10 +191,10 @@
   <script src="https://cdn.attn.tv/bigblanket/checkout/checkout.js" defer>
   </script>
   
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg" async></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  {% comment %} <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg" async></script> {% endcomment %}
 
-  <script>
+  {% comment %} <script>
     (function () {
       window.DY = window.DY || {};
       window.DY.pageTypes = {
@@ -211,12 +206,13 @@
       window.DY.recommendationContext = { type: pageType };
       console.log(pageType);
     })();
-  </script>
+  </script> {% endcomment %}
 
-  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
-  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script>
+  {% comment %} <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
+  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script> {% endcomment %}
   
   <script src="https://apis.google.com/js/platform.js?onload=renderOptIn"></script>
+  <script src="https://socialsnowball.io/js/leaked-discount-code-detect.js" async></script>
 </head>
 <body>
   {% render 'elevar-checkout-end' %}
@@ -255,14 +251,7 @@
       </div>
       <div class="typeform-widget" data-tf-widget="KiJbpqFs" data-tf-iframe-props="title=Post-Purchase Survey | Big Blanket Co" data-tf-medium="snippet" data-tf-hidden="utm_content={{ checkout.order_number }}"></div>
       <script src="//embed.typeform.com/next/embed.js"></script>
-      {% comment %}
-      <div class="typeform-widget" data-url="https://form.typeform.com/to/KiJbpqFs?utm_content={{ checkout.order_number }}" data-transparency="50" data-hide-headers="true" data-hide-footer="true"></div> 
-      <script> 
-        (function() {
-          var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) 
-        } })() 
-      </script>
-      {% endcomment %}
+      
     </div>
     <div class="wrap">
       <ul class="breadcrumb breadcrumb--center hide-on-mobile">
@@ -357,9 +346,9 @@
               </div>
 
             </div>
-            <div class="thankyou-desktop-widget hidden">
+            {% comment %} <div class="thankyou-desktop-widget hidden">
               <div class="yotpo-widget-instance" data-yotpo-instance-id="21823"></div>              
-            </div>
+            </div> {% endcomment %}
           </div>
         </aside>
       </div>
@@ -665,7 +654,7 @@
 //         if(loc.indexOf("/thank_you") > -1 && loc.indexOf("/checkouts/") > -1){
 //           $(".thankyou-survey").removeClass("hidden");
 //         }        
-        DY.API("event", {
+        /*DY.API("event", {
           name: "Purchase",
           properties: {
             uniqueTransactionId: "{{ checkout.order_number }}",
@@ -683,7 +672,7 @@
             {% endfor %}              
             ]
           }
-        });                
+        });*/                
       }
     });
     
@@ -732,7 +721,7 @@
 
         <label class="checkbox__label" for="checkout_show_gift_note"  style="display: flex;align-items: center;">
           <img src="{{ 'img_gift-wrap.png' | asset_img_url: '80x' }}"  style="margin: 0 10px;width: 50px;">
-          Add a gift message and conceal the branded box on this order. If selected, we will not show pricing on the receipt
+          Add a gift message and conceal the branded box on this order. If selected, we will not show pricing on the receipt.
         </label>
       </div>
       
@@ -802,7 +791,6 @@
                         return response.json();
                       })
                       .then(function(data) {
-//                         console.log(data);
                         elevar__fbp.value = data.attributes._elevar__fbp;
                         elevar__ga.value = data.attributes._elevar__ga;
                         elevar__ga_PKCV1WB2HB.value = data.attributes._elevar__ga_PKCV1WB2HB;

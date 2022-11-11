@@ -40,7 +40,7 @@
     "show_giftmessage": true,
     "gift_message_content": "Bonus!",
     "show_sale_price": true,
-    "show_countdown": false,
+    "show_countdown": true,
     "set_time": "15",
     "free_order_heading": "Ships today when you order in the next",
     "free_order_ending": "",
@@ -122,14 +122,14 @@
         ],
         "settings": {
           "announcement_bar_enabled": true,
-          "announcement_bar_text_1": "20% OFF + FREE USA SHIPPING",
-          "announcement_bar_text_2": "",
+          "announcement_bar_text_1": "BLACK FRIDAY EARLY ACCESS",
+          "announcement_bar_text_2": "$25 off $100〡$50 off $200〡$100 off $300+",
           "announcement_bar_link": "shopify:\/\/products\/the-big-blanket",
-          "announcement_bar_text_1_mobile": "20% OFF + FREE USA SHIPPING",
-          "announcement_bar_text_2_mobile": "",
+          "announcement_bar_text_1_mobile": "BLACK FRIDAY EARLY ACCESS",
+          "announcement_bar_text_2_mobile": "$25 off $100〡$50 off $200〡$100 off $300+",
           "announcement_bar_link_mobile": "shopify:\/\/products\/premier-plush",
           "announcement_bar_countdown_enabled": false,
-          "announcement_bar_countdown": "2022-09-12 01:59:59",
+          "announcement_bar_countdown": "2022-09-22 01:59:59",
           "product_1": "original-stretch-last-call",
           "product_2": "premier-plush-blanket-sale",
           "product_3": "xl-weighted-blanket",
@@ -771,9 +771,10 @@
       "care-section-right": {
         "type": "care-section-right",
         "settings": {
-          "video_link": "https:\/\/player.vimeo.com\/external\/428261244.hd.mp4?s=9c5307a3ed8f1d739b822b9490f1ebb6aeb720fc&profile_id=174",
-          "grt_title": "Premium Woven™",
-          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Do not iron. Stay cozy."
+          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-Sheets-PLP-ProductCard-370x370-1.jpg",
+          "video_link": "",
+          "grt_title": "Sateen Dream™",
+          "grt_subtitle": "Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy."
         }
       },
       "care-section-right-2": {
@@ -791,25 +792,26 @@
           "647d2ac2-b851-48db-9d46-980e29857f14"
         ],
         "settings": {
-          "video_link": "https:\/\/player.vimeo.com\/progressive_redirect\/playback\/698314061\/rendition\/720p\/file.mp4?loc=external&signature=015ac62d8f18b96e1d0dd4f2816be069f84748f2d57235314dc1054078dcb501",
-          "grt_title": "Classic Knitted™",
-          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Stay cozy."
+          "video_link": "https:\/\/player.vimeo.com\/external\/428264258.hd.mp4?s=b83837ed11653240f1d9b1a7d5d064e77fd03ea2&profile_id=174",
+          "grt_title": "XL Weighted™",
+          "grt_subtitle": "Cover — Machine wash cold with like colors on a gentle cycle. Tumble dry low, remove promptly. Non-chlorine bleach when needed. Warm iron.  <br> <br>Insert — Hand wash or spot clean."
         }
       },
       "care-section-left": {
         "type": "care-section-left",
         "settings": {
           "video_link": "https:\/\/player.vimeo.com\/external\/428262899.hd.mp4?s=7f6d27f1223fb6ab5fc52da905cff6bfd1cadb20&profile_id=174",
-          "grt_title": "Original Stretch™",
-          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Do not iron. Stay cozy."
+          "grt_title": "Big Blankets®",
+          "grt_subtitle": "Original Stretch™, Premium Woven™, Premier Plush™ + Classic Knitted™ <br> <br>Machine wash cold with like colors. Do not bleach. Tumble dry low. Do not iron. Stay cozy."
         }
       },
       "care-section-left-2": {
         "type": "care-section-left-2",
         "settings": {
-          "video_link": "https:\/\/player.vimeo.com\/external\/428256769.hd.mp4?s=1378c2f5ce617be8bb3eae44188b75949c51a520&profile_id=174",
-          "grt_title": "Premier Plush™",
-          "grt_subtitle": "Machine wash cold with like colors. Do not bleach. Tumble dry low. Do not iron. Stay cozy."
+          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-DuvetCover-PLP-ProductCard-370x370-3.jpg",
+          "video_link": "",
+          "grt_title": "Big Duvet™",
+          "grt_subtitle": "Cover — Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy. <br> <br>Insert — Machine wash cold. Gentle cycle. Do not bleach. Tumble dry low. Do not iron."
         }
       },
       "bbd-prod-section-hero": {
@@ -1032,10 +1034,9 @@
       "care-section-left-3": {
         "type": "care-section-left-3",
         "settings": {
-          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-Sheets-PLP-ProductCard-370x370-1.jpg",
           "video_link": "",
-          "grt_title": "Sheets",
-          "grt_subtitle": "Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy."
+          "grt_title": "",
+          "grt_subtitle": ""
         }
       },
       "contact-hero": {
@@ -1243,10 +1244,9 @@
       "care-section-right-3": {
         "type": "care-section-right-3",
         "settings": {
-          "grt_image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-DuvetCover-PLP-ProductCard-370x370-3.jpg",
           "video_link": "",
-          "grt_title": "Duvet",
-          "grt_subtitle": "Cover — Machine wash cold with like colors. Gentle cycle. Do not bleach. Tumble dry low. Warm iron. Stay cozy. <br> <br>Insert — Machine wash cold. Gentle cycle. Do not bleach. Tumble dry low. Do not iron."
+          "grt_title": "",
+          "grt_subtitle": ""
         }
       }
     },

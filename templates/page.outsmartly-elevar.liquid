@@ -1,0 +1,63 @@
+{% layout none %}
+{
+  "user":{
+    {%- if customer -%}
+      "customer": {
+        "id": "{{- customer.id | json -}}",
+        "email": {{- customer.email | json -}},
+        "firstName": {{- customer.first_name | json -}},
+        "lastName": {{- customer.last_name | json -}},
+        "phone": {{- customer.phone | json -}},
+        "city": {{- customer.default_address.city | json -}},
+        "zip": {{- customer.default_address.zip | json -}},
+        "address1": {{- customer.default_address.address1 | json -}},
+        "address2": {{- customer.default_address.address2 | json -}},
+        "country": {{- customer.default_address.country | json -}},
+        "province": {{- customer.default_address.province | json -}},
+        "provinceCode": {{- customer.default_address.province_code | json -}},
+        "orderCount": "{{- customer.orders_count | json -}}",
+        "totalSpent": "{{- customer.total_spent | times: 0.01 | json -}}",
+        "tags": {{- customer.tags | join: ', ' | json -}}
+      },
+    {%- endif -%}
+     {%- if checkout -%}
+      "cartTotal": "{{- checkout.total_price | times: 0.01 | json -}}",
+      "currencyCode": {{- checkout.currency | json -}}
+    {%- else -%}
+      "cartTotal": "{{- cart.total_price | times: 0.01 | json -}}",
+      "currencyCode": {{- cart.currency.iso_code | json -}}
+    {%- endif -%}
+  },
+  "cart": {
+    "attributes": {{- cart.attributes | json -}},
+    "cartTotal": "{{- cart.total_price | times: 0.01 | json -}}",
+    "currencyCode": {{- cart.currency.iso_code | json -}},
+    "items": [
+      {%- for line_item in cart.items -%}
+        {
+          {%- if line_item.sku != blank -%}
+            "id": {{- line_item.sku | json -}},
+          {%- else -%}
+            "id": "{{- line_item.product_id | json -}}",
+          {%- endif -%}
+          "name": {{- line_item.product.title | json -}},
+          "brand": {{- line_item.vendor | json -}},
+          "category": {{- line_item.product.type | json -}},
+          "variant": {{- line_item.variant.title | json -}},
+          "price": "{{- line_item.final_price | times: 0.01 | json -}}",
+          "position": {{- forloop.index0 -}},
+          "quantity": "{{- line_item.quantity | json -}}",
+          "productId": "{{- line_item.product_id | json -}}",
+          "variantId": "{{- line_item.variant_id -}}",
+          "compareAtPrice": "{{- line_item.variant.compare_at_price | times: 0.01 | json -}}",
+          "image": "{{- line_item.image | img_url -}}"
+        {% unless forloop.last %}
+          },
+        {% else %}
+          }
+        {% endunless %}
+      {%- endfor -%}
+    ]
+  }
+}
+
