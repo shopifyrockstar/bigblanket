@@ -4,9 +4,9 @@
 <div class="header-prod" class="bbd-prod-sections">
   <a href="{{ product.url | default: "#" }}" class="header-prod__img">
     {% if product.metafields.pdp_image.pdp_image != blank %}
-    <img src="#" data-src="{{product.metafields.pdp_image.pdp_image}}" alt="asdf">
+    <img src="{{product.metafields.pdp_image.pdp_image}}" alt="asdf">
     {%else%}
-    <img src="#" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="afs">
+    <img src="{{ product.featured_image | product_img_url: '500x' }}" alt="afs">
     {% endif %}
   </a>
 

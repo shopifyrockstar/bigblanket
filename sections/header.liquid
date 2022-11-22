@@ -224,9 +224,9 @@ Theme Store optional settings
               {% endcomment %}
               
               {% if product.metafields.nav.nav_image != blank %}
-              	<img class="lazy2" data-src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
+              	<img class="lazyimg" src="{{ product.metafields.nav.nav_image }}" alt="Product Metafields Image">
               {% else %}
-              	<img class="lazy2" data-src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
+              	<img class="lazyimg" src="{{ product.featured_image | product_img_url: '500x' }}" alt="Product Featured Image">
               {% endif %}
 
             </a>

@@ -40,12 +40,8 @@
       <div class="swiper-slide">
         <div class="slider-nav__item">
           {% if block.settings.snc_img != blank %} 
-          <div class="slider-nav__item-img">
-            <img class="lazy2"
-           		data-src="{{ block.settings.snc_img | img_url:'master' }}" data-yo-delayType="lazy" alt="img">
-            {% comment %}
+          <div class="slider-nav__item-img">            
             <img src="{{ block.settings.snc_img | img_url:'master' }}" alt="asdf">
-            {% endcomment %}
           </div>
           {% endif %}
         </div>

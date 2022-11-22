@@ -16,7 +16,7 @@
           {{ image | img_url: '900x' }} 900w,
           {{ image | img_url: '1200x' }} 1200w,
           {{ image | img_url: '1500x' }} 1500w"
-          data-src="{{ image | product_img_url: 'large' }}"
+          src="{{ image | product_img_url: 'large' }}"
           alt="{{ image.alt | escape }}">
           {% endfor %}
         </div>
