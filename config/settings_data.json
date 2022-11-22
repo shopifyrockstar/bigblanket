@@ -2,9 +2,9 @@
   "current": {
     "preorder_color": "#232930",
     "preorder_button_text": "Pre-Order",
-    "toggle_widesale": false,
-    "way_off": "percentage_off",
-    "off_amount": "20",
+    "toggle_widesale": true,
+    "way_off": "fixed_off",
+    "off_amount": "25",
     "toggle_singlesale": true,
     "product_info_discount": "the-big-blanket | 20\nclassic-knitted-blanket | 20\npremier-plush | 20\nwoven-big-blanket | 20",
     "color_accent": "#c4cdd5",
@@ -1267,10 +1267,11 @@
         "settings": {
         }
       },
-      "5439026248262864547": {
-        "type": "shopify:\/\/apps\/preorder-globo-back-in-stock\/blocks\/app-embed\/e547a0ad-8212-4bcc-b02f-761faa9b8af2",
+      "733389323033596483": {
+        "type": "shopify:\/\/apps\/okendo-product-reviews-ugc\/blocks\/theme-settings\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
         "disabled": false,
         "settings": {
+          "show_preview_data": true
         }
       }
     }

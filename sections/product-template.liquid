@@ -216,11 +216,7 @@ data-enable-history-state="true"
 
            {% for image in product.images %}
            <div class='swiper-slide sl-control__item sl-control__item--{{ image.alt | replace: " ", "_" }}'>
-            {% comment %}<img src="{{ image | img_url: '200x' }}" alt="{{ image.alt | escape }}">{% endcomment %}
-            <img class="lazy2"
-            data-src="{{ image | img_url: '630x' }}"            
-            data-title="{{ image.alt | escape }}"
-            alt="{{ image.alt | escape | strip }}">
+            <img src="{{ image | img_url: '650x' }}" alt="{{ image.alt | escape }}">
              <span>{{ image.alt }}</span>
           </div> 
           {% endfor %}

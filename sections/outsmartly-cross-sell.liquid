@@ -1,0 +1,68 @@
+{% schema %}
+{
+  "name": "Outsmartly Cross Sell",
+  "templates": ["page"],
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "This is the product page where the cross-sell will show"
+    }
+  ],
+  "blocks": [
+    {
+       "name": "Cross Sell Variation",
+       "type": "crossSellVariation",
+       "settings": [
+              {
+                "type": "text",
+                "id": "title",
+                "label": "Friendly Name",
+                "info": "The is just an internal friendly name."
+              },
+              {
+                "type": "text",
+                "id": "variationId",
+                "label": "Variation ID"
+              },
+              {
+                "type": "textarea",
+                "id": "crossSellTitle",
+                "label": "Cross-Sell Title",
+                "info": "Use __PRODUCT_NAME__ and __PRICE__ as template replacements"
+              },
+              {
+                "type": "product",
+                "id": "product",
+                "label": "Product",
+                "info": "This is the product that will be offered as a cross-sell"
+              },
+             {
+                "type": "textarea",
+                "id": "productVariants",
+                "label": "Product Variants",
+                "info": "Optional list of comma separated variant IDs: id1,id2,id3"
+              },
+             {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image",
+                "info": "Optional image"
+              },
+              {
+                "type": "html",
+                "id": "description",
+                "label": "Description",
+                "info": "Optional description text"
+              }
+       ]
+     }
+   ],
+  "presets": [
+  {
+  	"name": "Outsmartly Cross Sell Product"
+  }
+  ]
+}
+{% endschema %}

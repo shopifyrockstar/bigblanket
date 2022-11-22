@@ -111,11 +111,11 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
     })();
   </script>
   
-<!--   <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
-  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script> -->
+  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
+  <script type="text/javascript" src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script>
   
-  <script type="lazyload2" data-src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
-  <script type="lazyload2" data-src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script>
+{% comment %}   <script type="lazyload2" data-src="//cdn.dynamicyield.com/api/8776620/api_dynamic.js"></script>
+  <script type="lazyload2" data-src="//cdn.dynamicyield.com/api/8776620/api_static.js"></script> {% endcomment %}
   
   
 
@@ -172,16 +172,16 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 <!--   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
   {% render 'critical-css' %}
   <link rel="preload" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  {% comment %}{{ 'libs.css' | asset_url | stylesheet_tag }} {% endcomment %}
-  <link rel="preload" href="{{ 'libs.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  {% comment %}{{ 'index.css' | asset_url | stylesheet_tag }}  {% endcomment %}
-  <link rel="preload" href="{{ 'index.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  {% comment %}{{ 'main.css' | asset_url | stylesheet_tag }} {% endcomment %}
-  <link rel="preload" href="{{ 'main.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  {% comment %}{{ 'styles.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
-  <link rel="preload" href="{{ 'styles.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  {% comment %}{{ 'reviews.scss' | asset_url | stylesheet_tag }} {% endcomment %}
-  <link rel="preload" href="{{ 'reviews.scss' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  {{ 'libs.css' | asset_url | stylesheet_tag }}
+  {% comment %}<link rel="preload" href="{{ 'libs.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endcomment %}
+  {{ 'index.css' | asset_url | stylesheet_tag }}
+  {% comment %}<link rel="preload" href="{{ 'index.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endcomment %}
+  {{ 'main.css' | asset_url | stylesheet_tag }} 
+  {% comment %}<link rel="preload" href="{{ 'main.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endcomment %}
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }} 
+  {% comment %}<link rel="preload" href="{{ 'styles.scss.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endcomment %}
+  {{ 'reviews.scss' | asset_url | stylesheet_tag }} 
+  {% comment %}<link rel="preload" href="{{ 'reviews.scss' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{% endcomment %}
   {% comment %}<script src="https://code.jquery.com/jquery-2.2.4.min.js" i crossorigin="anonymous"></script>{% endcomment %}
   {% render 'jquery-snippet' %}
 <!--   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
@@ -191,7 +191,7 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
   {{ content_for_header }}
   {% endcomment %}
   
-  {{ content_for_header | replace : "addEventListener('load'", "addEventListener('wnw_load'" | replace : "previewBarInjector.init();", "" | replace : 'DOMContentLoaded', 'wnw_load' | replace : 'defer="defer" src=', 'type="lazyload2" defer="defer" data-src=' }}
+  {{ content_for_header }}
     
 {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
 {%- assign time_now = 'now' | date: '%s' %}
@@ -216,11 +216,11 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
   {{ 'swell-rewards.css' | asset_url | stylesheet_tag }}
   {{ 'swell-rewards.js' | asset_url | script_tag }}
   {% comment %}<script type="lazyload2" data-src="{{ 'swell-rewards.js' | asset_url }}"></script>{% endcomment %}
-  <script type="lazyload2" data-src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg"></script>
+  <script type="text/javascript" src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg"></script>
   
 <!--   <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/mjLntBTvsS8EPxmsW-NbEg" async></script> -->
-  <script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
-  <script type="lazyload2" data-src="{{ 'moment-timezone.js' | asset_url }}" ></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script type="text/javascript" src="{{ 'moment-timezone.js' | asset_url }}" ></script>
   {% if settings.toggle_singlesale == true %}
   <script>
     var items = [];
@@ -251,22 +251,24 @@ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=ap2yIuAujD5
 
   {% comment %}<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>{% endcomment %}
   {% comment %}<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>{% endcomment %}
-  <script type="lazyload2" data-src="{{ 'libs.min.js' | asset_url }}"></script>   
+  <script type="text/javascript" src="{{ 'libs.min.js' | asset_url }}"></script>   
   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/eisbehr-/jquery.lazy@1.7.10/jquery.lazy.min.js"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery-lazy@1.7.10/plugins/jquery.lazy.picture.min.js"></script>
-  <script type="lazyload2" data-src="{{ 'common.js' | asset_url }}"></script>   
+  <script type="text/javascript" src="{{ 'common.js' | asset_url }}"></script>
+  {% comment %}<script type="lazyload2" data-src="{{ 'common.js' | asset_url }}"></script>   {% endcomment %}
   {%- section 'go-cart' -%}
-  <script type="lazyload2" data-src="{{ 'index.js' | asset_url }}"></script>
-  <script type="lazyload2" data-src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.7/jstz.min.js"></script>
-  <script type="lazyload2" data-src="{{ 'moment-timezone.js' | asset_url }}"></script>
+  {% comment %}<script type="lazyload2" data-src="{{ 'index.js' | asset_url }}"></script>   {% endcomment %}
+  <script type="text/javascript" src="{{ 'index.js' | asset_url }}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.7/jstz.min.js"></script>
+  <script type="text/javascript" src="{{ 'moment-timezone.js' | asset_url }}"></script>
   
-  <script type="lazyload2" data-src="{{ 'countdown.js' | asset_url }}"></script>
-  <script type="lazyload2" data-src="{{ 'reviews.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'countdown.js' | asset_url }}"></script>
+  <script type="text/javascript" src="{{ 'reviews.js' | asset_url }}"></script>
 
   <script>var shareasaleShopifySSCID=shareasaleShopifyGetParameterByName("sscid");function shareasaleShopifySetCookie(e,a,o,i,r){if(e&&a){var s,S=i?"; path="+i:"",h=r?"; domain="+r:"",t="";o&&((s=new Date).setTime(s.getTime()+o),t="; expires="+s.toUTCString()),document.cookie=e+"="+a+t+S+h}}function shareasaleShopifyGetParameterByName(e,a){a||(a=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var o=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(a);return o?o[2]?decodeURIComponent(o[2].replace(/\+/g," ")):"":null}shareasaleShopifySSCID&&shareasaleShopifySetCookie("shareasaleShopifySSCID",shareasaleShopifySSCID,94670778e4,"/");</script>
   
 
-  <script type="lazyload2" data-src="https://na-library.klarnaservices.com/lib.js"  data-client-id="c24cdce6-b18d-5151-a273-9738238cc1d4"></script>
+  <script type="text/javascript" src="https://na-library.klarnaservices.com/lib.js"  data-client-id="c24cdce6-b18d-5151-a273-9738238cc1d4"></script>
 
 
 

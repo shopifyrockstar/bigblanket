@@ -1,0 +1,158 @@
+{
+  "layout": "theme.outsmartly",
+  "sections": {
+    "3217b8c0-6632-4668-a303-8c3460afb38a": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "5118e0b3-416a-4a57-b305-6a61808087d6": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Mystery Blanket",
+            "variationId": "mysteryBlanket",
+            "crossSellTitle": "This is an optional title",
+            "product": "mystery-blanket",
+            "productVariants": "",
+            "image": "shopify:\/\/shop_images\/BigBlanket-BigBedding-PLP-Header-1366x540-1.jpg",
+            "description": "This is the description"
+          }
+        },
+        "f995fc9a-de6c-4c19-b258-0b7c0c46b3b3": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Premier Plush",
+            "variationId": "premierPlus",
+            "crossSellTitle": "",
+            "product": "premier-plush",
+            "productVariants": "32102066978852,40070057885732,39416484003876",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "5118e0b3-416a-4a57-b305-6a61808087d6",
+        "f995fc9a-de6c-4c19-b258-0b7c0c46b3b3"
+      ],
+      "settings": {
+        "product": "the-big-blanket"
+      }
+    },
+    "d6fa49e1-84ed-4705-ba11-a4185e9e2a50": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "b6958e8a-7f51-4871-9a01-726143932095": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Tipsy Elves",
+            "variationId": "tipsyElves",
+            "crossSellTitle": "",
+            "product": "tipsy-elves",
+            "productVariants": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "b6958e8a-7f51-4871-9a01-726143932095"
+      ],
+      "settings": {
+        "product": "classic-knitted-blanket"
+      }
+    },
+    "5cd0a1b7-5bbe-4eb9-8bb0-98f81b42aa91": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "5ee840e5-3c42-40d4-b5e1-3d614a910a62": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Sateen Dream Pillowcases",
+            "variationId": "pillowcases",
+            "crossSellTitle": "Add matching __PRODUCT_NAME__ — $__PRICE__",
+            "product": "sateen-dream-pillowcases",
+            "productVariants": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "5ee840e5-3c42-40d4-b5e1-3d614a910a62"
+      ],
+      "settings": {
+        "product": "sateen-dream-sheets"
+      }
+    },
+    "d8c933c1-ec74-4eb0-8f5d-8c1149231494": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "7f63f0ee-c35e-4c24-898c-7d7be3bfe606": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Duvent Cover",
+            "variationId": "duvetCover",
+            "crossSellTitle": "Add matching __PRODUCT_NAME__ — $__PRICE__",
+            "product": "sateen-dream-duvet-cover",
+            "productVariants": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "7f63f0ee-c35e-4c24-898c-7d7be3bfe606"
+      ],
+      "settings": {
+        "product": "big-duvet"
+      }
+    },
+    "e0fc586e-59d5-48ec-9f89-f6c377260d47": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "397f1d32-b860-4cd2-a0bb-40f61936f68b": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Big Duvet Insert",
+            "variationId": "bigDuvetInsert",
+            "crossSellTitle": "Add matching __PRODUCT_NAME__ — $__PRICE__",
+            "product": "big-duvet",
+            "productVariants": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "397f1d32-b860-4cd2-a0bb-40f61936f68b"
+      ],
+      "settings": {
+        "product": "sateen-dream-duvet-cover"
+      }
+    },
+    "bcafce52-adbf-404e-ba5e-ffe71a206fce": {
+      "type": "outsmartly-cross-sell",
+      "blocks": {
+        "dfe0bb35-95a5-4a81-ac12-14d56aa034d3": {
+          "type": "crossSellVariation",
+          "settings": {
+            "title": "Sateen Sheets",
+            "variationId": "sateenSheets",
+            "crossSellTitle": "Add matching __PRODUCT_NAME__ — $__PRICE__",
+            "product": "sateen-dream-sheets",
+            "productVariants": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "dfe0bb35-95a5-4a81-ac12-14d56aa034d3"
+      ],
+      "settings": {
+        "product": "sateen-dream-pillowcases"
+      }
+    }
+  },
+  "order": [
+    "3217b8c0-6632-4668-a303-8c3460afb38a",
+    "d6fa49e1-84ed-4705-ba11-a4185e9e2a50",
+    "5cd0a1b7-5bbe-4eb9-8bb0-98f81b42aa91",
+    "d8c933c1-ec74-4eb0-8f5d-8c1149231494",
+    "e0fc586e-59d5-48ec-9f89-f6c377260d47",
+    "bcafce52-adbf-404e-ba5e-ffe71a206fce"
+  ]
+}

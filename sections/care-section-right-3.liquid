@@ -17,7 +17,7 @@
           </div>
           {% else %}
           <div class="options-list__item-ico">
-            <img class="lazyimg" src="#" data-src="{{ block.settings.icon | img_url: 'master' }}" alt="img">
+            <img class="lazyimg" src="{{ block.settings.icon | img_url: 'master' }}" alt="img">
           </div>
           {% endif %} 
           {{ block.settings.gtr_optext }}
@@ -35,7 +35,7 @@
       <video class="top-block__video" src="{{ section.settings.video_link}}" preload="metadata" autoplay loop playsinline muted></video>
       {% else %}
       {% if section.settings.grt_image != blank %}
-      <img class="lazyimg" src="#" data-src="{{ section.settings.grt_image | img_url:'master' }}" alt="img">
+      <img class="lazyimg" src="{{ section.settings.grt_image | img_url:'master' }}" alt="img">
       {% endif %}
       {% endif %}
     </div>
